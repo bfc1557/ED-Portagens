@@ -23,8 +23,11 @@ void inserir_dono(DonoHashTable* table, Dono dono);
 Dono* buscar_dono(DonoHashTable* table, int numContribuinte);
 void carregar_donos(DonoHashTable* table, const char* filename);
 int calcular_memoria_donos(DonoHashTable* table);
+void mostrarDono(void *dono);
 void listar_donos_alfabetico(DonoHashTable* table);
 void listar_donos_numContribuinte(DonoHashTable* table);
 void registar_dono(DonoHashTable* table);
+
+void** coletar_donos(DonoHashTable* table, int* total);
 
 #endif
