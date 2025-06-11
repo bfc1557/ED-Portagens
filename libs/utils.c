@@ -1,5 +1,7 @@
 #include "utils.h"
 
+#include <stdio.h>
+
 void merge(void* arr[], int l, int m, int r, int (*compare)(const void*, const void*)) {
     int n1 = m - l + 1;
     int n2 = r - m;
@@ -47,4 +49,34 @@ void merge_sort(void* arr[], int l, int r, int (*compare)(const void*, const voi
 
 int comparar_strings(const char* a, const char* b) {
     return strcmp(a, b);
+}
+
+void paginacao(void **array, int size, int dataPage, void (*fshow)(void *data))
+{
+    int pag = 0;
+    int max = (size + dataPage - 1) / dataPage; // total de páginas arredondado pra cima
+    int escolha = 0;
+
+    do {
+        printf("\n\n\n");
+
+        int start = pag * dataPage;
+        int end = start + dataPage;
+        if (end > size) end = size;
+
+        printf("Página %d de %d\n", pag + 1, max);
+        printf("=====================\n");
+
+        for (int i = start; i < end; i++) {
+            fshow(array[i]);
+        }
+
+        printf("\nEscolha a página (1 a %d), ou -1 para sair: ", max);
+        scanf("%d", &escolha);
+
+        if (escolha >= 1 && escolha <= max) {
+            pag = escolha - 1;
+        }
+
+    } while (escolha != -1);
 }

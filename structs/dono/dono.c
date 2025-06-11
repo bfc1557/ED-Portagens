@@ -79,6 +79,16 @@ int calcular_memoria_donos(DonoHashTable* table) {
     return total;
 }
 
+void mostrarDono(void *ptrDono)
+{
+    Dono *dono;
+
+    dono = (Dono*) ptrDono;
+
+    printf("%-8d | %-100s | %s\n", dono->numContribuinte, dono->nome, dono->codPostal);
+};
+
+
 void** coletar_donos(DonoHashTable* table, int* total) {
     *total = 0;
 
@@ -126,11 +136,7 @@ void listar_donos_alfabetico(DonoHashTable* table) {
     void** donos = coletar_donos(table, &total);
     merge_sort(donos, 0, total - 1, comparar_donos_nome);
     
-    printf("\n=== Donos ordenados alfabeticamente ===\n");
-    for (int i = 0; i < total; i++) {
-        dono = (Dono*)donos[i];
-        printf("%-8d %-30s %s\n", dono->numContribuinte, dono->nome, dono->codPostal);
-    }
+    paginacao(donos, total, 30, mostrarDono);
     free(donos);
 }
 
@@ -140,11 +146,7 @@ void listar_donos_numContribuinte(DonoHashTable* table) {
     void **donos = coletar_donos(table, &total);
     merge_sort(donos, 0, total - 1, comparar_donos_numContribuinte);
     
-    printf("\n=== Donos ordenados por número de contribuinte ===\n");
-    for (int i = 0; i < total; i++) {
-        dono = (Dono*)donos[i];
-        printf("%-8d %-30s %s\n", dono->numContribuinte, dono->nome, dono->codPostal);
-    }
+    paginacao(donos, total, 30, mostrarDono);
     free(donos);
 }
 
