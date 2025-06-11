@@ -10,8 +10,8 @@ int main() {
     do {
         opcao = MenuPrincipal();
         switch(opcao) {
-            case 1: MenuDonos(BD); break;
-            case 2: MenuVeiculos(BD); break;
+            case 1: MenuDonos(BD); break; // Tudo a funcionar
+            case 2: MenuVeiculos(BD); break; // Tudo a funcionar
             case 3: MenuPassagens(BD); break;
             case 4: MenuConsultas(BD); break;
             case 5: MenuEstatisticas(BD); break;

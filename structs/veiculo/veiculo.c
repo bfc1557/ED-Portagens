@@ -107,7 +107,7 @@ int calcular_memoria_veiculos(VeiculoHashTable* table) {
     return total;
 }
 
-Veiculo** coletar_veiculos(VeiculoHashTable* table, int* total) {
+void** coletar_veiculos(VeiculoHashTable* table, int* total) {
     *total = 0;
     for (int i = 0; i < table->size; i++) {
         VeiculoNode* current = table->buckets[i];
@@ -116,67 +116,66 @@ Veiculo** coletar_veiculos(VeiculoHashTable* table, int* total) {
             current = current->next;
         }
     }
-    
-    Veiculo** array = (Veiculo**)malloc(*total * sizeof(Veiculo*));
+
+    // Alocar array de ponteiros para Veiculo
+    void** array = malloc(*total * sizeof(void*));
     int index = 0;
     for (int i = 0; i < table->size; i++) {
         VeiculoNode* current = table->buckets[i];
         while (current) {
-            array[index++] = &current->veiculo;
+            array[index++] = &current->veiculo;  // cada elemento é um (Veiculo*)
             current = current->next;
         }
     }
     return array;
 }
 
+void mostrarCarro(void *carro)
+{
+    Veiculo *ptrVeiculo;
+
+    ptrVeiculo = (Veiculo*) carro;
+
+    printf("%-10d | %-10s | %-50s | %-50s | %-4d | %s\n", ptrVeiculo->codVeiculo, ptrVeiculo->matricula, ptrVeiculo->marca, ptrVeiculo->modelo, ptrVeiculo->ano, ptrVeiculo->dono->nome ? : "N/A");
+}
+
 int comparar_veiculos_matricula(const void* a, const void* b) {
-    const Veiculo* va = *(const Veiculo**)a;
-    const Veiculo* vb = *(const Veiculo**)b;
+    const Veiculo* va = (const Veiculo*)a;
+    const Veiculo* vb = (const Veiculo*)b;
     return strcmp(va->matricula, vb->matricula);
 }
 
 int comparar_veiculos_marca(const void* a, const void* b) {
-    const Veiculo* va = *(const Veiculo**)a;
-    const Veiculo* vb = *(const Veiculo**)b;
+    const Veiculo* va = (const Veiculo*)a;
+    const Veiculo* vb = (const Veiculo*)b;
     int cmp = strcmp(va->marca, vb->marca);
     return cmp == 0 ? strcmp(va->modelo, vb->modelo) : cmp;
 }
 
 int comparar_veiculos_modelo(const void* a, const void* b) {
-    const Veiculo* va = *(const Veiculo**)a;
-    const Veiculo* vb = *(const Veiculo**)b;
+    const Veiculo* va = (const Veiculo*)a;
+    const Veiculo* vb = (const Veiculo*)b;
     int cmp = strcmp(va->modelo, vb->modelo);
     return cmp == 0 ? strcmp(va->marca, vb->marca) : cmp;
 }
 
 void listar_veiculos_ordenados(VeiculoHashTable* table, const char* criterio) {
     int total;
-    Veiculo** veiculos = coletar_veiculos(table, &total);
+    void** veiculos = coletar_veiculos(table, &total);
     if (!veiculos) return;
     
     if (strcmp(criterio, "matricula") == 0) {
-        merge_sort((void**)veiculos, 0, total - 1, comparar_veiculos_matricula);
-        printf("\n=== Veículos ordenados por matrícula ===\n");
+        merge_sort(veiculos, 0, total - 1, comparar_veiculos_matricula);
     } else if (strcmp(criterio, "marca") == 0) {
-        merge_sort((void**)veiculos, 0, total - 1, comparar_veiculos_marca);
-        printf("\n=== Veículos ordenados por marca ===\n");
+        merge_sort(veiculos, 0, total - 1, comparar_veiculos_marca);
     } else if (strcmp(criterio, "modelo") == 0) {
-        merge_sort((void**)veiculos, 0, total - 1, comparar_veiculos_modelo);
-        printf("\n=== Veículos ordenados por modelo ===\n");
+        merge_sort(veiculos, 0, total - 1, comparar_veiculos_modelo);
     } else {
         free(veiculos);
         return;
     }
     
-    printf("%-10s %-15s %-15s %-4s %s\n", "Matrícula", "Marca", "Modelo", "Ano", "Dono");
-    for (int i = 0; i < total; i++) {
-        printf("%-10s %-15s %-15s %-4d %s\n", 
-               veiculos[i]->matricula, 
-               veiculos[i]->marca, 
-               veiculos[i]->modelo, 
-               veiculos[i]->ano,
-               veiculos[i]->dono ? veiculos[i]->dono->nome : "N/A");
-    }
+    paginacao(veiculos, total, 30, mostrarCarro);
     free(veiculos);
 }
 
