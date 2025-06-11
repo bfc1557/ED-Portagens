@@ -1,0 +1,35 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "*.ino": "arduino-output",
+        "stdio.h": "c",
+        "DATE.C": "cpp",
+        "date.c.C": "cpp",
+        "files.h": "c",
+        "stdlib.h": "c",
+        "list.h": "c",
+        "dono.h": "c",
+        "stdarg.h": "c",
+        "string.h": "c",
+        "time.h": "c",
+        "simple_log.h": "c",
+        "distancia.h": "c",
+        "string_util.h": "c",
+        "array": "c",
+        "string": "c",
+        "hashtb.h": "c",
+        "func.h": "c",
+        "passagem.h": "c",
+        "carro.h": "c",
+        "utils.h": "c",
+        "appcontext.h": "c",
+        "windows.h": "c",
+        "locale.h": "c",
+        "colors.h": "c"
+    },
+    "C_Cpp.default.compilerPath": "C:/MinGW/bin/gcc.exe",
+    "terminal.integrated.encoding": "utf8"
+
+
+    
+}

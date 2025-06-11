@@ -1,0 +1,42 @@
+{
+    "tasks": [
+        {
+            "label": "Build Program (Windows - MinGW)",
+            "type": "cppbuild",
+            "command": "C:\\MinGW\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${workspaceFolder}\\src\\main.c",
+                "${workspaceFolder}\\src\\menu.c",
+                "${workspaceFolder}\\libs\\bdados.c",
+                "${workspaceFolder}\\libs\\utils.c",
+                "${workspaceFolder}\\structs\\dono\\dono.c",
+                "${workspaceFolder}\\structs\\veiculo\\veiculo.c",
+                "${workspaceFolder}\\structs\\sensor\\sensor.c",
+                "${workspaceFolder}\\structs\\passagem\\passagem.c",
+                "${workspaceFolder}\\structs\\distancia\\distancia.c",
+                "-o",
+                "${workspaceFolder}\\build\\UC-TollManager.exe",
+                "-I${workspaceFolder}\\libs",
+                "-I${workspaceFolder}\\structs\\dono",
+                "-I${workspaceFolder}\\structs\\veiculo",
+                "-I${workspaceFolder}\\structs\\sensor",
+                "-I${workspaceFolder}\\structs\\passagem",
+                "-I${workspaceFolder}\\structs\\distancia"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Task created by bfc"
+        }
+    ],
+    "version": "2.0.0"
+}
