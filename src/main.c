@@ -22,6 +22,7 @@ int main() {
             printf("A sair...\n");
             salvar_donos(BD->donos, "../data/donos.txt");
             salvar_veiculos(BD->veiculos, "../data/carros.txt");
+            salvar_passagens(BD->passagens, "../data/passagem.txt");
             break;
             default: printf("Opção inválida!\n");
         }
