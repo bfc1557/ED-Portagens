@@ -41,6 +41,31 @@ void inserir_veiculo(VeiculoHashTable* table, Veiculo veiculo) {
     table->buckets[index] = newNode;
 }
 
+void salvar_veiculos(VeiculoHashTable* table, const char* filename) {
+    FILE* file = fopen(filename, "w");
+    if (!file) {
+        perror("Erro ao abrir o ficheiro para escrita");
+        return;
+    }
+
+    for (int i = 0; i < table->size; i++) {
+        VeiculoNode* current = table->buckets[i];
+        while (current) {
+            Veiculo v = current->veiculo;
+            fprintf(file, "%s\t%s\t%s\t%d\t%d\t%d\n",
+                v.matricula,
+                v.marca,
+                v.modelo,
+                v.ano,
+                v.dono->numContribuinte,
+                v.codVeiculo);
+            current = current->next;
+        }
+    }
+
+    fclose(file);
+}
+
 Veiculo* buscar_veiculo_matricula(VeiculoHashTable* table, const char* matricula) {
     int index = hash_veiculo(matricula, table->size);
     VeiculoNode* current = table->buckets[index];

@@ -20,6 +20,7 @@ typedef struct {
 DonoHashTable* criar_hash_table_donos(int size);
 void liberar_hash_table_donos(DonoHashTable* table);
 void inserir_dono(DonoHashTable* table, Dono dono);
+void salvar_donos(DonoHashTable* table, const char* filename);
 Dono* buscar_dono(DonoHashTable* table, int numContribuinte);
 void carregar_donos(DonoHashTable* table, const char* filename);
 int calcular_memoria_donos(DonoHashTable* table);
