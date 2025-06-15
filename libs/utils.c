@@ -80,3 +80,33 @@ void paginacao(void **array, int size, int dataPage, void (*fshow)(void *data))
 
     } while (escolha != -1);
 }
+
+int lerInteiro(const char *mensagem, int min, int max) {
+    char linha[64];
+    long valor;
+    char *endptr;
+
+    while (1) {
+        printf("%s", mensagem);
+
+        if (!fgets(linha, sizeof(linha), stdin)) {   // EOF
+            puts("\nEntrada terminada prematuramente.");
+            exit(EXIT_FAILURE);
+        }
+
+        // Remove newline
+        linha[strcspn(linha, "\n")] = '\0';
+
+        // Ignorar linhas vazias
+        if (linha[0] == '\0') continue;
+
+        valor = strtol(linha, &endptr, 10);
+
+        // Verificar se toda a string foi convertida e se está no intervalo
+        if (*endptr == '\0' && valor >= min && valor <= max) {
+            return (int)valor;
+        }
+
+        puts("Opção inválida! Tente novamente.");
+    }
+}

@@ -67,7 +67,7 @@ void CarregarDados(BDados* bd, const char* dir_dados) {
     carregar_distancias(&bd->distancias, path);
     
     snprintf(path, sizeof(path), "%s/passagem.txt", base);
-    carregar_passagens(&bd->passagens, path, 100000);
+    carregar_passagens(&bd->passagens, path, 1000000);
     
     CalcularMemoria(bd);
 }

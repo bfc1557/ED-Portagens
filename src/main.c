@@ -17,7 +17,7 @@ int main() {
             case 5: MenuEstatisticas(BD); break;
             case 6: MenuExportar(BD); break;
             case 0: printf("A sair...\n"); break;
-            default: printf("Opção inválida!\n");
+            default: printf("Opcao invalida!\n");
         }
     } while (opcao != 0);
     
