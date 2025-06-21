@@ -11,7 +11,7 @@ VeiculoHashTable* criar_hash_table_veiculos(int size) {
     return table;
 }
 
-void liberar_hash_table_veiculos(VeiculoHashTable* table) {
+void libertar_hash_table_veiculos(VeiculoHashTable* table) {
     for (int i = 0; i < table->size; i++) {
         VeiculoNode* current = table->buckets[i];
         while (current) {
