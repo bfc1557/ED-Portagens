@@ -37,6 +37,28 @@ void inserir_dono(DonoHashTable* table, Dono dono) {
     table->buckets[index] = newNode;
 }
 
+void salvar_donos(DonoHashTable* table, const char* filename) {
+    FILE* file = fopen(filename, "w");
+    if (!file) {
+        perror("Erro ao abrir o ficheiro para escrita");
+        return;
+    }
+
+    for (int i = 0; i < table->size; i++) {
+        DonoNode* current = table->buckets[i];
+        while (current) {
+            Dono dono = current->dono;
+            fprintf(file, "%d\t%s\t%s\n", 
+                dono.numContribuinte, 
+                dono.nome, 
+                dono.codPostal);
+            current = current->next;
+        }
+    }
+
+    fclose(file);
+}
+
 Dono* buscar_dono(DonoHashTable* table, int numContribuinte) {
     int index = hash_dono(numContribuinte, table->size);
     DonoNode* current = table->buckets[index];

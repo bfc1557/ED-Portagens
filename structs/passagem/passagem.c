@@ -146,3 +146,59 @@ void listar_veiculos_periodo(PassagemList passagens, VeiculoHashTable* veiculos,
 
     free(veiculos_periodo);
 }
+
+void registar_passagem(PassagemList* list, VeiculoHashTable* veiculos){
+    Passagem nova_passagem;
+    printf("\n=== Registar Nova Passagem ===\n");
+    
+    printf("ID do Sensor: ");
+    scanf("%d", &nova_passagem.idSensor);
+    
+    printf("Código do Veículo: ");
+    scanf("%d", &nova_passagem.codVeiculo);
+    
+    printf("Tipo de Registo (0=Entrada, 1=Saída): ");
+    scanf("%d", &nova_passagem.tipoRegisto);
+
+    // Obter data e hora atual
+    nova_passagem.data = time(NULL);
+    if (nova_passagem.data == (time_t)-1) {
+        perror("Erro ao obter data e hora atual");
+        return;
+    }
+    
+    // Verificar se o veículo existe
+    if (!buscar_veiculo_codigo(veiculos, nova_passagem.codVeiculo)) {
+        printf("Erro: Veículo com código %d não encontrado!\n", nova_passagem.codVeiculo);
+        return;
+    }
+    
+    inserir_passagem(list, nova_passagem);
+    printf("Passagem registada com sucesso!\n");
+}
+
+void salvar_passagens(PassagemList list, const char* filename) {
+    FILE* file = fopen(filename, "w");
+    if (!file) {
+        perror("Erro ao abrir arquivo de passagens para escrita");
+        return;
+    }
+
+    PassagemNode* current = list;
+    while (current) {
+        struct tm* tm_info = localtime(&current->passagem.data);
+        char buffer[80];
+        strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", tm_info);
+        
+        fprintf(file, "%d\t%d\t%s\t%d\n",
+                current->passagem.idSensor,
+                current->passagem.codVeiculo,
+                buffer,
+                current->passagem.tipoRegisto);
+        
+        current = current->next;
+    }
+
+    fclose(file);
+    printf("Passagens salvas com sucesso em %s\n", filename);
+}

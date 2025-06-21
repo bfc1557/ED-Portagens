@@ -65,8 +65,20 @@ void MenuVeiculos(BDados* bd) {
 }
 
 void MenuPassagens(BDados* bd) {
-    printf("\n=== Menu Passagens ===\n");
-    printf("Funcionalidade a implementar na próxima fase\n");
+    int opcao;
+    do {
+        printf("\n=== Menu Passagens ===\n");
+        printf("1. Registar passagem\n");
+        printf("0. Voltar\n");
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+        
+        switch(opcao) {
+            case 1: registar_passagem(&bd->passagens, bd->veiculos); break;
+            case 0: break;
+            default: printf("Opção inválida!\n");
+        }
+    } while (opcao != 0);
 }
 
 void MenuConsultas(BDados* bd) {
