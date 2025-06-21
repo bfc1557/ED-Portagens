@@ -8,7 +8,7 @@ PassagemList criar_lista_passagens() {
     return NULL;
 }
 
-void liberar_lista_passagens(PassagemList list) {
+void libertar_lista_passagens(PassagemList list) {
     PassagemNode* current = list;
     while (current) {
         PassagemNode* temp = current;

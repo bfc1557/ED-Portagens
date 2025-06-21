@@ -23,7 +23,7 @@ typedef struct {
 } VeiculoHashTable;
 
 VeiculoHashTable* criar_hash_table_veiculos(int size);
-void liberar_hash_table_veiculos(VeiculoHashTable* table);
+void libertar_hash_table_veiculos(VeiculoHashTable* table);
 void inserir_veiculo(VeiculoHashTable* table, Veiculo veiculo);
 Veiculo* buscar_veiculo_matricula(VeiculoHashTable* table, const char* matricula);
 Veiculo* buscar_veiculo_codigo(VeiculoHashTable* table, int codVeiculo);
