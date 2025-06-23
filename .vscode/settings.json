@@ -27,7 +27,8 @@
         "locale.h": "c",
         "colors.h": "c",
         "sensor.h": "c",
-        "veiculo.h": "c"
+        "veiculo.h": "c",
+        "bdados.h": "c"
     },
     "C_Cpp.default.compilerPath": "C:/MinGW/bin/gcc.exe",
     "terminal.integrated.encoding": "utf8"

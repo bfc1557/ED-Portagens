@@ -92,7 +92,7 @@ void MenuConsultas(BDados* bd) {
         scanf("%d", &opcao);
         
         switch(opcao) {
-            case 1: listar_veiculos_por_periodo_interativo(bd->passagens, bd->veiculos); break;
+            case 1: break;
             case 0: break;
             default: printf("Opção inválida!\n");
         }
