@@ -7,7 +7,7 @@ SensorList criar_lista_sensores() {
     return NULL;
 }
 
-void liberar_lista_sensores(SensorList list) {
+void libertar_lista_sensores(SensorList list) {
     SensorNode* current = list;
     while (current) {
         SensorNode* temp = current;

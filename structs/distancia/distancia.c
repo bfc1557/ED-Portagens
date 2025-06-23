@@ -6,7 +6,7 @@ DistanciaList criar_lista_distancias() {
     return NULL;
 }
 
-void liberar_lista_distancias(DistanciaList list) {
+void libertar_lista_distancias(DistanciaList list) {
     DistanciaNode* current = list;
     while (current) {
         DistanciaNode* temp = current;

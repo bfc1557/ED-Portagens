@@ -15,7 +15,7 @@ typedef struct DistanciaNode {
 typedef DistanciaNode* DistanciaList;
 
 DistanciaList criar_lista_distancias();
-void liberar_lista_distancias(DistanciaList list);
+void libertar_lista_distancias(DistanciaList list);
 void inserir_distancia(DistanciaList* list, Distancia distancia);
 float buscar_distancia(DistanciaList list, int codSensor1, int codSensor2);
 void carregar_distancias(DistanciaList* list, const char* filename);

@@ -81,9 +81,22 @@ void MenuPassagens(BDados* bd) {
     } while (opcao != 0);
 }
 
+
 void MenuConsultas(BDados* bd) {
-    printf("\n=== Menu Consultas ===\n");
-    printf("Funcionalidade a implementar na próxima fase\n");
+    int opcao;
+    do {
+        printf("\n=== Menu Consultas ===\n");
+        printf("1. Passagens por Período\n");
+        printf("0. Voltar\n");
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+        
+        switch(opcao) {
+            case 1: listar_veiculos_por_periodo_interativo(bd->passagens, bd->veiculos); break;
+            case 0: break;
+            default: printf("Opção inválida!\n");
+        }
+    } while (opcao != 0);
 }
 
 void MenuEstatisticas(BDados* bd) {

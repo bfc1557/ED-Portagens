@@ -12,7 +12,7 @@ DonoHashTable* criar_hash_table_donos(int size) {
     return table;
 }
 
-void liberar_hash_table_donos(DonoHashTable* table) {
+void libertar_hash_table_donos(DonoHashTable* table) {
     for (int i = 0; i < table->size; i++) {
         DonoNode* current = table->buckets[i];
         while (current) {

@@ -23,11 +23,11 @@ BDados* InicializaPrograma(const char* nome) {
 
 void FinalizarPrograma(BDados* bd) {
     if (bd) {
-        liberar_hash_table_donos(bd->donos);
+        libertar_hash_table_donos(bd->donos);
         libertar_hash_table_veiculos(bd->veiculos);
-        liberar_lista_sensores(bd->sensores);
-        liberar_lista_passagens(bd->passagens);
-        liberar_lista_distancias(bd->distancias);
+        libertar_lista_sensores(bd->sensores);
+        libertar_lista_passagens(bd->passagens);
+        libertar_lista_distancias(bd->distancias);
         free(bd);
     }
 }
