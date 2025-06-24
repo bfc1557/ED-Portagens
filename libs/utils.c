@@ -1,6 +1,7 @@
 #include "utils.h"
 
 #include <stdio.h>
+#include <time.h>
 
 void merge(void* arr[], int l, int m, int r, int (*compare)(const void*, const void*)) {
     int n1 = m - l + 1;
@@ -79,4 +80,38 @@ void paginacao(void **array, int size, int dataPage, void (*fshow)(void *data))
         }
 
     } while (escolha != -1);
+}
+
+time_t lerDataHora() {
+    struct tm dataHora = {0};
+    time_t tempo;
+
+    printf("Insira o ano (ex: 2025): ");
+    scanf("%d", &dataHora.tm_year);
+    dataHora.tm_year -= 1900;
+
+    printf("Insira o mês (1-12): ");
+    scanf("%d", &dataHora.tm_mon);
+    dataHora.tm_mon -= 1;
+
+    printf("Insira o dia do mês (1-31): ");
+    scanf("%d", &dataHora.tm_mday);
+
+    printf("Insira a hora (0-23): ");
+    scanf("%d", &dataHora.tm_hour);
+
+    printf("Insira os minutos (0-59): ");
+    scanf("%d", &dataHora.tm_min);
+
+    printf("Insira os segundos (0-59): ");
+    scanf("%d", &dataHora.tm_sec);
+
+    // Converte para time_t (hora local)
+    tempo = mktime(&dataHora);
+
+    if (tempo == -1) {
+        printf("Erro ao converter a data/hora.\n");
+    }
+
+    return tempo;
 }

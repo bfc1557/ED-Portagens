@@ -3,6 +3,7 @@
 
 #include <time.h>
 #include "../veiculo/veiculo.h"
+#include "../distancia/distancia.h"
 #include "../../libs/utils.h"
 
 typedef struct {
@@ -20,12 +21,13 @@ typedef struct PassagemNode {
 typedef PassagemNode* PassagemList;
 
 PassagemList criar_lista_passagens();
-void liberar_lista_passagens(PassagemList list);
+void libertar_lista_passagens(PassagemList list);
 void inserir_passagem(PassagemList* list, Passagem passagem);
 void carregar_passagens(PassagemList* list, const char* filename, int batch_size);
 int calcular_memoria_passagens(PassagemList list);
 void listar_passagens_periodo(PassagemList list, time_t inicio, time_t fim);
 void listar_veiculos_periodo(PassagemList passagens, VeiculoHashTable* veiculos, time_t inicio, time_t fim);
+void listar_ranking_circulacao(PassagemList passagens, VeiculoHashTable* veiculos, DistanciaList distancias, time_t inicio, time_t fim);
 void registar_passagem(PassagemList* list, VeiculoHashTable* veiculos);
 void salvar_passagens(PassagemList list, const char* filename);
 

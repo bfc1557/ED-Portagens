@@ -82,7 +82,34 @@ void MenuPassagens(BDados* bd) {
 }
 
 void MenuConsultas(BDados* bd) {
-    printf("\n=== Menu Consultas ===\n");
+    int opcao;
+    time_t data1, data2;
+    char a;
+    do {
+        printf("\n=== Menu Consultas ===\n");
+        printf("1. Listagem ordenada por matrícula dos veículos que circularam autoestrada durante o período X. \n");
+        printf("2. Ranking de circulacao. Listagem ordenada pelo total de quilometros que cada veiculo efectuou na auto-estrada durante determinado periodo\n");
+        printf("3. Listar ordenados por número contribuinte\n");
+        printf("0. Voltar\n");
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+        
+        switch(opcao) {
+            case 1: // A funcionar
+                data1 = lerDataHora();
+                data2 = lerDataHora();
+                listar_veiculos_periodo(bd->passagens, bd->veiculos, data1, data2);
+                break;
+            case 2:
+                data1 = lerDataHora();
+                data2 = lerDataHora();
+                listar_ranking_circulacao(bd->passagens, bd->veiculos, bd->distancias, data1, data2);
+                break;
+            case 3: listar_donos_numContribuinte(bd->donos); break;
+            case 0: break;
+            default: printf("Opção inválida!\n");
+        }
+    } while (opcao != 0);
     printf("Funcionalidade a implementar na próxima fase\n");
 }
 
