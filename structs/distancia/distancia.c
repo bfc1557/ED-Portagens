@@ -63,3 +63,22 @@ int calcular_memoria_distancias(DistanciaList list) {
     }
     return total;
 }
+
+void salvar_distancias(DistanciaList list, const char* filename) {
+    FILE* file = fopen(filename, "w");
+    if (file == NULL) {
+        perror("Erro ao abrir arquivo de distâncias");
+        return;
+    }
+
+    DistanciaNode* current = list;
+    while (current != NULL) {
+        fprintf(file, "%d\t%d\t%.1f\n",
+                current->distancia.codSensor1,
+                current->distancia.codSensor2,
+                current->distancia.distancia);
+        current = current->next;
+    }
+
+    fclose(file);
+}

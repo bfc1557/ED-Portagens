@@ -71,3 +71,27 @@ void CarregarDados(BDados* bd, const char* dir_dados) {
     
     CalcularMemoria(bd);
 }
+
+void GuardarDados(BDados* bd, const char* dir_dados) {
+    char path[256];
+    char base[256];
+
+    snprintf(base, sizeof(base), "%s%s", dir_dados, dir_dados[strlen(dir_dados) - 1] == '/' ? "" : "/");
+
+    snprintf(path, sizeof(path), "%s/donos.txt", base);
+    salvar_donos(bd->donos, path);
+
+    snprintf(path, sizeof(path), "%s/carros.txt", base);
+    salvar_veiculos(bd->veiculos, path);
+
+    snprintf(path, sizeof(path), "%s/sensores.txt", base);
+    salvar_sensores(bd->sensores, path);
+
+    snprintf(path, sizeof(path), "%s/distancias.txt", base);
+    salvar_distancias(bd->distancias, path);
+
+    snprintf(path, sizeof(path), "%s/passagem.txt", base);
+    salvar_passagens(bd->passagens, path);
+
+    printf("Dados guardados com sucesso.\n");
+}

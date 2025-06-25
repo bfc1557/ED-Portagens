@@ -20,5 +20,6 @@ BDados* InicializaPrograma(const char* nome);
 void FinalizarPrograma(BDados* bd);
 void CarregarDados(BDados* bd, const char* dir_dados);
 void CalcularMemoria(BDados* bd);
+void GuardarDados(BDados* bd, const char* dir_dados);
 
 #endif

@@ -63,3 +63,23 @@ int calcular_memoria_sensores(SensorList list) {
     }
     return total;
 }
+
+void salvar_sensores(SensorList list, const char* filename) {
+    FILE* file = fopen(filename, "w");
+    if (file == NULL) {
+        perror("Erro ao abrir arquivo de sensores");
+        return;
+    }
+
+    SensorNode* current = list;
+    while (current != NULL) {
+        fprintf(file, "%d\t%s\t%s\t%s\n",
+                current->sensor.codSensor,
+                current->sensor.designacao,
+                current->sensor.latitude,
+                current->sensor.longitude);
+        current = current->next;
+    }
+
+    fclose(file);
+}

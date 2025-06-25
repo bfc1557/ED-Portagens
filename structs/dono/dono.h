@@ -27,7 +27,7 @@ void mostrarDono(void *dono);
 void listar_donos_alfabetico(DonoHashTable* table);
 void listar_donos_numContribuinte(DonoHashTable* table);
 void registar_dono(DonoHashTable* table);
-
+void salvar_donos(DonoHashTable* table, const char* filename);
 void** coletar_donos(DonoHashTable* table, int* total);
 
 #endif

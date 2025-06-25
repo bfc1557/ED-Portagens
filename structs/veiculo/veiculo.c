@@ -213,3 +213,27 @@ void registar_veiculo(VeiculoHashTable* table, DonoHashTable* donos) {
     inserir_veiculo(table, novo);
     printf("Veículo registado com sucesso! Código: %d\n", novo.codVeiculo);
 }
+
+void salvar_veiculos(VeiculoHashTable* table, const char* filename) {
+    FILE* file = fopen(filename, "w");
+    if (file == NULL) {
+        perror("Erro ao abrir arquivo de veículos");
+        return;
+    }
+
+    for (int i = 0; i < table->size; i++) {
+        VeiculoNode* current = table->buckets[i];
+        while (current != NULL) {
+            fprintf(file, "%s\t%s\t%s\t%d\t%d\t%d\n",
+                    current->veiculo.matricula,
+                    current->veiculo.marca,
+                    current->veiculo.modelo,
+                    current->veiculo.ano,
+                    current->veiculo.dono->numContribuinte, 
+                    current->veiculo.codVeiculo);
+            current = current->next;
+        }
+    }
+
+    fclose(file);
+}
