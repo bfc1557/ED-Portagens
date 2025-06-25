@@ -1,5 +1,6 @@
 #include "menu.h"
 #include <stdio.h>
+#include <windows.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -100,7 +101,9 @@ void MenuConsultas(BDados* bd) {
                 data2 = lerDataHora();
                 listar_ranking_circulacao(bd->passagens, bd->veiculos, bd->distancias, data1, data2);
                 break;
-            case 3: listar_donos_numContribuinte(bd->donos); break;
+            case 3: 
+                listar_donos_numContribuinte(bd->donos); 
+                break;
             case 0: break;
             default: printf("Opcao invalida!\n");
         }
@@ -119,6 +122,38 @@ void MenuEstatisticas(BDados* bd) {
 
 void MenuExportar(BDados* bd) {
     system("clear || cls");
-    printf("\n=== Menu Exportar ===\n");
-    printf("Funcionalidade a implementar na próxima fase\n");
+    int opcao;
+    
+    // Criar diretórios (Windows)
+    CreateDirectory("export", NULL);
+    CreateDirectory("export\\csv", NULL);
+    CreateDirectory("export\\xml", NULL);
+    
+    do {
+        printf("\n=== Menu Exportar ===\n");
+        printf("1. Exportar para CSV.\n");
+        printf("2. Exportar para XML.\n");
+        printf("0. Voltar\n");
+        opcao = lerInteiro("Escolha: ", 0, 2);
+        
+        switch(opcao) {
+            case 1: 
+                exportDonoToCSV(bd->donos, "export\\csv\\donos.csv");
+                exportVeiculoToCSV(bd->veiculos, "export\\csv\\veiculos.csv");
+                exportSensorToCSV(bd->sensores, "export\\csv\\sensores.csv");
+                exportPassagemToCSV(bd->passagens, "export\\csv\\passagens.csv");
+                exportDistanciaToCSV(bd->distancias, "export\\csv\\distancias.csv");
+                printf("Dados exportados para CSV com sucesso!\n");
+                break;
+                system("clear || cls");
+            case 2: 
+                exportToXML(bd->donos, bd->veiculos, bd->sensores, 
+                          bd->passagens, bd->distancias, "export\\xml\\dados.xml");
+                printf("Dados exportados para XML com sucesso!\n");
+                break;
+                system("clear || cls");
+            case 0: break;
+            default: printf("Opcao invalida!\n");
+        }
+    } while (opcao != 0);
 }

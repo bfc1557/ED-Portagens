@@ -34,5 +34,6 @@ void registar_veiculo(VeiculoHashTable* table, DonoHashTable* donos);
 int comparar_veiculos_matricula(const void* a, const void* b);
 void salvar_veiculos(VeiculoHashTable* table, const char* filename);
 void mostrarCarro(void *carro);
+void exportVeiculoToCSV(VeiculoHashTable *table, const char *filename);
 
 #endif

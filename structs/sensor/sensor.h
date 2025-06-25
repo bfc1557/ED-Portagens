@@ -22,5 +22,6 @@ Sensor* buscar_sensor(SensorList list, int codSensor);
 void carregar_sensores(SensorList* list, const char* filename);
 int calcular_memoria_sensores(SensorList list);
 void salvar_sensores(SensorList list, const char* filename);
+void exportSensorToCSV(SensorList list, const char *filename);
 
 #endif

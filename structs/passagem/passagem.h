@@ -42,4 +42,6 @@ void registar_passagem_interativo(PassagemList *list);
 /* persistência */
 void salvar_passagens(PassagemList list, const char* filename);
 
+void exportPassagemToCSV(PassagemList list, const char *filename);
+
 #endif /* PASSAGEM_H */

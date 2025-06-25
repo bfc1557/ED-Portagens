@@ -25,7 +25,9 @@
         "appcontext.h": "c",
         "windows.h": "c",
         "locale.h": "c",
-        "colors.h": "c"
+        "colors.h": "c",
+        "bdados.h": "c",
+        "sensor.h": "c"
     },
     "C_Cpp.default.compilerPath": "C:/MinGW/bin/gcc.exe",
     "terminal.integrated.encoding": "utf8"

@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include "../libs/bdados.h"
+#include "../libs/export.h"
 
 int MenuPrincipal();
 void MenuDonos(BDados* bd);

@@ -170,6 +170,29 @@ void registar_dono(DonoHashTable* table) {
     printf("Dono registado com sucesso!\n");
 }
 
+void exportDonoToCSV(DonoHashTable *table, const char *filename) {
+    FILE *file = fopen(filename, "w");
+    if (!file) {
+        perror("Erro ao abrir arquivo");
+        return;
+    }
+
+    fprintf(file, "numContribuinte,nome,codPostal\n");
+    
+    for (int i = 0; i < table->size; i++) {
+        DonoNode *current = table->buckets[i];
+        while (current != NULL) {
+            fprintf(file, "%d,\"%s\",\"%s\"\n", 
+                    current->dono.numContribuinte,
+                    current->dono.nome,
+                    current->dono.codPostal);
+            current = current->next;
+        }
+    }
+    
+    fclose(file);
+}
+
 void salvar_donos(DonoHashTable* table, const char* filename) {
     FILE* file = fopen(filename, "w");
     if (file == NULL) {

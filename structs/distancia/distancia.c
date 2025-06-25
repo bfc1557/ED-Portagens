@@ -92,3 +92,24 @@ float obter_distancia_entre_sensores(DistanciaList distancias, int s1, int s2) {
     }
     return 0.0f;  // Se não encontrar distância, considera 0 km
 }
+
+void exportDistanciaToCSV(DistanciaList list, const char *filename) {
+    FILE *file = fopen(filename, "w");
+    if (!file) {
+        perror("Erro ao abrir arquivo");
+        return;
+    }
+
+    fprintf(file, "codSensor1,codSensor2,distancia\n");
+    
+    DistanciaNode *current = list;
+    while (current != NULL) {
+        fprintf(file, "%d,%d,%.2f\n", 
+                current->distancia.codSensor1,
+                current->distancia.codSensor2,
+                current->distancia.distancia);
+        current = current->next;
+    }
+    
+    fclose(file);
+}

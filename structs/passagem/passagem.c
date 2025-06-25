@@ -419,3 +419,29 @@ void listar_ranking_circulacao(PassagemList passagens, VeiculoHashTable* veiculo
     free(ranking_ptrs);
     free(ranking);
 }
+
+void exportPassagemToCSV(PassagemList list, const char *filename) {
+    FILE *file = fopen(filename, "w");
+    if (!file) {
+        perror("Erro ao abrir arquivo");
+        return;
+    }
+
+    fprintf(file, "idSensor,codVeiculo,data,milissegundos,tipoRegisto\n");
+    
+    PassagemNode *current = list;
+    while (current != NULL) {
+        char dateStr[20];
+        strftime(dateStr, sizeof(dateStr), "%Y-%m-%d %H:%M:%S", localtime(&current->passagem.data));
+        
+        fprintf(file, "%d,%d,%s,%d,%d\n", 
+                current->passagem.idSensor,
+                current->passagem.codVeiculo,
+                dateStr,
+                current->passagem.milissegundos,
+                current->passagem.tipoRegisto);
+        current = current->next;
+    }
+    
+    fclose(file);
+}

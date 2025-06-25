@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <windows.h>
 
 void merge_sort(void* arr[], int l, int r, int (*compare)(const void*, const void*));
 int comparar_strings(const char* a, const char* b);

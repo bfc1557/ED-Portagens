@@ -237,3 +237,29 @@ void salvar_veiculos(VeiculoHashTable* table, const char* filename) {
 
     fclose(file);
 }
+
+void exportVeiculoToCSV(VeiculoHashTable *table, const char *filename) {
+    FILE *file = fopen(filename, "w");
+    if (!file) {
+        perror("Erro ao abrir arquivo");
+        return;
+    }
+
+    fprintf(file, "matricula,marca,modelo,ano,codVeiculo,numContribuinteDono\n");
+    
+    for (int i = 0; i < table->size; i++) {
+        VeiculoNode *current = table->buckets[i];
+        while (current != NULL) {
+            fprintf(file, "\"%s\",\"%s\",\"%s\",%d,%d,%d\n", 
+                    current->veiculo.matricula,
+                    current->veiculo.marca,
+                    current->veiculo.modelo,
+                    current->veiculo.ano,
+                    current->veiculo.codVeiculo,
+                    current->veiculo.dono ? current->veiculo.dono->numContribuinte : 0);
+            current = current->next;
+        }
+    }
+    
+    fclose(file);
+}

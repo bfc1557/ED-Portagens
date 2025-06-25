@@ -64,6 +64,28 @@ int calcular_memoria_sensores(SensorList list) {
     return total;
 }
 
+void exportSensorToCSV(SensorList list, const char *filename) {
+    FILE *file = fopen(filename, "w");
+    if (!file) {
+        perror("Erro ao abrir arquivo");
+        return;
+    }
+
+    fprintf(file, "codSensor,designacao,latitude,longitude\n");
+    
+    SensorNode *current = list;
+    while (current != NULL) {
+        fprintf(file, "%d,\"%s\",\"%s\",\"%s\"\n", 
+                current->sensor.codSensor,
+                current->sensor.designacao,
+                current->sensor.latitude,
+                current->sensor.longitude);
+        current = current->next;
+    }
+    
+    fclose(file);
+}
+
 void salvar_sensores(SensorList list, const char* filename) {
     FILE* file = fopen(filename, "w");
     if (file == NULL) {
