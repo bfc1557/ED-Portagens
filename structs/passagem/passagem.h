@@ -3,6 +3,7 @@
 
 #include <time.h>
 #include "../veiculo/veiculo.h"
+#include "../distancia/distancia.h"
 #include "../../libs/utils.h"
 
 typedef struct {
@@ -31,6 +32,8 @@ int calcular_memoria_passagens(PassagemList list);
 
 /* listagens simples */
 void listar_passagens_periodo(PassagemList list, time_t inicio, time_t fim);
+void listar_veiculos_periodo(PassagemList passagens, VeiculoHashTable* veiculos, time_t inicio, time_t fim);
+void listar_ranking_circulacao(PassagemList passagens, VeiculoHashTable* veiculos, DistanciaList distancias, time_t inicio, time_t fim);
 
 /* registo de passagens */
 int registar_passagem(PassagemList *list, int idSensor, int codVeiculo, struct tm data_tm, int milissegundos, int tipoRegisto);  // Adicionado milissegundos

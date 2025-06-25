@@ -25,14 +25,12 @@ void MenuDonos(BDados* bd) {
         printf("\n=== Menu Donos ===\n");
         printf("1. Registar dono\n");
         printf("2. Listar ordenados alfabeticamente\n");
-        printf("3. Listar ordenados por numero contribuinte\n");
         printf("0. Voltar\n");
-        opcao = lerInteiro("Escolha: ", 0, 3);
+        opcao = lerInteiro("Escolha: ", 0, 2);
         
         switch(opcao) {
             case 1: registar_dono(bd->donos); break;
             case 2: listar_donos_alfabetico(bd->donos); break;
-            case 3: listar_donos_numContribuinte(bd->donos); break;
             case 0: break;
             default: printf("Opcao invalida!\n");
         }
@@ -82,8 +80,31 @@ void MenuPassagens(BDados* bd) {
 
 void MenuConsultas(BDados* bd) {
     system("clear || cls");
-    printf("\n=== Menu Consultas ===\n");
-    printf("Funcionalidade a implementar na próxima fase\n");
+    int opcao;
+    time_t data1, data2;
+    do {
+        printf("\n=== Menu Consultas ===\n");
+        printf("1. Listagem ordenada por matrícula dos veículos que circularam autoestrada durante o período X. \n");
+        printf("2. Ranking de circulacao. Listagem ordenada pelo total de quilometros que cada veiculo efectuou na auto-estrada durante determinado periodo\n");
+        printf("3. Listar ordenados por número contribuinte\n");
+        printf("0. Voltar\n");
+        opcao = lerInteiro("Escolha: ", 0, 3);
+    switch(opcao) {
+            case 1:
+                data1 = lerDataHora();
+                data2 = lerDataHora();
+                listar_veiculos_periodo(bd->passagens, bd->veiculos, data1, data2);
+                break; 
+            case 2:
+                data1 = lerDataHora();
+                data2 = lerDataHora();
+                listar_ranking_circulacao(bd->passagens, bd->veiculos, bd->distancias, data1, data2);
+                break;
+            case 3: listar_donos_numContribuinte(bd->donos); break;
+            case 0: break;
+            default: printf("Opcao invalida!\n");
+        }
+    } while (opcao != 0);
 }
 
 void MenuEstatisticas(BDados* bd) {
