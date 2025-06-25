@@ -20,7 +20,7 @@ typedef struct PassagemNode {
 typedef PassagemNode* PassagemList;
 
 PassagemList criar_lista_passagens();
-void liberar_lista_passagens(PassagemList list);
+void libertar_lista_passagens(PassagemList list);
 void inserir_passagem(PassagemList* list, Passagem passagem);
 void carregar_passagens(PassagemList* list, const char* filename, int batch_size);
 int calcular_memoria_passagens(PassagemList list);
