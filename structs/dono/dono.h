@@ -17,6 +17,7 @@ typedef struct {
     int size;
 } DonoHashTable;
 
+void mostrar_subnome_mais_comum(DonoHashTable *donos);
 DonoHashTable* criar_hash_table_donos(int size);
 void liberar_hash_table_donos(DonoHashTable* table);
 void inserir_dono(DonoHashTable* table, Dono dono);

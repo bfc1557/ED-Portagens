@@ -34,6 +34,10 @@ int calcular_memoria_passagens(PassagemList list);
 void listar_passagens_periodo(PassagemList list, time_t inicio, time_t fim);
 void listar_veiculos_periodo(PassagemList passagens, VeiculoHashTable* veiculos, time_t inicio, time_t fim);
 void listar_ranking_circulacao(PassagemList passagens, VeiculoHashTable* veiculos, DistanciaList distancias, time_t inicio, time_t fim);
+void listar_ranking_marca(PassagemList passagens, VeiculoHashTable* veiculos, DistanciaList distancias, time_t inicio, time_t fim);
+void listar_infracoes(PassagemList passagens, VeiculoHashTable *veiculos, DistanciaList distancias, time_t inicio, time_t fim);
+void listar_ranking_infracoes(PassagemList passagens, VeiculoHashTable *veiculos, DistanciaList distancias, time_t inicio, time_t fim);
+void listar_marca_maior_velocidade_media(PassagemList passagens, VeiculoHashTable *veiculos, DistanciaList distancias);
 
 /* registo de passagens */
 int registar_passagem(PassagemList *list, int idSensor, int codVeiculo, struct tm data_tm, int milissegundos, int tipoRegisto);  // Adicionado milissegundos

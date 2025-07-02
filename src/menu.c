@@ -26,12 +26,16 @@ void MenuDonos(BDados* bd) {
         printf("\n=== Menu Donos ===\n");
         printf("1. Registar dono\n");
         printf("2. Listar ordenados alfabeticamente\n");
+        printf("3. Listar ordenados por número contribuinte\n");
         printf("0. Voltar\n");
-        opcao = lerInteiro("Escolha: ", 0, 2);
+        opcao = lerInteiro("Escolha: ", 0, 3);
         
         switch(opcao) {
             case 1: registar_dono(bd->donos); break;
             case 2: listar_donos_alfabetico(bd->donos); break;
+            case 3: 
+                listar_donos_numContribuinte(bd->donos); 
+                break;
             case 0: break;
             default: printf("Opcao invalida!\n");
         }
@@ -87,9 +91,13 @@ void MenuConsultas(BDados* bd) {
         printf("\n=== Menu Consultas ===\n");
         printf("1. Listagem ordenada por matrícula dos veículos que circularam autoestrada durante o período X. \n");
         printf("2. Ranking de circulacao. Listagem ordenada pelo total de quilometros que cada veiculo efectuou na auto-estrada durante determinado periodo\n");
-        printf("3. Listar ordenados por número contribuinte\n");
+        printf("3. Ranking por marca. Listagem ordenada pelo total de quilometros que cada marca efectuou na auto-estrada durante determinado periodo.\n");
+        printf("4. Listagem de infrações. Contém a matrícula dos veículos que circularam com velocidade média superior a 120 km/h durante determinado período.\n");
+        printf("5. Ranking de infrações. Listagem ordenada pelo número de infrações cometidas por cada veículo durante determinado período.\n");
+        printf("6. Marca com maior velocidade média.\n");
+        printf("7. Sobrenome mais comum.\n");
         printf("0. Voltar\n");
-        opcao = lerInteiro("Escolha: ", 0, 3);
+        opcao = lerInteiro("Escolha: ", 0, 7);
     switch(opcao) {
             case 1:
                 data1 = lerDataHora();
@@ -101,9 +109,26 @@ void MenuConsultas(BDados* bd) {
                 data2 = lerDataHora();
                 listar_ranking_circulacao(bd->passagens, bd->veiculos, bd->distancias, data1, data2);
                 break;
-            case 3: 
-                listar_donos_numContribuinte(bd->donos); 
+            case 3:
+                data1 = lerDataHora();
+                data2 = lerDataHora();
+                listar_ranking_marca(bd->passagens, bd->veiculos, bd->distancias, data1, data2);
                 break;
+            case 4:
+                data1 = lerDataHora();
+                data2 = lerDataHora();
+                listar_infracoes(bd->passagens, bd->veiculos, bd->distancias, data1, data2);
+                break;
+            case 5:
+                data1 = lerDataHora();
+                data2 = lerDataHora();
+                listar_ranking_infracoes(bd->passagens, bd->veiculos, bd->distancias, data1, data2);
+                break;
+            case 6:
+                listar_marca_maior_velocidade_media(bd->passagens, bd->veiculos, bd->distancias);
+                break;
+            case 7:
+                mostrar_subnome_mais_comum(bd->donos);  
             case 0: break;
             default: printf("Opcao invalida!\n");
         }

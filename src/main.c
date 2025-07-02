@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "../libs/bdados.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -16,7 +17,12 @@ int main() {
             case 4: MenuConsultas(BD); break;
             case 5: MenuEstatisticas(BD); break;
             case 6: MenuExportar(BD); break;
-            case 0: printf("A sair...\n"); break;
+            case 0: 
+            printf("A sair...\n");
+            salvar_donos(BD->donos, "../data/donos.txt");
+            salvar_veiculos(BD->veiculos, "../data/carros.txt");
+            salvar_passagens(BD->passagens, "../data/passagem.txt");
+            break;
             default: printf("Opcao invalida!\n");
         }
     } while (opcao != 0);
