@@ -932,104 +932,88 @@ void listar_marca_maior_velocidade_media(PassagemList passagens, VeiculoHashTabl
     VelocidadeMarcaItem *velocidades = NULL;
     int count = 0, capacity = 0;
 
-    for (PassagemNode *current = passagens; current; current = current->next)
+    // Percorrer TODAS as passagens e calcular velocidades entre pares válidos
+    PassagemNode *current = passagens;
+    while (current && current->next)
     {
-        Veiculo *veiculo = buscar_veiculo_codigo(veiculos, current->passagem.codVeiculo);
-        if (!veiculo)
-            continue;
+        Passagem *p1 = &current->passagem;
+        Passagem *p2 = &current->next->passagem;
 
-        // Procurar ou criar entrada da marca
-        int idx = -1;
-        for (int i = 0; i < count; i++)
+        // Procurar par entrada/saída
+        if (p1->codVeiculo == p2->codVeiculo &&
+            p1->tipoRegisto == 0 && p2->tipoRegisto == 1)
         {
-            if (strcmp(velocidades[i].marca, veiculo->marca) == 0)
+            Veiculo *veiculo = buscar_veiculo_codigo(veiculos, p1->codVeiculo);
+            if (!veiculo)
             {
-                idx = i;
-                break;
+                current = current->next;
+                continue;
             }
-        }
 
-        if (idx == -1)
-        {
-            if (count >= capacity)
+            float distancia_km = obter_distancia_entre_sensores(distancias, p1->idSensor, p2->idSensor);
+            time_t delta = difftime(p2->data, p1->data);
+            if (delta <= 0 || distancia_km <= 0)
             {
-                capacity = (capacity == 0) ? 8 : capacity * 2;
-                VelocidadeMarcaItem *temp = realloc(velocidades, capacity * sizeof(VelocidadeMarcaItem));
-                if (!temp)
+                current = current->next;
+                continue;
+            }
+
+            float horas = delta / 3600.0f;
+            float velocidade = distancia_km / horas;
+
+            // Procurar ou criar item da marca
+            int idx = -1;
+            for (int i = 0; i < count; i++)
+            {
+                if (strcmp(velocidades[i].marca, veiculo->marca) == 0)
                 {
-                    perror("Erro ao alocar memória");
-                    free(velocidades);
-                    return;
+                    idx = i;
+                    break;
                 }
-                velocidades = temp;
             }
-            strcpy(velocidades[count].marca, veiculo->marca);
-            velocidades[count].soma_velocidade = 0.0f;
-            velocidades[count].count = 0;
-            velocidades[count].media = 0.0f;
-            idx = count++;
-        }
 
-        // Recolher todas as passagens do veículo (no geral)
-        Passagem **p_array = NULL;
-        int p_count = 0, p_cap = 0;
-
-        for (PassagemNode *node = passagens; node; node = node->next)
-        {
-            if (node->passagem.codVeiculo == veiculo->codVeiculo)
+            if (idx == -1)
             {
-                if (p_count >= p_cap)
+                if (count >= capacity)
                 {
-                    p_cap = (p_cap == 0) ? 8 : p_cap * 2;
-                    Passagem **temp = realloc(p_array, p_cap * sizeof(Passagem *));
+                    capacity = (capacity == 0) ? 8 : capacity * 2;
+                    VelocidadeMarcaItem *temp = realloc(velocidades, capacity * sizeof(VelocidadeMarcaItem));
                     if (!temp)
-                        break;
-                    p_array = temp;
+                    {
+                        perror("Erro ao alocar memória");
+                        free(velocidades);
+                        return;
+                    }
+                    velocidades = temp;
                 }
-                p_array[p_count++] = &node->passagem;
+
+                strcpy(velocidades[count].marca, veiculo->marca);
+                velocidades[count].soma_velocidade = 0.0f;
+                velocidades[count].count = 0;
+                velocidades[count].media = 0.0f;
+                idx = count++;
             }
+
+            velocidades[idx].soma_velocidade += velocidade;
+            velocidades[idx].count++;
+            current = current->next->next; // saltar par usado
         }
-
-        // Ordenar por data
-        qsort(p_array, p_count, sizeof(Passagem *), comparar_passagem_por_data);
-
-        // Calcular velocidades por pares entrada/saída
-        for (int i = 0; i < p_count - 1; i++)
+        else
         {
-            if (p_array[i]->tipoRegisto == 0 && p_array[i + 1]->tipoRegisto == 1)
-            {
-                float distancia_km = obter_distancia_entre_sensores(distancias, p_array[i]->idSensor, p_array[i + 1]->idSensor);
-                time_t delta_t = difftime(p_array[i + 1]->data, p_array[i]->data);
-                if (delta_t <= 0)
-                    continue;
-
-                float horas = delta_t / 3600.0f;
-                float velocidade = distancia_km / horas;
-
-                velocidades[idx].soma_velocidade += velocidade;
-                velocidades[idx].count++;
-                i++; // saltar o par usado
-            }
+            current = current->next;
         }
-
-        free(p_array);
     }
 
-    if (count == 0)
-    {
-        printf("Nenhuma passagem disponível.\n");
-        free(velocidades);
-        return;
-    }
-
-    // Calcular médias por marca e encontrar a maior
+    // Calcular médias e encontrar maior
     float maior_media = 0.0f;
     int indice_maior = -1;
+
     for (int i = 0; i < count; i++)
     {
         if (velocidades[i].count > 0)
         {
             velocidades[i].media = velocidades[i].soma_velocidade / velocidades[i].count;
+
             if (velocidades[i].media > maior_media)
             {
                 maior_media = velocidades[i].media;
@@ -1038,16 +1022,16 @@ void listar_marca_maior_velocidade_media(PassagemList passagens, VeiculoHashTabl
         }
     }
 
-    // Mostrar apenas a marca com maior média
+    // Mostrar resultado
     if (indice_maior >= 0)
     {
         printf("\n=== Marca com Maior Velocidade Média ===\n");
-        printf("%-20s %-10s\n", "Marca", "Velocidade Média");
-        printf("%-20s %.2f km/h\n", velocidades[indice_maior].marca, velocidades[indice_maior].media);
+        printf("%-20s %-20s\n", "Marca", "Velocidade Média");
+        printf("%-20s %8.2f km/h\n", velocidades[indice_maior].marca, velocidades[indice_maior].media);
     }
     else
     {
-        printf("Nenhuma velocidade média válida calculada.\n");
+        printf("Nenhuma velocidade válida encontrada.\n");
     }
 
     free(velocidades);
