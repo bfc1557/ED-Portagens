@@ -54,6 +54,16 @@ void carregar_distancias(DistanciaList* list, const char* filename) {
     fclose(file);
 }
 
+float obter_distancia_entre_sensores(DistanciaList distancias, int s1, int s2) {
+    for (DistanciaNode* node = distancias; node != NULL; node = node->next) {
+        if ((node->distancia.codSensor1 == s1 && node->distancia.codSensor2 == s2) ||
+            (node->distancia.codSensor1 == s2 && node->distancia.codSensor2 == s1)) {
+            return node->distancia.distancia;
+        }
+    }
+    return 0.0f;  // Se não encontrar distância, considera 0 km
+}
+
 int calcular_memoria_distancias(DistanciaList list) {
     int total = 0;
     DistanciaNode* current = list;

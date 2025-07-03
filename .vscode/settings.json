@@ -25,7 +25,8 @@
         "appcontext.h": "c",
         "windows.h": "c",
         "locale.h": "c",
-        "colors.h": "c"
+        "colors.h": "c",
+        "veiculo.h": "c"
     },
     "C_Cpp.default.compilerPath": "C:/MinGW/bin/gcc.exe",
     "terminal.integrated.encoding": "utf8"
