@@ -95,9 +95,11 @@ void MenuConsultas(BDados* bd) {
         printf("4. Listagem de infrações. Contém a matrícula dos veículos que circularam com velocidade média superior a 120 km/h durante determinado período.\n");
         printf("5. Ranking de infrações. Listagem ordenada pelo número de infrações cometidas por cada veículo durante determinado período.\n");
         printf("6. Marca com maior velocidade média.\n");
-        printf("7. Sobrenome mais comum.\n");
+        printf("7. Listar dono com maior velocidade média.\n");
+        printf("8. Sobrenome mais comum.\n");
+        printf("9. Mostrar o carro mais rapido (Velocidade media mais alta) e o condutor do mesmo.\n");
         printf("0. Voltar\n");
-        opcao = lerInteiro("Escolha: ", 0, 7);
+        opcao = lerInteiro("Escolha: ", 0, 9);
     switch(opcao) {
             case 1:
                 data1 = lerDataHora();
@@ -128,7 +130,13 @@ void MenuConsultas(BDados* bd) {
                 listar_marca_maior_velocidade_media(bd->passagens, bd->veiculos, bd->distancias);
                 break;
             case 7:
-                mostrar_subnome_mais_comum(bd->donos);  
+                listar_dono_maior_velocidade_media(bd->passagens, bd->veiculos, bd->distancias);  
+            case 8:
+                mostrar_subnome_mais_comum(bd->donos); 
+                break;
+            case 9:
+                mostrar_veiculo_mais_rapido(bd->passagens, bd->veiculos, bd->distancias);
+                break; 
             case 0: break;
             default: printf("Opcao invalida!\n");
         }

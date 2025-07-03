@@ -34,6 +34,21 @@ typedef struct {
     float media;
 } VelocidadeMarcaItem;
 
+typedef struct {
+    Dono *dono;
+    float soma_velocidade;
+    int count;
+    float media;
+} VelocidadeDonoItem;
+
+typedef struct {
+    Veiculo *veiculo;
+    float soma_velocidade;
+    int count;
+    float media;
+} VelocidadeVeiculoItem;
+
+
 PassagemList criar_lista_passagens(void)
 {
     return NULL;
@@ -1035,6 +1050,242 @@ void listar_marca_maior_velocidade_media(PassagemList passagens, VeiculoHashTabl
     }
 
     free(velocidades);
+}
+
+void listar_dono_maior_velocidade_media(PassagemList passagens, VeiculoHashTable *veiculos, DistanciaList distancias)
+{
+    if (!passagens || !veiculos)
+        return;
+
+    VelocidadeDonoItem *velocidades = NULL;
+    int count = 0, capacity = 0;
+
+    PassagemNode *current = passagens;
+    while (current && current->next)
+    {
+        Passagem *p1 = &current->passagem;
+        Passagem *p2 = &current->next->passagem;
+
+        if (p1->codVeiculo == p2->codVeiculo &&
+            p1->tipoRegisto == 0 && p2->tipoRegisto == 1)
+        {
+            Veiculo *veiculo = buscar_veiculo_codigo(veiculos, p1->codVeiculo);
+            if (!veiculo || !veiculo->dono)
+            {
+                current = current->next;
+                continue;
+            }
+
+            float distancia = obter_distancia_entre_sensores(distancias, p1->idSensor, p2->idSensor);
+            time_t delta = difftime(p2->data, p1->data);
+            if (delta <= 0 || distancia <= 0)
+            {
+                current = current->next;
+                continue;
+            }
+
+            float horas = delta / 3600.0f;
+            float velocidade = distancia / horas;
+
+            // Verifica se já existe esse dono no array
+            int idx = -1;
+            for (int i = 0; i < count; i++)
+            {
+                if (velocidades[i].dono->numContribuinte == veiculo->dono->numContribuinte)
+                {
+                    idx = i;
+                    break;
+                }
+            }
+
+            if (idx == -1)
+            {
+                if (count >= capacity)
+                {
+                    capacity = (capacity == 0) ? 8 : capacity * 2;
+                    VelocidadeDonoItem *temp = realloc(velocidades, capacity * sizeof(VelocidadeDonoItem));
+                    if (!temp)
+                    {
+                        perror("Erro ao alocar memória");
+                        free(velocidades);
+                        return;
+                    }
+                    velocidades = temp;
+                }
+
+                velocidades[count].dono = veiculo->dono;
+                velocidades[count].soma_velocidade = 0.0f;
+                velocidades[count].count = 0;
+                velocidades[count].media = 0.0f;
+                idx = count++;
+            }
+
+            velocidades[idx].soma_velocidade += velocidade;
+            velocidades[idx].count++;
+
+            current = current->next->next;
+        }
+        else
+        {
+            current = current->next;
+        }
+    }
+
+    // Calcular médias
+    float maior_media = 0.0f;
+    int indice_maior = -1;
+
+    for (int i = 0; i < count; i++)
+    {
+        if (velocidades[i].count > 0)
+        {
+            velocidades[i].media = velocidades[i].soma_velocidade / velocidades[i].count;
+            if (velocidades[i].media > maior_media)
+            {
+                maior_media = velocidades[i].media;
+                indice_maior = i;
+            }
+        }
+    }
+
+    // Mostrar resultado
+    if (indice_maior >= 0)
+    {
+        Dono *d = velocidades[indice_maior].dono;
+        printf("\n=== Dono com Maior Velocidade Média ===\n");
+        printf("Nome: %s\n", d->nome);
+        printf("NIF : %d\n", d->numContribuinte);
+        printf("Velocidade Média: %.2f km/h\n", velocidades[indice_maior].media);
+    }
+    else
+    {
+        printf("Nenhuma velocidade válida foi calculada.\n");
+    }
+
+    free(velocidades);
+}
+
+void mostrar_veiculo_mais_rapido(PassagemList passagens, VeiculoHashTable *veiculos, DistanciaList distancias)
+{
+    if (!passagens || !veiculos)
+        return;
+
+    VelocidadeVeiculoItem *ranking = NULL;
+    int count = 0, cap = 0;
+
+    // Agrupar velocidades por veículo
+    PassagemNode *current = passagens;
+    while (current && current->next)
+    {
+        Passagem *p1 = &current->passagem;
+        Passagem *p2 = &current->next->passagem;
+
+        if (p1->codVeiculo == p2->codVeiculo &&
+            p1->tipoRegisto == 0 && p2->tipoRegisto == 1)
+        {
+            Veiculo *v = buscar_veiculo_codigo(veiculos, p1->codVeiculo);
+            if (!v || !v->dono)
+            {
+                current = current->next;
+                continue;
+            }
+
+            float dist = obter_distancia_entre_sensores(distancias, p1->idSensor, p2->idSensor);
+            time_t delta = difftime(p2->data, p1->data);
+            if (delta <= 0 || dist <= 0)
+            {
+                current = current->next;
+                continue;
+            }
+
+            float horas = delta / 3600.0f;
+            float vel = dist / horas;
+
+            // Encontrar ou criar entrada
+            int idx = -1;
+            for (int i = 0; i < count; i++)
+            {
+                if (ranking[i].veiculo->codVeiculo == v->codVeiculo)
+                {
+                    idx = i;
+                    break;
+                }
+            }
+
+            if (idx == -1)
+            {
+                if (count >= cap)
+                {
+                    cap = (cap == 0) ? 8 : cap * 2;
+                    VelocidadeVeiculoItem *temp = realloc(ranking, cap * sizeof(VelocidadeVeiculoItem));
+                    if (!temp)
+                    {
+                        perror("Erro a alocar memória");
+                        free(ranking);
+                        return;
+                    }
+                    ranking = temp;
+                }
+
+                ranking[count].veiculo = v;
+                ranking[count].soma_velocidade = 0.0f;
+                ranking[count].count = 0;
+                ranking[count].media = 0.0f;
+                idx = count++;
+            }
+
+            ranking[idx].soma_velocidade += vel;
+            ranking[idx].count++;
+
+            current = current->next->next;
+        }
+        else
+        {
+            current = current->next;
+        }
+    }
+
+    // Calcular média e encontrar veículo mais rápido
+    float max_media = 0.0f;
+    int idx_max = -1;
+
+    for (int i = 0; i < count; i++)
+    {
+        if (ranking[i].count > 0)
+        {
+            ranking[i].media = ranking[i].soma_velocidade / ranking[i].count;
+            if (ranking[i].media > max_media)
+            {
+                max_media = ranking[i].media;
+                idx_max = i;
+            }
+        }
+    }
+
+    if (idx_max >= 0)
+    {
+        Veiculo *v = ranking[idx_max].veiculo;
+        Dono *d = v->dono;
+
+        printf("\n=== Carro Mais Rápido ===\n");
+        printf("Matrícula : %s\n", v->matricula);
+        printf("Marca     : %s\n", v->marca);
+        printf("Modelo    : %s\n", v->modelo);
+        printf("Velocidade Média: %.2f km/h\n", ranking[idx_max].media);
+
+        if (d)
+        {
+            printf("\n--- Dono ---\n");
+            printf("Nome: %s\n", d->nome);
+            printf("NIF : %d\n", d->numContribuinte);
+        }
+    }
+    else
+    {
+        printf("Nenhuma velocidade válida foi encontrada.\n");
+    }
+
+    free(ranking);
 }
 
 

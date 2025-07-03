@@ -38,6 +38,8 @@ void listar_ranking_marca(PassagemList passagens, VeiculoHashTable* veiculos, Di
 void listar_infracoes(PassagemList passagens, VeiculoHashTable *veiculos, DistanciaList distancias, time_t inicio, time_t fim);
 void listar_ranking_infracoes(PassagemList passagens, VeiculoHashTable *veiculos, DistanciaList distancias, time_t inicio, time_t fim);
 void listar_marca_maior_velocidade_media(PassagemList passagens, VeiculoHashTable *veiculos, DistanciaList distancias);
+void listar_dono_maior_velocidade_media(PassagemList passagens, VeiculoHashTable *veiculos, DistanciaList distancias);
+void mostrar_veiculo_mais_rapido(PassagemList passagens, VeiculoHashTable *veiculos, DistanciaList distancias);
 
 /* registo de passagens */
 int registar_passagem(PassagemList *list, int idSensor, int codVeiculo, struct tm data_tm, int milissegundos, int tipoRegisto);  // Adicionado milissegundos
