@@ -63,3 +63,53 @@ int calcular_memoria_distancias(DistanciaList list) {
     }
     return total;
 }
+
+void salvar_distancias(DistanciaList list, const char* filename) {
+    FILE* file = fopen(filename, "w");
+    if (file == NULL) {
+        perror("Erro ao abrir arquivo de distâncias");
+        return;
+    }
+
+    DistanciaNode* current = list;
+    while (current != NULL) {
+        fprintf(file, "%d\t%d\t%.1f\n",
+                current->distancia.codSensor1,
+                current->distancia.codSensor2,
+                current->distancia.distancia);
+        current = current->next;
+    }
+
+    fclose(file);
+}
+
+float obter_distancia_entre_sensores(DistanciaList distancias, int s1, int s2) {
+    for (DistanciaNode* node = distancias; node != NULL; node = node->next) {
+        if ((node->distancia.codSensor1 == s1 && node->distancia.codSensor2 == s2) ||
+            (node->distancia.codSensor1 == s2 && node->distancia.codSensor2 == s1)) {
+            return node->distancia.distancia;
+        }
+    }
+    return 0.0f;  // Se não encontrar distância, considera 0 km
+}
+
+void exportDistanciaToCSV(DistanciaList list, const char *filename) {
+    FILE *file = fopen(filename, "w");
+    if (!file) {
+        perror("Erro ao abrir arquivo");
+        return;
+    }
+
+    fprintf(file, "codSensor1,codSensor2,distancia\n");
+    
+    DistanciaNode *current = list;
+    while (current != NULL) {
+        fprintf(file, "%d,%d,%.2f\n", 
+                current->distancia.codSensor1,
+                current->distancia.codSensor2,
+                current->distancia.distancia);
+        current = current->next;
+    }
+    
+    fclose(file);
+}

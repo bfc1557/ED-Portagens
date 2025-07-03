@@ -1,5 +1,9 @@
 #include "menu.h"
+<<<<<<< HEAD
 #include "bdados.h"
+=======
+#include "../libs/bdados.h"
+>>>>>>> origin/Duarte
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -24,7 +28,11 @@ int main() {
             salvar_veiculos(BD->veiculos, "../data/carros.txt");
             salvar_passagens(BD->passagens, "../data/passagem.txt");
             break;
+<<<<<<< HEAD
             default: printf("Opção inválida!\n");
+=======
+            default: printf("Opcao invalida!\n");
+>>>>>>> origin/Duarte
         }
     } while (opcao != 0);
     

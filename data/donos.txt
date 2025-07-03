@@ -8,6 +8,10 @@
 2848000	Joana Ferraz Baptista Calheiros	1348-328
 4522000	Odete Belchior Mendes Arouca	12960-498
 11626000	Paula Leal Santos Rego Sequeira Carneiro	11188-889
+<<<<<<< HEAD
+=======
+1	Diogo Peres	3510-275
+>>>>>>> origin/Duarte
 1892001	Bruno Belchior Cardoso Pinto Carneiro Antunes Soeiro	15108-148
 7539001	Lucas Andrade Real Clementino Barros	18560-80
 6731001	Eduarda Mateus Farias Carvalheira Lopes Cunha Almada	17974-410
@@ -15,8 +19,11 @@
 2839001	Paulo Pires Amora Brito Proenca	9579-995
 3697001	Rita Azevedo Soeiro Proenca Belchior	14729-41
 13370001	Soraia Ferro Peres Mendes Bacelar	3560-828
+<<<<<<< HEAD
 1	Diogo Peres	3510-275
 2	Bruno Costa	1234-123
+=======
+>>>>>>> origin/Duarte
 7127002	Rita Mota Mora Lopes Rocha	1249-343
 2741002	Carmo Mour?o Clementino Peres Andrade	3519-344
 11937002	Celino Andrade Azevedo Baptista Nogueira Barros Carvalheira	18861-850

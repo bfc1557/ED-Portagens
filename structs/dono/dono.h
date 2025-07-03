@@ -17,6 +17,7 @@ typedef struct {
     int size;
 } DonoHashTable;
 
+void mostrar_subnome_mais_comum(DonoHashTable *donos);
 DonoHashTable* criar_hash_table_donos(int size);
 void libertar_hash_table_donos(DonoHashTable* table);
 void inserir_dono(DonoHashTable* table, Dono dono);
@@ -28,7 +29,8 @@ void mostrarDono(void *dono);
 void listar_donos_alfabetico(DonoHashTable* table);
 void listar_donos_numContribuinte(DonoHashTable* table);
 void registar_dono(DonoHashTable* table);
-
+void salvar_donos(DonoHashTable* table, const char* filename);
 void** coletar_donos(DonoHashTable* table, int* total);
+void exportDonoToCSV(DonoHashTable *table, const char *filename);
 
 #endif

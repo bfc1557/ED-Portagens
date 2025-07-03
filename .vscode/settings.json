@@ -26,9 +26,14 @@
         "windows.h": "c",
         "locale.h": "c",
         "colors.h": "c",
+<<<<<<< HEAD
         "sensor.h": "c",
         "veiculo.h": "c",
         "bdados.h": "c"
+=======
+        "bdados.h": "c",
+        "sensor.h": "c"
+>>>>>>> origin/Duarte
     },
     "C_Cpp.default.compilerPath": "C:/MinGW/bin/gcc.exe",
     "terminal.integrated.encoding": "utf8"

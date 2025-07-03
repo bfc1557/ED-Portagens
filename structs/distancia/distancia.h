@@ -20,5 +20,8 @@ void inserir_distancia(DistanciaList* list, Distancia distancia);
 float buscar_distancia(DistanciaList list, int codSensor1, int codSensor2);
 void carregar_distancias(DistanciaList* list, const char* filename);
 int calcular_memoria_distancias(DistanciaList list);
+void salvar_distancias(DistanciaList list, const char* filename);
+float obter_distancia_entre_sensores(DistanciaList distancias, int s1, int s2);
+void exportDistanciaToCSV(DistanciaList list, const char *filename);
 
 #endif

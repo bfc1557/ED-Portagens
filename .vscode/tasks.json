@@ -16,6 +16,7 @@
                 "${workspaceFolder}\\structs\\sensor\\sensor.c",
                 "${workspaceFolder}\\structs\\passagem\\passagem.c",
                 "${workspaceFolder}\\structs\\distancia\\distancia.c",
+                "${workspaceFolder}\\libs\\export.c",
                 "-o",
                 "${workspaceFolder}\\build\\UC-TollManager.exe",
                 "-I${workspaceFolder}\\libs",
