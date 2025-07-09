@@ -755,7 +755,7 @@ void listar_infracoes(PassagemList passagens, VeiculoHashTable *veiculos, Distan
                 if (delta_t <= 0)
                     continue;
 
-                float horas = delta_t / 3600.0f;
+                float horas = delta_t / 3600000.0f;
                 float velocidade = distancia_km / horas;
 
                 if (velocidade > 120.0f)
@@ -907,7 +907,7 @@ void listar_ranking_infracoes(PassagemList passagens, VeiculoHashTable *veiculos
                 if (delta_t <= 0)
                     continue;
 
-                float horas = delta_t / 3600.0f;
+                float horas = delta_t / 3600000.0f;
                 float velocidade = dist_km / horas;
 
                 if (velocidade > 120.0f)
@@ -973,8 +973,11 @@ void listar_marca_maior_velocidade_media(PassagemList passagens, VeiculoHashTabl
                 continue;
             }
 
-            float horas = delta / 3600.0f;
+            float horas = delta / 3600000.0f; // 
             float velocidade = distancia_km / horas;
+
+            //printf("Debug D: %f ! T: %f", distancia_km, horas);
+            //getc(stdin);
 
             // Procurar ou criar item da marca
             int idx = -1;
@@ -1084,7 +1087,7 @@ void listar_dono_maior_velocidade_media(PassagemList passagens, VeiculoHashTable
                 continue;
             }
 
-            float horas = delta / 3600.0f;
+            float horas = delta / 3600000.0f;
             float velocidade = distancia / horas;
 
             // Verifica se já existe esse dono no array
