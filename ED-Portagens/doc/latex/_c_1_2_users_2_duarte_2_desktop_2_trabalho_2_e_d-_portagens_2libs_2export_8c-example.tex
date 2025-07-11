@@ -1,0 +1,136 @@
+\doxysection{C\+:/\+Users/\+Duarte/\+Desktop/\+Trabalho/\+ED-\/\+Portagens/libs/export.\+c}
+\hypertarget{_c_1_2_users_2_duarte_2_desktop_2_trabalho_2_e_d-_portagens_2libs_2export_8c-example}{}\label{_c_1_2_users_2_duarte_2_desktop_2_trabalho_2_e_d-_portagens_2libs_2export_8c-example}Exporta todos os dados do sistema para um arquivo XML.
+
+Exporta todos os dados do sistema para um arquivo XML
+\begin{DoxyParams}{Parameters}
+{\em dono\+Table} & Tabela hash contendo os donos a serem exportados \\
+\hline
+{\em veiculo\+Table} & Tabela hash contendo os veículos a serem exportados \\
+\hline
+{\em sensor\+List} & Lista ligada contendo os sensores a serem exportados \\
+\hline
+{\em passagem\+List} & Lista ligada contendo as passagens a serem exportadas \\
+\hline
+{\em distancia\+List} & Lista ligada contendo as distâncias a serem exportadas \\
+\hline
+{\em filename} & Nome do arquivo XML de destino\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+O arquivo será criado ou sobrescrito se já existir 
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Termina a função prematuramente se não conseguir abrir o arquivo
+\end{DoxyWarning}
+// Exemplo de uso\+: export\+To\+XML(donos, veiculos, sensores, passagens, distancias, "{}backup.\+xml"{});
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{export_8h}{export.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{export_8c_a8ef43e622b1f6bfa706ac15c84f335e8}{exportToXML}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}\ *donoTable,\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}\ *veiculoTable,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{SensorList}}\ sensorList,\ \mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ passagemList,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ distanciaList,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Abre\ o\ arquivo\ para\ escrita}}
+\DoxyCodeLine{\ \ \ \ FILE\ *file\ =\ fopen(filename,\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!file)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}Erro\ ao\ abrir\ arquivo\ XML"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Escreve\ cabeçalho\ XML}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}<?xml\ version=\(\backslash\)"{}1.0\(\backslash\)"{}\ encoding=\(\backslash\)"{}UTF-\/8\(\backslash\)"{}?>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}<dados>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Seção\ Donos\ */}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ <donos>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ donoTable-\/>\mbox{\hyperlink{struct_dono_hash_table_a2ff97a7f4bb234bb6ed38db3a0eeaa26}{size}};\ i++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_dono_node}{DonoNode}}\ *current\ =\ donoTable-\/>\mbox{\hyperlink{struct_dono_hash_table_aeaf99b104e70237127a810401ae799c2}{buckets}}[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ <dono>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <numContribuinte>\%d</numContribuinte>\(\backslash\)n"{}},\ current-\/>\mbox{\hyperlink{struct_dono_node_a0c3820ccdcb81f831bbba43c37c78ffc}{dono}}.\mbox{\hyperlink{struct_dono_a03d8ef9399de7aaf600399af79f7ca9b}{numContribuinte}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <nome><![CDATA[\%s]]></nome>\(\backslash\)n"{}},\ current-\/>\mbox{\hyperlink{struct_dono_node_a0c3820ccdcb81f831bbba43c37c78ffc}{dono}}.\mbox{\hyperlink{struct_dono_aa360c6f272766158f5694df6c8a56e27}{nome}});\ \ \textcolor{comment}{//\ CDATA\ para\ proteger\ caracteres\ especiais}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <codPostal>\%s</codPostal>\(\backslash\)n"{}},\ current-\/>\mbox{\hyperlink{struct_dono_node_a0c3820ccdcb81f831bbba43c37c78ffc}{dono}}.\mbox{\hyperlink{struct_dono_a72590be4c429f9ad3dea05cf4d7be95a}{codPostal}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ </dono>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>\mbox{\hyperlink{struct_dono_node_a63b8fdd7c5c630db1691ceefd29bd386}{next}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ </donos>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Seção\ Veículos\ */}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ <veiculos>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ veiculoTable-\/>\mbox{\hyperlink{struct_veiculo_hash_table_aaa227c7f182f0c0d6ad878b2be5cbb0d}{size}};\ i++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_veiculo_node}{VeiculoNode}}\ *current\ =\ veiculoTable-\/>\mbox{\hyperlink{struct_veiculo_hash_table_aa5fa1b1b43188346b15f564b9a23493b}{buckets}}[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ <veiculo>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <matricula>\%s</matricula>\(\backslash\)n"{}},\ current-\/>\mbox{\hyperlink{struct_veiculo_node_abf92f1c77cee4c4268db02e1350d41ea}{veiculo}}.\mbox{\hyperlink{struct_veiculo_a1c56c8253f8796eb05142c2657e33a96}{matricula}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <marca><![CDATA[\%s]]></marca>\(\backslash\)n"{}},\ current-\/>\mbox{\hyperlink{struct_veiculo_node_abf92f1c77cee4c4268db02e1350d41ea}{veiculo}}.\mbox{\hyperlink{struct_veiculo_ac6792ab8110d4504e1c974e976b5c875}{marca}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <modelo><![CDATA[\%s]]></modelo>\(\backslash\)n"{}},\ current-\/>\mbox{\hyperlink{struct_veiculo_node_abf92f1c77cee4c4268db02e1350d41ea}{veiculo}}.\mbox{\hyperlink{struct_veiculo_a3d2d3f72696f9478f2cb3ebbdf3618bf}{modelo}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <ano>\%d</ano>\(\backslash\)n"{}},\ current-\/>\mbox{\hyperlink{struct_veiculo_node_abf92f1c77cee4c4268db02e1350d41ea}{veiculo}}.\mbox{\hyperlink{struct_veiculo_a3f288a049c252c8aee5b50a0b1a37ed6}{ano}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <codVeiculo>\%d</codVeiculo>\(\backslash\)n"{}},\ current-\/>\mbox{\hyperlink{struct_veiculo_node_abf92f1c77cee4c4268db02e1350d41ea}{veiculo}}.\mbox{\hyperlink{struct_veiculo_a1348b4fbc04bf8c834ae0a26bc0633d7}{codVeiculo}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current-\/>\mbox{\hyperlink{struct_veiculo_node_abf92f1c77cee4c4268db02e1350d41ea}{veiculo}}.\mbox{\hyperlink{struct_veiculo_a177b735e2ecdc6fc432508254a12c34b}{dono}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <dono>\%d</dono>\(\backslash\)n"{}},\ current-\/>\mbox{\hyperlink{struct_veiculo_node_abf92f1c77cee4c4268db02e1350d41ea}{veiculo}}.\mbox{\hyperlink{struct_veiculo_a177b735e2ecdc6fc432508254a12c34b}{dono}}-\/>\mbox{\hyperlink{struct_dono_a03d8ef9399de7aaf600399af79f7ca9b}{numContribuinte}});\ \ \textcolor{comment}{//\ Relacionamento\ com\ dono}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ </veiculo>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>\mbox{\hyperlink{struct_veiculo_node_ae866658acdf30ac98d4cbbbfb2aecbe3}{next}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ </veiculos>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Seção\ Sensores\ */}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ <sensores>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{struct_sensor_node}{SensorNode}}\ *sensorCurrent\ =\ sensorList;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (sensorCurrent\ !=\ NULL)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ <sensor>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <codSensor>\%d</codSensor>\(\backslash\)n"{}},\ sensorCurrent-\/>\mbox{\hyperlink{struct_sensor_node_ab53ff3e2b1e031e827e66cd4936082ba}{sensor}}.\mbox{\hyperlink{struct_sensor_ad02d110caa7806c9c0161b181aad2272}{codSensor}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <designacao><![CDATA[\%s]]></designacao>\(\backslash\)n"{}},\ sensorCurrent-\/>\mbox{\hyperlink{struct_sensor_node_ab53ff3e2b1e031e827e66cd4936082ba}{sensor}}.\mbox{\hyperlink{struct_sensor_a714f6ee98af744c02958a76f81fcfa8b}{designacao}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <latitude>\%s</latitude>\(\backslash\)n"{}},\ sensorCurrent-\/>\mbox{\hyperlink{struct_sensor_node_ab53ff3e2b1e031e827e66cd4936082ba}{sensor}}.\mbox{\hyperlink{struct_sensor_aa753f3c33423f5f07862ab54a2098cf4}{latitude}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <longitude>\%s</longitude>\(\backslash\)n"{}},\ sensorCurrent-\/>\mbox{\hyperlink{struct_sensor_node_ab53ff3e2b1e031e827e66cd4936082ba}{sensor}}.\mbox{\hyperlink{struct_sensor_af91b20348c4abeadc67c67ca5de0b2ce}{longitude}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ </sensor>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ sensorCurrent\ =\ sensorCurrent-\/>\mbox{\hyperlink{struct_sensor_node_a28349b0a8b5cf1e83907e901a890bcf9}{next}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ </sensores>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Seção\ Passagens\ */}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ <passagens>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{struct_passagem_node}{PassagemNode}}\ *passagemCurrent\ =\ passagemList;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (passagemCurrent\ !=\ NULL)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ dateStr[20];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ strftime(dateStr,\ \textcolor{keyword}{sizeof}(dateStr),\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d\ \%H:\%M:\%S"{}},\ localtime(\&passagemCurrent-\/>\mbox{\hyperlink{struct_passagem_node_ad207ed274eeeadd459d137eeefbe82bc}{passagem}}.\mbox{\hyperlink{struct_passagem_a8a501d766a5e007da9915c341f86c7c2}{data}}));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ <passagem>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <idSensor>\%d</idSensor>\(\backslash\)n"{}},\ passagemCurrent-\/>\mbox{\hyperlink{struct_passagem_node_ad207ed274eeeadd459d137eeefbe82bc}{passagem}}.\mbox{\hyperlink{struct_passagem_a00fc734e8f816027cc9dc62b9ab40a3f}{idSensor}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <codVeiculo>\%d</codVeiculo>\(\backslash\)n"{}},\ passagemCurrent-\/>\mbox{\hyperlink{struct_passagem_node_ad207ed274eeeadd459d137eeefbe82bc}{passagem}}.\mbox{\hyperlink{struct_passagem_ab45c558b3b733a4d07a749acb44130f4}{codVeiculo}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <data>\%s</data>\(\backslash\)n"{}},\ dateStr);\ \ \textcolor{comment}{//\ Data\ formatada}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <milissegundos>\%d</milissegundos>\(\backslash\)n"{}},\ passagemCurrent-\/>\mbox{\hyperlink{struct_passagem_node_ad207ed274eeeadd459d137eeefbe82bc}{passagem}}.\mbox{\hyperlink{struct_passagem_ac3ce96662d7477930c67a3e9bf25ff5d}{milissegundos}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <tipoRegisto>\%s</tipoRegisto>\(\backslash\)n"{}},\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ passagemCurrent-\/>\mbox{\hyperlink{struct_passagem_node_ad207ed274eeeadd459d137eeefbe82bc}{passagem}}.\mbox{\hyperlink{struct_passagem_ad42cbc16a835f56249b6d49b54fe3a32}{tipoRegisto}}\ ==\ 0\ ?\ \textcolor{stringliteral}{"{}entrada"{}}\ :\ \textcolor{stringliteral}{"{}saida"{}});\ \ \textcolor{comment}{//\ Conversão\ para\ texto}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ </passagem>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ passagemCurrent\ =\ passagemCurrent-\/>\mbox{\hyperlink{struct_passagem_node_a9581d45897fe9c23823d904f46a42982}{next}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ </passagens>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Seção\ Distâncias\ */}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ <distancias>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{struct_distancia_node}{DistanciaNode}}\ *distanciaCurrent\ =\ distanciaList;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (distanciaCurrent\ !=\ NULL)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ <distancia>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <codSensor1>\%d</codSensor1>\(\backslash\)n"{}},\ distanciaCurrent-\/>\mbox{\hyperlink{struct_distancia_node_ad3d66f3cbd8909539656aa13959b2c1c}{distancia}}.\mbox{\hyperlink{struct_distancia_a152538dfc77bad94eb1be1292b496090}{codSensor1}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <codSensor2>\%d</codSensor2>\(\backslash\)n"{}},\ distanciaCurrent-\/>\mbox{\hyperlink{struct_distancia_node_ad3d66f3cbd8909539656aa13959b2c1c}{distancia}}.\mbox{\hyperlink{struct_distancia_af0ed38005c3c8b13842c673c1fcaeda2}{codSensor2}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <valor>\%.2f</valor>\(\backslash\)n"{}},\ distanciaCurrent-\/>\mbox{\hyperlink{struct_distancia_node_ad3d66f3cbd8909539656aa13959b2c1c}{distancia}}.\mbox{\hyperlink{struct_distancia_aac2b5cbae1e3177b1f7545317f565ff3}{distancia}});\ \ \textcolor{comment}{//\ Formato\ com\ 2\ casas\ decimais}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ \ \ </distancia>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ distanciaCurrent\ =\ distanciaCurrent-\/>\mbox{\hyperlink{struct_distancia_node_a07cc5831c033135d4b08b751861f71b0}{next}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\ \ </distancias>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Fecha\ o\ arquivo\ XML}}
+\DoxyCodeLine{\ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}</dados>\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ fclose(file);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 

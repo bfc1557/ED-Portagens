@@ -1,0 +1,58 @@
+\doxysection{veiculo.\+h}
+\hypertarget{veiculo_8h_source}{}\label{veiculo_8h_source}\index{veiculo.h@{veiculo.h}}
+\mbox{\hyperlink{veiculo_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VEICULO\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VEICULO\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dono_8h}{../dono/dono.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_veiculo_a1c56c8253f8796eb05142c2657e33a96}{matricula}}[20];\ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_veiculo_ac6792ab8110d4504e1c974e976b5c875}{marca}}[50];\ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_veiculo_a3d2d3f72696f9478f2cb3ebbdf3618bf}{modelo}}[50];\ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_veiculo_a3f288a049c252c8aee5b50a0b1a37ed6}{ano}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{struct_dono}{Dono}}*\ \mbox{\hyperlink{struct_veiculo_a177b735e2ecdc6fc432508254a12c34b}{dono}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_veiculo_a1348b4fbc04bf8c834ae0a26bc0633d7}{codVeiculo}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \}\ \mbox{\hyperlink{struct_veiculo}{Veiculo}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_veiculo_node}{VeiculoNode}}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{struct_veiculo}{Veiculo}}\ \mbox{\hyperlink{struct_veiculo_node_abf92f1c77cee4c4268db02e1350d41ea}{veiculo}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_veiculo_node}{VeiculoNode}}\ *\mbox{\hyperlink{struct_veiculo_node_ae866658acdf30ac98d4cbbbfb2aecbe3}{next}};\ \ }
+\DoxyCodeLine{00031\ \}\ \mbox{\hyperlink{struct_veiculo_node}{VeiculoNode}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{struct_veiculo_node}{VeiculoNode}}\ **\mbox{\hyperlink{struct_veiculo_hash_table_aa5fa1b1b43188346b15f564b9a23493b}{buckets}};\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_veiculo_hash_table_aaa227c7f182f0c0d6ad878b2be5cbb0d}{size}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \}\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ \mbox{\hyperlink{veiculo_8h_afa3e028c83010f1564f133690e15fbf5}{criar\_hash\_table\_veiculos}}(\textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{veiculo_8h_aec38968a5091f9e91093af7e341afc95}{liberar\_hash\_table\_veiculos}}(\mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ table);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{veiculo_8h_a43c7d45f90b8a1a36f8b23d0c53c5f42}{inserir\_veiculo}}(\mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ table,\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}\ veiculo);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{veiculo_8h_a486a27a05e0ed8f967529471edfb4f6b}{buscar\_veiculo\_matricula}}(\mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ matricula);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{veiculo_8h_af9e77dba1dec88451146a1f8b5870e31}{buscar\_veiculo\_codigo}}(\mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ table,\ \textcolor{keywordtype}{int}\ codVeiculo);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{veiculo_8h_ae8c1194fea7956dc53c76cddf7ed427e}{carregar\_veiculos}}(\mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ table,\ \mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ donos,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{veiculo_8h_a8b39f9a3ffbe4556763880ec18e95958}{calcular\_memoria\_veiculos}}(\mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ table);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{veiculo_8h_a3c81cd4ecc3a27407c7ef89c886f1180}{listar\_veiculos\_ordenados}}(\mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ criterio);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{veiculo_8h_a485da0be6cb96f32e9c30cc3b3e26767}{registar\_veiculo}}(\mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ table,\ \mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ donos);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00113\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{veiculo_8h_ac309a26ddd3b78e226d0ace2c4a17f1b}{comparar\_veiculos\_matricula}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ b);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00120\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{veiculo_8h_adfe89af6627e07543087996afeb0f929}{salvar\_veiculos}}(\mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00126\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{veiculo_8h_aa1075323b93780cb655e0589f23da460}{mostrarCarro}}(\textcolor{keywordtype}{void}\ *carro);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{veiculo_8h_a0ce3bef066cce5a7afaec6bb91a35e7d}{exportVeiculoToCSV}}(\mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}\ *table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

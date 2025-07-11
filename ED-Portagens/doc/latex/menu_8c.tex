@@ -1,0 +1,169 @@
+\doxysection{menu.\+c File Reference}
+\hypertarget{menu_8c}{}\label{menu_8c}\index{menu.c@{menu.c}}
+
+
+Implementação dos menus do sistema de gestão de portagens.  
+
+
+{\ttfamily \#include "{}menu.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{menu_8c_a6cdd2df055c865d05a1fbcf679520c64}{Menu\+Principal}} ()
+\begin{DoxyCompactList}\small\item\em Apresenta o menu principal e obtém a escolha do utilizador. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_a9476eac15897fb0062fb42fa685f570a}{Menu\+Donos}} (\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}bd)
+\begin{DoxyCompactList}\small\item\em Menu de gestão de donos de veículos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_aa2645c3dc3d37349eb4765f84459ad1d}{Menu\+Veiculos}} (\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}bd)
+\begin{DoxyCompactList}\small\item\em Menu de gestão de veículos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_a6dc16692451e2d8744a437a612639185}{Menu\+Passagens}} (\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}bd)
+\begin{DoxyCompactList}\small\item\em Menu de gestão de passagens. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_a1d5b317b5b65e75a3d8461640395b6f1}{Menu\+Consultas}} (\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}bd)
+\begin{DoxyCompactList}\small\item\em Menu de consultas avançadas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_a17b17bc6cf0e7d7ad03d4d825e673633}{Menu\+Estatisticas}} (\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}bd)
+\begin{DoxyCompactList}\small\item\em Menu de estatísticas do sistema. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_ac0f3f718b15565b68e4bd4dd60dea5e9}{Menu\+Exportar}} (\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}bd)
+\begin{DoxyCompactList}\small\item\em Menu de exportação de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação dos menus do sistema de gestão de portagens. 
+
+Contém todas as funções de interface com o utilizador 
+
+\label{doc-func-members}
+\Hypertarget{menu_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{menu_8c_a1d5b317b5b65e75a3d8461640395b6f1}\index{menu.c@{menu.c}!MenuConsultas@{MenuConsultas}}
+\index{MenuConsultas@{MenuConsultas}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{MenuConsultas()}{MenuConsultas()}}
+{\footnotesize\ttfamily \label{menu_8c_a1d5b317b5b65e75a3d8461640395b6f1} 
+void Menu\+Consultas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}}]{bd}{}\end{DoxyParamCaption})}
+
+
+
+Menu de consultas avançadas. 
+
+Mostra o menu de Consultas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bd} & Ponteiro para a base de dados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Permite consultas por período e geração de rankings 
+\end{DoxyNote}
+\Hypertarget{menu_8c_a9476eac15897fb0062fb42fa685f570a}\index{menu.c@{menu.c}!MenuDonos@{MenuDonos}}
+\index{MenuDonos@{MenuDonos}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{MenuDonos()}{MenuDonos()}}
+{\footnotesize\ttfamily \label{menu_8c_a9476eac15897fb0062fb42fa685f570a} 
+void Menu\+Donos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}}]{bd}{}\end{DoxyParamCaption})}
+
+
+
+Menu de gestão de donos de veículos. 
+
+Mostra o menu de gestão de Donos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bd} & Ponteiro para a base de dados \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8c_a17b17bc6cf0e7d7ad03d4d825e673633}\index{menu.c@{menu.c}!MenuEstatisticas@{MenuEstatisticas}}
+\index{MenuEstatisticas@{MenuEstatisticas}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{MenuEstatisticas()}{MenuEstatisticas()}}
+{\footnotesize\ttfamily \label{menu_8c_a17b17bc6cf0e7d7ad03d4d825e673633} 
+void Menu\+Estatisticas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}}]{bd}{}\end{DoxyParamCaption})}
+
+
+
+Menu de estatísticas do sistema. 
+
+Mostra o menu de Estatísticas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bd} & Ponteiro para a base de dados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Mostra principalmente informações de uso de memória 
+\end{DoxyNote}
+\Hypertarget{menu_8c_ac0f3f718b15565b68e4bd4dd60dea5e9}\index{menu.c@{menu.c}!MenuExportar@{MenuExportar}}
+\index{MenuExportar@{MenuExportar}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{MenuExportar()}{MenuExportar()}}
+{\footnotesize\ttfamily \label{menu_8c_ac0f3f718b15565b68e4bd4dd60dea5e9} 
+void Menu\+Exportar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}}]{bd}{}\end{DoxyParamCaption})}
+
+
+
+Menu de exportação de dados. 
+
+Mostra o menu de Exportação de dados.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bd} & Ponteiro para a base de dados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Cria automaticamente os diretórios export/\{csv,xml\} se não existirem 
+\end{DoxyNote}
+\Hypertarget{menu_8c_a6dc16692451e2d8744a437a612639185}\index{menu.c@{menu.c}!MenuPassagens@{MenuPassagens}}
+\index{MenuPassagens@{MenuPassagens}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{MenuPassagens()}{MenuPassagens()}}
+{\footnotesize\ttfamily \label{menu_8c_a6dc16692451e2d8744a437a612639185} 
+void Menu\+Passagens (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}}]{bd}{}\end{DoxyParamCaption})}
+
+
+
+Menu de gestão de passagens. 
+
+Mostra o menu de gestão de Passagens.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bd} & Ponteiro para a base de dados \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8c_a6cdd2df055c865d05a1fbcf679520c64}\index{menu.c@{menu.c}!MenuPrincipal@{MenuPrincipal}}
+\index{MenuPrincipal@{MenuPrincipal}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{MenuPrincipal()}{MenuPrincipal()}}
+{\footnotesize\ttfamily \label{menu_8c_a6cdd2df055c865d05a1fbcf679520c64} 
+int Menu\+Principal (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Apresenta o menu principal e obtém a escolha do utilizador. 
+
+Mostra o menu principal da aplicação.
+
+\begin{DoxyReturn}{Returns}
+Opção selecionada (0-\/6) 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+As opções correspondem a\+: 1-\/Donos, 2-\/Veículos, 3-\/Passagens, 4-\/Consultas, 5-\/Estatísticas, 6-\/Exportar, 0-\/Sair 
+\end{DoxyNote}
+\Hypertarget{menu_8c_aa2645c3dc3d37349eb4765f84459ad1d}\index{menu.c@{menu.c}!MenuVeiculos@{MenuVeiculos}}
+\index{MenuVeiculos@{MenuVeiculos}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{MenuVeiculos()}{MenuVeiculos()}}
+{\footnotesize\ttfamily \label{menu_8c_aa2645c3dc3d37349eb4765f84459ad1d} 
+void Menu\+Veiculos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}}]{bd}{}\end{DoxyParamCaption})}
+
+
+
+Menu de gestão de veículos. 
+
+Mostra o menu de gestão de Veículos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bd} & Ponteiro para a base de dados \\
+\hline
+\end{DoxyParams}

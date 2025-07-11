@@ -1,0 +1,51 @@
+\doxysection{C\+:/\+Users/\+Duarte/\+Desktop/\+Trabalho/\+ED-\/\+Portagens/libs/export.\+h}
+\hypertarget{_c_1_2_users_2_duarte_2_desktop_2_trabalho_2_e_d-_portagens_2libs_2export_8h-example}{}\label{_c_1_2_users_2_duarte_2_desktop_2_trabalho_2_e_d-_portagens_2libs_2export_8h-example}Exporta os dados do sistema para um arquivo XML formatado.
+
+Exporta os dados do sistema para um arquivo XML formatado
+\begin{DoxyParams}{Parameters}
+{\em dono\+Table} & Tabela hash contendo todos os donos registrados \\
+\hline
+{\em veiculo\+Table} & Tabela hash contendo todos os veículos registrados \\
+\hline
+{\em sensor\+List} & Lista ligada de sensores do sistema \\
+\hline
+{\em passagem\+List} & Lista ligada de registros de passagem \\
+\hline
+{\em distancia\+List} & Lista ligada de distâncias entre sensores \\
+\hline
+{\em filename} & Nome do arquivo XML de destino (caminho completo ou relativo)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A função cria um arquivo XML bem formatado com todos os dados do sistema 
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Se o arquivo já existir, será sobrescrito sem aviso
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+Para o formato exato do XML gerado, consulte a implementação em \doxylink{export_8c}{export.\+c}
+\end{DoxySeeAlso}
+// Exemplo de uso básico\+: export\+To\+XML(donos, veiculos, sensores, passagens, distancias, "{}backup.\+xml"{});
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifndef\ EXPORT\_H}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ EXPORT\_H}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../libs/bdados.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../structs/distancia/distancia.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../structs/dono/dono.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../structs/passagem/passagem.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../structs/sensor/sensor.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../structs/veiculo/veiculo.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{export_8c_a8ef43e622b1f6bfa706ac15c84f335e8}{exportToXML}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}\ *donoTable,\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}\ *veiculoTable,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{SensorList}}\ sensorList,\ \mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ passagemList,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ distanciaList,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCodeInclude}
+ 

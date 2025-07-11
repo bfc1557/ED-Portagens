@@ -1,0 +1,42 @@
+\doxysection{distancia.\+h}
+\hypertarget{distancia_8h_source}{}\label{distancia_8h_source}\index{distancia.h@{distancia.h}}
+\mbox{\hyperlink{distancia_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DISTANCIA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DISTANCIA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_distancia_a152538dfc77bad94eb1be1292b496090}{codSensor1}};\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_distancia_af0ed38005c3c8b13842c673c1fcaeda2}{codSensor2}};\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_distancia_aac2b5cbae1e3177b1f7545317f565ff3}{distancia}};\ }
+\DoxyCodeLine{00019\ \}\ \mbox{\hyperlink{struct_distancia}{Distancia}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_distancia_node}{DistanciaNode}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{struct_distancia}{Distancia}}\ \mbox{\hyperlink{struct_distancia_node_ad3d66f3cbd8909539656aa13959b2c1c}{distancia}};\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_distancia_node}{DistanciaNode}}\ *\mbox{\hyperlink{struct_distancia_node_a07cc5831c033135d4b08b751861f71b0}{next}};\ }
+\DoxyCodeLine{00030\ \}\ \mbox{\hyperlink{struct_distancia_node}{DistanciaNode}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{struct_distancia_node}{DistanciaNode}}*\ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00045\ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ \mbox{\hyperlink{distancia_8h_ade1d1d4ead2fb555e70c64bedd58b6b4}{criar\_lista\_distancias}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{distancia_8h_a1a36d40e4ee03baf8f2b4825fe644845}{liberar\_lista\_distancias}}(\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ list);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{distancia_8h_a8801cb2ac8581081750e0c9c45565214}{inserir\_distancia}}(\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}*\ list,\ \mbox{\hyperlink{struct_distancia}{Distancia}}\ \mbox{\hyperlink{struct_distancia_node_ad3d66f3cbd8909539656aa13959b2c1c}{distancia}});}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{distancia_8h_aeddd8a4a6ed6bd6812812bd9baeac6e9}{buscar\_distancia}}(\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ list,\ \textcolor{keywordtype}{int}\ codSensor1,\ \textcolor{keywordtype}{int}\ codSensor2);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{distancia_8h_a94d7def0f0160bfcd77cc20954550f76}{carregar\_distancias}}(\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}*\ list,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{distancia_8h_ad0a9eb7fafc25a32991d6a99cab06f22}{calcular\_memoria\_distancias}}(\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ list);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{distancia_8h_a531aae57eef23a637f3b9a1a422c1a4e}{salvar\_distancias}}(\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ list,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{distancia_8h_a7a3f5f5e13a3332df798665493955939}{obter\_distancia\_entre\_sensores}}(\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ distancias,\ \textcolor{keywordtype}{int}\ s1,\ \textcolor{keywordtype}{int}\ s2);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00122\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{distancia_8h_a984ca9c9e930fe1b9fdff3d24c61b28c}{exportDistanciaToCSV}}(\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ list,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

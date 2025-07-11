@@ -1,0 +1,157 @@
+\doxysection{utils.\+c File Reference}
+\hypertarget{utils_8c}{}\label{utils_8c}\index{utils.c@{utils.c}}
+
+
+Implementação das funções utilitárias.  
+
+
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{utils_8c_a34ddd210dc158374b3072fff3e620c1d}{merge}} (void \texorpdfstring{$\ast$}{*}arr\mbox{[}$\,$\mbox{]}, int l, int m, int r, int(\texorpdfstring{$\ast$}{*}compare)(const void \texorpdfstring{$\ast$}{*}, const void \texorpdfstring{$\ast$}{*}))
+\item 
+void \mbox{\hyperlink{utils_8c_af4fd65a9cd9a0a4a2f948125a22ef377}{merge\+\_\+sort}} (void \texorpdfstring{$\ast$}{*}arr\mbox{[}$\,$\mbox{]}, int l, int r, int(\texorpdfstring{$\ast$}{*}compare)(const void \texorpdfstring{$\ast$}{*}, const void \texorpdfstring{$\ast$}{*}))
+\begin{DoxyCompactList}\small\item\em Ordena um array usando o algoritmo de ordenação por fusão (merge sort) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{utils_8c_aafb2e76080f53040c1c55ceb99cadf94}{comparar\+\_\+strings}} (const char \texorpdfstring{$\ast$}{*}a, const char \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Função de comparação de strings para usar com merge\+\_\+sort. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8c_a063a1d4f673ef6180c7a189934d3671f}{paginacao}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}array, int size, int data\+Page, void(\texorpdfstring{$\ast$}{*}fshow)(void \texorpdfstring{$\ast$}{*}data))
+\begin{DoxyCompactList}\small\item\em Implementa um sistema de paginação para visualização de arrays. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{utils_8c_a2b7628f10f976597ee1e97a1643eaedb}{ler\+Inteiro}} (const char \texorpdfstring{$\ast$}{*}mensagem, int min, int max)
+\begin{DoxyCompactList}\small\item\em Lê um valor inteiro do utilizador com validação. \end{DoxyCompactList}\item 
+time\+\_\+t \mbox{\hyperlink{utils_8c_abb277e95aedc21888fe209ddd5542bfc}{ler\+Data\+Hora}} ()
+\begin{DoxyCompactList}\small\item\em Lê uma data e hora do utilizador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação das funções utilitárias. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{utils_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8c_aafb2e76080f53040c1c55ceb99cadf94}\index{utils.c@{utils.c}!comparar\_strings@{comparar\_strings}}
+\index{comparar\_strings@{comparar\_strings}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{comparar\_strings()}{comparar\_strings()}}
+{\footnotesize\ttfamily \label{utils_8c_aafb2e76080f53040c1c55ceb99cadf94} 
+int comparar\+\_\+strings (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Função de comparação de strings para usar com merge\+\_\+sort. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Primeira string a comparar \\
+\hline
+{\em b} & Segunda string a comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resultado da comparação usando strcmp 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Compatível com a assinatura exigida por merge\+\_\+sort 
+\end{DoxyNote}
+\Hypertarget{utils_8c_abb277e95aedc21888fe209ddd5542bfc}\index{utils.c@{utils.c}!lerDataHora@{lerDataHora}}
+\index{lerDataHora@{lerDataHora}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{lerDataHora()}{lerDataHora()}}
+{\footnotesize\ttfamily \label{utils_8c_abb277e95aedc21888fe209ddd5542bfc} 
+time\+\_\+t ler\+Data\+Hora (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Lê uma data e hora do utilizador. 
+
+\begin{DoxyReturn}{Returns}
+Valor time\+\_\+t correspondente à data/hora inserida 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Não faz validação avançada dos valores inseridos 
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+Converte para o formato time\+\_\+t automaticamente Ajusta o ano (subtrai 1900) e mês (subtrai 1) conforme convenção da struct tm 
+\end{DoxyNote}
+\Hypertarget{utils_8c_a2b7628f10f976597ee1e97a1643eaedb}\index{utils.c@{utils.c}!lerInteiro@{lerInteiro}}
+\index{lerInteiro@{lerInteiro}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{lerInteiro()}{lerInteiro()}}
+{\footnotesize\ttfamily \label{utils_8c_a2b7628f10f976597ee1e97a1643eaedb} 
+int ler\+Inteiro (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{mensagem}{, }\item[{int}]{min}{, }\item[{int}]{max}{}\end{DoxyParamCaption})}
+
+
+
+Lê um valor inteiro do utilizador com validação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mensagem} & Mensagem a mostrar ao utilizador \\
+\hline
+{\em min} & Valor mínimo aceitável (inclusive) \\
+\hline
+{\em max} & Valor máximo aceitável (inclusive) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Valor inteiro validado 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Repete o pedido até receber um valor válido Limpa o buffer de input para evitar loops infinitos 
+\end{DoxyNote}
+\Hypertarget{utils_8c_a34ddd210dc158374b3072fff3e620c1d}\index{utils.c@{utils.c}!merge@{merge}}
+\index{merge@{merge}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{merge()}{merge()}}
+{\footnotesize\ttfamily \label{utils_8c_a34ddd210dc158374b3072fff3e620c1d} 
+void merge (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arr}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{l}{, }\item[{int}]{m}{, }\item[{int}]{r}{, }\item[{int(\texorpdfstring{$\ast$}{*}}]{compare~}{)(const void \texorpdfstring{$\ast$}{*}, const void \texorpdfstring{$\ast$}{*})}\end{DoxyParamCaption})}
+
+\Hypertarget{utils_8c_af4fd65a9cd9a0a4a2f948125a22ef377}\index{utils.c@{utils.c}!merge\_sort@{merge\_sort}}
+\index{merge\_sort@{merge\_sort}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{merge\_sort()}{merge\_sort()}}
+{\footnotesize\ttfamily \label{utils_8c_af4fd65a9cd9a0a4a2f948125a22ef377} 
+void merge\+\_\+sort (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arr}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{l}{, }\item[{int}]{r}{, }\item[{int(\texorpdfstring{$\ast$}{*}}]{compare~}{)(const void \texorpdfstring{$\ast$}{*}, const void \texorpdfstring{$\ast$}{*})}\end{DoxyParamCaption})}
+
+
+
+Ordena um array usando o algoritmo de ordenação por fusão (merge sort) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Array genérico a ser ordenado (array de ponteiros void\texorpdfstring{$\ast$}{*}) \\
+\hline
+{\em l} & Índice inicial do subarray (normalmente 0) \\
+\hline
+{\em r} & Índice final do subarray (tamanho-\/1) \\
+\hline
+{\em compare} & Função de comparação personalizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A função de comparação deve retornar\+:
+\begin{DoxyItemize}
+\item Valor \texorpdfstring{$<$}{<}0 se o primeiro elemento for menor
+\item 0 se os elementos forem iguais
+\item Valor \texorpdfstring{$>$}{>}0 se o primeiro elemento for maior 
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{utils_8c_a063a1d4f673ef6180c7a189934d3671f}\index{utils.c@{utils.c}!paginacao@{paginacao}}
+\index{paginacao@{paginacao}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{paginacao()}{paginacao()}}
+{\footnotesize\ttfamily \label{utils_8c_a063a1d4f673ef6180c7a189934d3671f} 
+void paginacao (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{array}{, }\item[{int}]{size}{, }\item[{int}]{data\+Page}{, }\item[{void(\texorpdfstring{$\ast$}{*}}]{fshow~}{)(void \texorpdfstring{$\ast$}{*}data)}\end{DoxyParamCaption})}
+
+
+
+Implementa um sistema de paginação para visualização de arrays. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Array genérico a ser mostrado \\
+\hline
+{\em size} & Número total de elementos no array \\
+\hline
+{\em data\+Page} & Número de itens por página \\
+\hline
+{\em fshow} & Função callback para mostrar um único elemento\\
+\hline
+\end{DoxyParams}
+Permite navegar entre páginas até o utilizador inserir -\/1 Mostra o número da página atual e o total de páginas 

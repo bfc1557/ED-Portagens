@@ -1,0 +1,401 @@
+\doxysection{veiculo.\+c File Reference}
+\hypertarget{veiculo_8c}{}\label{veiculo_8c}\index{veiculo.c@{veiculo.c}}
+
+
+Implementação das operações para gestão de veículos.  
+
+
+{\ttfamily \#include "{}veiculo.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}../../libs/utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{veiculo_8c_afa3e028c83010f1564f133690e15fbf5}{criar\+\_\+hash\+\_\+table\+\_\+veiculos}} (int size)
+\begin{DoxyCompactList}\small\item\em Cria uma nova tabela hash para veículos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{veiculo_8c_aec38968a5091f9e91093af7e341afc95}{liberar\+\_\+hash\+\_\+table\+\_\+veiculos}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Liberta toda a memória ocupada pela tabela hash. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{veiculo_8c_af83f8ae03f995b904232ee7546f79231}{hash\+\_\+veiculo}} (const char \texorpdfstring{$\ast$}{*}matricula, int size)
+\begin{DoxyCompactList}\small\item\em Função hash para veículos (usando matrícula) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{veiculo_8c_a43c7d45f90b8a1a36f8b23d0c53c5f42}{inserir\+\_\+veiculo}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, \mbox{\hyperlink{struct_veiculo}{Veiculo}} veiculo)
+\begin{DoxyCompactList}\small\item\em Insere um veículo na tabela hash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_veiculo}{Veiculo}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{veiculo_8c_a486a27a05e0ed8f967529471edfb4f6b}{buscar\+\_\+veiculo\+\_\+matricula}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}matricula)
+\begin{DoxyCompactList}\small\item\em Procura um veículo pela matrícula. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_veiculo}{Veiculo}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{veiculo_8c_af9e77dba1dec88451146a1f8b5870e31}{buscar\+\_\+veiculo\+\_\+codigo}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, int cod\+Veiculo)
+\begin{DoxyCompactList}\small\item\em Procura um veículo pelo código. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{veiculo_8c_ae8c1194fea7956dc53c76cddf7ed427e}{carregar\+\_\+veiculos}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, \mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}donos, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Carrega veículos a partir de um ficheiro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{veiculo_8c_adfe89af6627e07543087996afeb0f929}{salvar\+\_\+veiculos}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Guarda os veículos num ficheiro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{veiculo_8c_a8b39f9a3ffbe4556763880ec18e95958}{calcular\+\_\+memoria\+\_\+veiculos}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Calcula a memória utilizada pela tabela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{veiculo_8c_a0ce3bef066cce5a7afaec6bb91a35e7d}{export\+Veiculo\+To\+CSV}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Exporta os veículos para formato CSV. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{veiculo_8c_a2caeab46f6001e82f170c185ba6fd31a}{coletar\+\_\+veiculos}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, int \texorpdfstring{$\ast$}{*}total)
+\begin{DoxyCompactList}\small\item\em Coleta todos os veículos num array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{veiculo_8c_aa1075323b93780cb655e0589f23da460}{mostrar\+Carro}} (void \texorpdfstring{$\ast$}{*}carro)
+\begin{DoxyCompactList}\small\item\em Função para mostrar um veículo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{veiculo_8c_ac309a26ddd3b78e226d0ace2c4a17f1b}{comparar\+\_\+veiculos\+\_\+matricula}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compara veículos por matrícula. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{veiculo_8c_af6bef9043de052a1e16742ac42fc4c30}{comparar\+\_\+veiculos\+\_\+marca}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compara veículos por marca (e modelo se igual) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{veiculo_8c_a2ebebf17ce843e75d8d4c9725c993b60}{comparar\+\_\+veiculos\+\_\+modelo}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compara veículos por modelo (e marca se igual) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{veiculo_8c_a3c81cd4ecc3a27407c7ef89c886f1180}{listar\+\_\+veiculos\+\_\+ordenados}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}criterio)
+\begin{DoxyCompactList}\small\item\em Lista veículos ordenados por um critério. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{veiculo_8c_a485da0be6cb96f32e9c30cc3b3e26767}{registar\+\_\+veiculo}} (\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, \mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}donos)
+\begin{DoxyCompactList}\small\item\em Interface para registar novo veículo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação das operações para gestão de veículos. 
+
+Contém as funções para manipulação da tabela hash de veículos 
+
+\label{doc-func-members}
+\Hypertarget{veiculo_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{veiculo_8c_af9e77dba1dec88451146a1f8b5870e31}\index{veiculo.c@{veiculo.c}!buscar\_veiculo\_codigo@{buscar\_veiculo\_codigo}}
+\index{buscar\_veiculo\_codigo@{buscar\_veiculo\_codigo}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{buscar\_veiculo\_codigo()}{buscar\_veiculo\_codigo()}}
+{\footnotesize\ttfamily \label{veiculo_8c_af9e77dba1dec88451146a1f8b5870e31} 
+\mbox{\hyperlink{struct_veiculo}{Veiculo}} \texorpdfstring{$\ast$}{*} buscar\+\_\+veiculo\+\_\+codigo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{int}]{cod\+Veiculo}{}\end{DoxyParamCaption})}
+
+
+
+Procura um veículo pelo código. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash \\
+\hline
+{\em cod\+Veiculo} & Código a procurar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para o veículo ou NULL se não encontrado 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Percorre toda a tabela (não usa hash) 
+\end{DoxyNote}
+\Hypertarget{veiculo_8c_a486a27a05e0ed8f967529471edfb4f6b}\index{veiculo.c@{veiculo.c}!buscar\_veiculo\_matricula@{buscar\_veiculo\_matricula}}
+\index{buscar\_veiculo\_matricula@{buscar\_veiculo\_matricula}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{buscar\_veiculo\_matricula()}{buscar\_veiculo\_matricula()}}
+{\footnotesize\ttfamily \label{veiculo_8c_a486a27a05e0ed8f967529471edfb4f6b} 
+\mbox{\hyperlink{struct_veiculo}{Veiculo}} \texorpdfstring{$\ast$}{*} buscar\+\_\+veiculo\+\_\+matricula (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{matricula}{}\end{DoxyParamCaption})}
+
+
+
+Procura um veículo pela matrícula. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash \\
+\hline
+{\em matricula} & Matrícula a procurar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para o veículo ou NULL se não encontrado 
+\end{DoxyReturn}
+\Hypertarget{veiculo_8c_a8b39f9a3ffbe4556763880ec18e95958}\index{veiculo.c@{veiculo.c}!calcular\_memoria\_veiculos@{calcular\_memoria\_veiculos}}
+\index{calcular\_memoria\_veiculos@{calcular\_memoria\_veiculos}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{calcular\_memoria\_veiculos()}{calcular\_memoria\_veiculos()}}
+{\footnotesize\ttfamily \label{veiculo_8c_a8b39f9a3ffbe4556763880ec18e95958} 
+int calcular\+\_\+memoria\+\_\+veiculos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Calcula a memória utilizada pela tabela. 
+
+Calcula a memória ocupada pela tabela de veículos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total de bytes utilizados 
+\end{DoxyReturn}
+\Hypertarget{veiculo_8c_ae8c1194fea7956dc53c76cddf7ed427e}\index{veiculo.c@{veiculo.c}!carregar\_veiculos@{carregar\_veiculos}}
+\index{carregar\_veiculos@{carregar\_veiculos}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{carregar\_veiculos()}{carregar\_veiculos()}}
+{\footnotesize\ttfamily \label{veiculo_8c_ae8c1194fea7956dc53c76cddf7ed427e} 
+void carregar\+\_\+veiculos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{donos}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Carrega veículos a partir de um ficheiro. 
+
+Carrega veículos de um ficheiro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash \\
+\hline
+{\em donos} & Tabela hash de donos (para associação) \\
+\hline
+{\em filename} & Nome do ficheiro \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Formato do ficheiro\+: matricula\textbackslash{}tmarca\textbackslash{}tmodelo\textbackslash{}tano\textbackslash{}tnum\+Contribuinte\textbackslash{}tcod\+Veiculo 
+\end{DoxyNote}
+\Hypertarget{veiculo_8c_a2caeab46f6001e82f170c185ba6fd31a}\index{veiculo.c@{veiculo.c}!coletar\_veiculos@{coletar\_veiculos}}
+\index{coletar\_veiculos@{coletar\_veiculos}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{coletar\_veiculos()}{coletar\_veiculos()}}
+{\footnotesize\ttfamily \label{veiculo_8c_a2caeab46f6001e82f170c185ba6fd31a} 
+void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} coletar\+\_\+veiculos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{total}{}\end{DoxyParamCaption})}
+
+
+
+Coleta todos os veículos num array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash \\
+\hline
+{\em total} & Ponteiro para armazenar o número total de veículos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array de ponteiros para veículos 
+\end{DoxyReturn}
+\Hypertarget{veiculo_8c_af6bef9043de052a1e16742ac42fc4c30}\index{veiculo.c@{veiculo.c}!comparar\_veiculos\_marca@{comparar\_veiculos\_marca}}
+\index{comparar\_veiculos\_marca@{comparar\_veiculos\_marca}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{comparar\_veiculos\_marca()}{comparar\_veiculos\_marca()}}
+{\footnotesize\ttfamily \label{veiculo_8c_af6bef9043de052a1e16742ac42fc4c30} 
+int comparar\+\_\+veiculos\+\_\+marca (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Compara veículos por marca (e modelo se igual) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Ponteiro para o primeiro veículo \\
+\hline
+{\em b} & Ponteiro para o segundo veículo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resultado da comparação 
+\end{DoxyReturn}
+\Hypertarget{veiculo_8c_ac309a26ddd3b78e226d0ace2c4a17f1b}\index{veiculo.c@{veiculo.c}!comparar\_veiculos\_matricula@{comparar\_veiculos\_matricula}}
+\index{comparar\_veiculos\_matricula@{comparar\_veiculos\_matricula}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{comparar\_veiculos\_matricula()}{comparar\_veiculos\_matricula()}}
+{\footnotesize\ttfamily \label{veiculo_8c_ac309a26ddd3b78e226d0ace2c4a17f1b} 
+int comparar\+\_\+veiculos\+\_\+matricula (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Compara veículos por matrícula. 
+
+Compara dois veículos por matrícula.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Ponteiro para o primeiro veículo \\
+\hline
+{\em b} & Ponteiro para o segundo veículo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resultado da comparação (strcmp) 
+\end{DoxyReturn}
+\Hypertarget{veiculo_8c_a2ebebf17ce843e75d8d4c9725c993b60}\index{veiculo.c@{veiculo.c}!comparar\_veiculos\_modelo@{comparar\_veiculos\_modelo}}
+\index{comparar\_veiculos\_modelo@{comparar\_veiculos\_modelo}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{comparar\_veiculos\_modelo()}{comparar\_veiculos\_modelo()}}
+{\footnotesize\ttfamily \label{veiculo_8c_a2ebebf17ce843e75d8d4c9725c993b60} 
+int comparar\+\_\+veiculos\+\_\+modelo (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Compara veículos por modelo (e marca se igual) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Ponteiro para o primeiro veículo \\
+\hline
+{\em b} & Ponteiro para o segundo veículo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resultado da comparação 
+\end{DoxyReturn}
+\Hypertarget{veiculo_8c_afa3e028c83010f1564f133690e15fbf5}\index{veiculo.c@{veiculo.c}!criar\_hash\_table\_veiculos@{criar\_hash\_table\_veiculos}}
+\index{criar\_hash\_table\_veiculos@{criar\_hash\_table\_veiculos}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{criar\_hash\_table\_veiculos()}{criar\_hash\_table\_veiculos()}}
+{\footnotesize\ttfamily \label{veiculo_8c_afa3e028c83010f1564f133690e15fbf5} 
+\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*} criar\+\_\+hash\+\_\+table\+\_\+veiculos (\begin{DoxyParamCaption}\item[{int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Cria uma nova tabela hash para veículos. 
+
+Cria uma tabela hash de veículos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Tamanho da tabela hash \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para a tabela hash criada 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+A tabela usa encadeamento para resolver colisões 
+\end{DoxyNote}
+\Hypertarget{veiculo_8c_a0ce3bef066cce5a7afaec6bb91a35e7d}\index{veiculo.c@{veiculo.c}!exportVeiculoToCSV@{exportVeiculoToCSV}}
+\index{exportVeiculoToCSV@{exportVeiculoToCSV}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{exportVeiculoToCSV()}{exportVeiculoToCSV()}}
+{\footnotesize\ttfamily \label{veiculo_8c_a0ce3bef066cce5a7afaec6bb91a35e7d} 
+void export\+Veiculo\+To\+CSV (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Exporta os veículos para formato CSV. 
+
+Exporta os veículos para um ficheiro CSV.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash \\
+\hline
+{\em filename} & Nome do ficheiro CSV \\
+\hline
+\end{DoxyParams}
+\Hypertarget{veiculo_8c_af83f8ae03f995b904232ee7546f79231}\index{veiculo.c@{veiculo.c}!hash\_veiculo@{hash\_veiculo}}
+\index{hash\_veiculo@{hash\_veiculo}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{hash\_veiculo()}{hash\_veiculo()}}
+{\footnotesize\ttfamily \label{veiculo_8c_af83f8ae03f995b904232ee7546f79231} 
+int hash\+\_\+veiculo (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{matricula}{, }\item[{int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Função hash para veículos (usando matrícula) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matricula} & Matrícula do veículo \\
+\hline
+{\em size} & Tamanho da tabela hash \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Índice na tabela hash 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Implementa o algoritmo djb2 
+\end{DoxyNote}
+\Hypertarget{veiculo_8c_a43c7d45f90b8a1a36f8b23d0c53c5f42}\index{veiculo.c@{veiculo.c}!inserir\_veiculo@{inserir\_veiculo}}
+\index{inserir\_veiculo@{inserir\_veiculo}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{inserir\_veiculo()}{inserir\_veiculo()}}
+{\footnotesize\ttfamily \label{veiculo_8c_a43c7d45f90b8a1a36f8b23d0c53c5f42} 
+void inserir\+\_\+veiculo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{\mbox{\hyperlink{struct_veiculo}{Veiculo}}}]{veiculo}{}\end{DoxyParamCaption})}
+
+
+
+Insere um veículo na tabela hash. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash \\
+\hline
+{\em veiculo} & Dados do veículo a inserir \\
+\hline
+\end{DoxyParams}
+\Hypertarget{veiculo_8c_aec38968a5091f9e91093af7e341afc95}\index{veiculo.c@{veiculo.c}!liberar\_hash\_table\_veiculos@{liberar\_hash\_table\_veiculos}}
+\index{liberar\_hash\_table\_veiculos@{liberar\_hash\_table\_veiculos}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{liberar\_hash\_table\_veiculos()}{liberar\_hash\_table\_veiculos()}}
+{\footnotesize\ttfamily \label{veiculo_8c_aec38968a5091f9e91093af7e341afc95} 
+void liberar\+\_\+hash\+\_\+table\+\_\+veiculos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Liberta toda a memória ocupada pela tabela hash. 
+
+Liberta a memória da tabela hash de veículos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash a libertar \\
+\hline
+\end{DoxyParams}
+\Hypertarget{veiculo_8c_a3c81cd4ecc3a27407c7ef89c886f1180}\index{veiculo.c@{veiculo.c}!listar\_veiculos\_ordenados@{listar\_veiculos\_ordenados}}
+\index{listar\_veiculos\_ordenados@{listar\_veiculos\_ordenados}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{listar\_veiculos\_ordenados()}{listar\_veiculos\_ordenados()}}
+{\footnotesize\ttfamily \label{veiculo_8c_a3c81cd4ecc3a27407c7ef89c886f1180} 
+void listar\+\_\+veiculos\+\_\+ordenados (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{criterio}{}\end{DoxyParamCaption})}
+
+
+
+Lista veículos ordenados por um critério. 
+
+Lista veículos ordenados por critério.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash \\
+\hline
+{\em criterio} & Critério de ordenação (matricula/marca/modelo) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{veiculo_8c_aa1075323b93780cb655e0589f23da460}\index{veiculo.c@{veiculo.c}!mostrarCarro@{mostrarCarro}}
+\index{mostrarCarro@{mostrarCarro}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{mostrarCarro()}{mostrarCarro()}}
+{\footnotesize\ttfamily \label{veiculo_8c_aa1075323b93780cb655e0589f23da460} 
+void mostrar\+Carro (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{carro}{}\end{DoxyParamCaption})}
+
+
+
+Função para mostrar um veículo. 
+
+Mostra os dados de um veículo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em carro} & Ponteiro genérico para um veículo \\
+\hline
+\end{DoxyParams}
+\Hypertarget{veiculo_8c_a485da0be6cb96f32e9c30cc3b3e26767}\index{veiculo.c@{veiculo.c}!registar\_veiculo@{registar\_veiculo}}
+\index{registar\_veiculo@{registar\_veiculo}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{registar\_veiculo()}{registar\_veiculo()}}
+{\footnotesize\ttfamily \label{veiculo_8c_a485da0be6cb96f32e9c30cc3b3e26767} 
+void registar\+\_\+veiculo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{donos}{}\end{DoxyParamCaption})}
+
+
+
+Interface para registar novo veículo. 
+
+Regista um novo veículo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash de veículos \\
+\hline
+{\em donos} & Tabela hash de donos \\
+\hline
+\end{DoxyParams}
+\Hypertarget{veiculo_8c_adfe89af6627e07543087996afeb0f929}\index{veiculo.c@{veiculo.c}!salvar\_veiculos@{salvar\_veiculos}}
+\index{salvar\_veiculos@{salvar\_veiculos}!veiculo.c@{veiculo.c}}
+\doxysubsubsection{\texorpdfstring{salvar\_veiculos()}{salvar\_veiculos()}}
+{\footnotesize\ttfamily \label{veiculo_8c_adfe89af6627e07543087996afeb0f929} 
+void salvar\+\_\+veiculos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Guarda os veículos num ficheiro. 
+
+Salva os veículos num ficheiro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash \\
+\hline
+{\em filename} & Nome do ficheiro \\
+\hline
+\end{DoxyParams}

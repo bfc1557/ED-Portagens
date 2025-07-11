@@ -1,0 +1,297 @@
+\doxysection{sensor.\+h File Reference}
+\hypertarget{sensor_8h}{}\label{sensor_8h}\index{sensor.h@{sensor.h}}
+
+
+Definições para gestão de sensores de portagem.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_sensor}{Sensor}}
+\begin{DoxyCompactList}\small\item\em Estrutura que representa um sensor de portagem. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_sensor_node}{Sensor\+Node}}
+\begin{DoxyCompactList}\small\item\em Nó para lista ligada de sensores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Sensor\+Node \mbox{\hyperlink{sensor_8h_a92340204e4e9f04a2cd00319c19224f7}{Sensor\+Node}}
+\begin{DoxyCompactList}\small\item\em Nó para lista ligada de sensores. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{struct_sensor_node}{Sensor\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}}
+\begin{DoxyCompactList}\small\item\em Tipo de dados para lista ligada de sensores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} \mbox{\hyperlink{sensor_8h_a340da0c729f4b382a0f16c38bc8c3007}{criar\+\_\+lista\+\_\+sensores}} ()
+\begin{DoxyCompactList}\small\item\em Cria uma lista vazia de sensores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sensor_8h_ac2f2febb7ef8536f311ecc792f63eabb}{liberar\+\_\+lista\+\_\+sensores}} (\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} list)
+\begin{DoxyCompactList}\small\item\em Liberta toda a memória ocupada pela lista de sensores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sensor_8h_af03a5b6fef46f2526c393cadd82177f3}{inserir\+\_\+sensor}} (\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} \texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{struct_sensor}{Sensor}} sensor)
+\begin{DoxyCompactList}\small\item\em Insere um novo sensor na lista. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_sensor}{Sensor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sensor_8h_aac92df7007e981f42bfc674b393faada}{buscar\+\_\+sensor}} (\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} list, int cod\+Sensor)
+\begin{DoxyCompactList}\small\item\em Procura um sensor na lista pelo seu código. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sensor_8h_ac6ad5660f022d4d3969971f70efd2c7e}{carregar\+\_\+sensores}} (\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} \texorpdfstring{$\ast$}{*}list, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Carrega sensores a partir de um ficheiro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sensor_8h_a3196970b4979be315be8d3f4e68e2b6e}{salvar\+\_\+sensores}} (\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} list, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Guarda a lista de sensores num ficheiro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sensor_8h_a43099477e4f76a1eceb1a72d2127619a}{calcular\+\_\+memoria\+\_\+sensores}} (\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} list)
+\begin{DoxyCompactList}\small\item\em Calcula a memória total utilizada pela lista de sensores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sensor_8h_a86dde3bf8ae8a409ad180753a187834d}{export\+Sensor\+To\+CSV}} (\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} list, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Exporta a lista de sensores para formato CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definições para gestão de sensores de portagem. 
+
+Contém as estruturas de dados e protótipos de funções para manipulação de sensores 
+
+\label{doc-typedef-members}
+\Hypertarget{sensor_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{sensor_8h_adade911529e34781a5fc37b0d23aa53f}\index{sensor.h@{sensor.h}!SensorList@{SensorList}}
+\index{SensorList@{SensorList}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SensorList}{SensorList}}
+{\footnotesize\ttfamily \label{sensor_8h_adade911529e34781a5fc37b0d23aa53f} 
+typedef \mbox{\hyperlink{struct_sensor_node}{Sensor\+Node}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}}}
+
+
+
+Tipo de dados para lista ligada de sensores. 
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_c_1_2_users_2_duarte_2_desktop_2_trabalho_2_e_d-_portagens_2libs_2export_8c-example}{C\+:/\+Users/\+Duarte/\+Desktop/\+Trabalho/\+ED-\/\+Portagens/libs/export.\+c}}, and \mbox{\hyperlink{_c_1_2_users_2_duarte_2_desktop_2_trabalho_2_e_d-_portagens_2libs_2export_8h-example}{C\+:/\+Users/\+Duarte/\+Desktop/\+Trabalho/\+ED-\/\+Portagens/libs/export.\+h}}.\end{Desc}
+\Hypertarget{sensor_8h_a92340204e4e9f04a2cd00319c19224f7}\index{sensor.h@{sensor.h}!SensorNode@{SensorNode}}
+\index{SensorNode@{SensorNode}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{SensorNode}{SensorNode}}
+{\footnotesize\ttfamily \label{sensor_8h_a92340204e4e9f04a2cd00319c19224f7} 
+typedef struct Sensor\+Node Sensor\+Node}
+
+
+
+Nó para lista ligada de sensores. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{sensor_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{sensor_8h_aac92df7007e981f42bfc674b393faada}\index{sensor.h@{sensor.h}!buscar\_sensor@{buscar\_sensor}}
+\index{buscar\_sensor@{buscar\_sensor}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{buscar\_sensor()}{buscar\_sensor()}}
+{\footnotesize\ttfamily \label{sensor_8h_aac92df7007e981f42bfc674b393faada} 
+\mbox{\hyperlink{struct_sensor}{Sensor}} \texorpdfstring{$\ast$}{*} buscar\+\_\+sensor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}}}]{list}{, }\item[{int}]{cod\+Sensor}{}\end{DoxyParamCaption})}
+
+
+
+Procura um sensor na lista pelo seu código. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de sensores \\
+\hline
+{\em cod\+Sensor} & Código do sensor a procurar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para o sensor encontrado ou NULL se não existir
+\end{DoxyReturn}
+Procura um sensor na lista pelo seu código.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de sensores \\
+\hline
+{\em cod\+Sensor} & Código do sensor a procurar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para o sensor encontrado ou NULL se não existir 
+\end{DoxyReturn}
+\Hypertarget{sensor_8h_a43099477e4f76a1eceb1a72d2127619a}\index{sensor.h@{sensor.h}!calcular\_memoria\_sensores@{calcular\_memoria\_sensores}}
+\index{calcular\_memoria\_sensores@{calcular\_memoria\_sensores}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{calcular\_memoria\_sensores()}{calcular\_memoria\_sensores()}}
+{\footnotesize\ttfamily \label{sensor_8h_a43099477e4f76a1eceb1a72d2127619a} 
+int calcular\+\_\+memoria\+\_\+sensores (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Calcula a memória total utilizada pela lista de sensores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de sensores \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total de bytes utilizados 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Inclui tamanho dos nós e strings alocadas
+\end{DoxyNote}
+Calcula a memória total utilizada pela lista de sensores.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de sensores \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total de bytes utilizados 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Inclui tamanho dos nós e strings alocadas 
+\end{DoxyNote}
+\Hypertarget{sensor_8h_ac6ad5660f022d4d3969971f70efd2c7e}\index{sensor.h@{sensor.h}!carregar\_sensores@{carregar\_sensores}}
+\index{carregar\_sensores@{carregar\_sensores}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{carregar\_sensores()}{carregar\_sensores()}}
+{\footnotesize\ttfamily \label{sensor_8h_ac6ad5660f022d4d3969971f70efd2c7e} 
+void carregar\+\_\+sensores (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Carrega sensores a partir de um ficheiro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para a lista de sensores \\
+\hline
+{\em filename} & Nome do ficheiro a carregar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Formato esperado do ficheiro\+: cod\+Sensor\textbackslash{}tdesignação\textbackslash{}tlatitude\textbackslash{}tlongitude
+\end{DoxyNote}
+Carrega sensores a partir de um ficheiro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para a lista de sensores \\
+\hline
+{\em filename} & Nome do ficheiro a carregar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Formato esperado do ficheiro\+: cod\+Sensor\textbackslash{}tdesignação\textbackslash{}tlatitude\textbackslash{}tlongitude~\newline
+
+\end{DoxyNote}
+\Hypertarget{sensor_8h_a340da0c729f4b382a0f16c38bc8c3007}\index{sensor.h@{sensor.h}!criar\_lista\_sensores@{criar\_lista\_sensores}}
+\index{criar\_lista\_sensores@{criar\_lista\_sensores}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{criar\_lista\_sensores()}{criar\_lista\_sensores()}}
+{\footnotesize\ttfamily \label{sensor_8h_a340da0c729f4b382a0f16c38bc8c3007} 
+\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} criar\+\_\+lista\+\_\+sensores (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Cria uma lista vazia de sensores. 
+
+\begin{DoxyReturn}{Returns}
+Lista vazia (NULL) 
+\end{DoxyReturn}
+\Hypertarget{sensor_8h_a86dde3bf8ae8a409ad180753a187834d}\index{sensor.h@{sensor.h}!exportSensorToCSV@{exportSensorToCSV}}
+\index{exportSensorToCSV@{exportSensorToCSV}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{exportSensorToCSV()}{exportSensorToCSV()}}
+{\footnotesize\ttfamily \label{sensor_8h_a86dde3bf8ae8a409ad180753a187834d} 
+void export\+Sensor\+To\+CSV (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}}}]{list}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Exporta a lista de sensores para formato CSV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de sensores \\
+\hline
+{\em filename} & Nome do ficheiro CSV de destino \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Formato do CSV\+: cod\+Sensor,designação,latitude,longitude As strings são envolvidas em aspas
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de sensores \\
+\hline
+{\em filename} & Nome do ficheiro CSV de destino \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Formato do CSV\+: cod\+Sensor,designacao,latitude,longitude 
+\end{DoxyNote}
+\Hypertarget{sensor_8h_af03a5b6fef46f2526c393cadd82177f3}\index{sensor.h@{sensor.h}!inserir\_sensor@{inserir\_sensor}}
+\index{inserir\_sensor@{inserir\_sensor}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{inserir\_sensor()}{inserir\_sensor()}}
+{\footnotesize\ttfamily \label{sensor_8h_af03a5b6fef46f2526c393cadd82177f3} 
+void inserir\+\_\+sensor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{\mbox{\hyperlink{struct_sensor}{Sensor}}}]{sensor}{}\end{DoxyParamCaption})}
+
+
+
+Insere um novo sensor na lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para a lista de sensores \\
+\hline
+{\em sensor} & Dados do sensor a inserir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A inserção é feita no início da lista
+\end{DoxyNote}
+Insere um novo sensor na lista.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para a lista de sensores \\
+\hline
+{\em sensor} & Dados do sensor a inserir \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sensor_8h_ac2f2febb7ef8536f311ecc792f63eabb}\index{sensor.h@{sensor.h}!liberar\_lista\_sensores@{liberar\_lista\_sensores}}
+\index{liberar\_lista\_sensores@{liberar\_lista\_sensores}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{liberar\_lista\_sensores()}{liberar\_lista\_sensores()}}
+{\footnotesize\ttfamily \label{sensor_8h_ac2f2febb7ef8536f311ecc792f63eabb} 
+void liberar\+\_\+lista\+\_\+sensores (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Liberta toda a memória ocupada pela lista de sensores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de sensores a libertar \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sensor_8h_a3196970b4979be315be8d3f4e68e2b6e}\index{sensor.h@{sensor.h}!salvar\_sensores@{salvar\_sensores}}
+\index{salvar\_sensores@{salvar\_sensores}!sensor.h@{sensor.h}}
+\doxysubsubsection{\texorpdfstring{salvar\_sensores()}{salvar\_sensores()}}
+{\footnotesize\ttfamily \label{sensor_8h_a3196970b4979be315be8d3f4e68e2b6e} 
+void salvar\+\_\+sensores (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sensor_8h_adade911529e34781a5fc37b0d23aa53f}{Sensor\+List}}}]{list}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Guarda a lista de sensores num ficheiro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de sensores \\
+\hline
+{\em filename} & Nome do ficheiro de destino \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Mantém o mesmo formato usado no carregamento
+\end{DoxyNote}
+Guarda a lista de sensores num ficheiro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de sensores \\
+\hline
+{\em filename} & Nome do ficheiro de destino \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Formato do ficheiro\+: cod\+Sensor\textbackslash{}tdesignação\textbackslash{}tlatitude\textbackslash{}tlongitude~\newline
+
+\end{DoxyNote}

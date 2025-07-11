@@ -1,0 +1,54 @@
+\doxysection{dono.\+h}
+\hypertarget{dono_8h_source}{}\label{dono_8h_source}\index{dono.h@{dono.h}}
+\mbox{\hyperlink{dono_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DONO\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DONO\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_dono_a03d8ef9399de7aaf600399af79f7ca9b}{numContribuinte}};\ \ }
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_dono_aa360c6f272766158f5694df6c8a56e27}{nome}}[100];\ \ \ \ \ \ \ }
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_dono_a72590be4c429f9ad3dea05cf4d7be95a}{codPostal}}[20];\ \ \ }
+\DoxyCodeLine{00011\ \}\ \mbox{\hyperlink{struct_dono}{Dono}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dono_node}{DonoNode}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{struct_dono}{Dono}}\ \mbox{\hyperlink{struct_dono_node_a0c3820ccdcb81f831bbba43c37c78ffc}{dono}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dono_node}{DonoNode}}\ *\mbox{\hyperlink{struct_dono_node_a63b8fdd7c5c630db1691ceefd29bd386}{next}};\ \ \ \ }
+\DoxyCodeLine{00019\ \}\ \mbox{\hyperlink{struct_dono_node}{DonoNode}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{struct_dono_node}{DonoNode}}\ **\mbox{\hyperlink{struct_dono_hash_table_aeaf99b104e70237127a810401ae799c2}{buckets}};\ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_dono_hash_table_a2ff97a7f4bb234bb6ed38db3a0eeaa26}{size}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \}\ \mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dono_8h_a43f8ab5bab30c5176bab730f4ce7849c}{mostrar\_subnome\_mais\_comum}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}\ *donos);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00042\ \mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ \mbox{\hyperlink{dono_8h_a4630747aad4026a2235f6ef4068ca382}{criar\_hash\_table\_donos}}(\textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dono_8h_a21e36beece34a404ed01bef58b82c7a9}{liberar\_hash\_table\_donos}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ table);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dono_8h_a34f37e73fdda51056ad7962f3ac6fde0}{inserir\_dono}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ table,\ \mbox{\hyperlink{struct_dono}{Dono}}\ dono);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00066\ \mbox{\hyperlink{struct_dono}{Dono}}*\ \mbox{\hyperlink{dono_8h_aa1993f141832f71c00d902291b98574e}{buscar\_dono}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ table,\ \textcolor{keywordtype}{int}\ numContribuinte);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dono_8h_a39dd6ed3ac7a0322d9b97278c60048c3}{carregar\_donos}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{dono_8h_a9bfa16bde70b4593250f10c340da1150}{calcular\_memoria\_donos}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ table);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dono_8h_a86271581e923a8d715f4e84d16b2b931}{mostrarDono}}(\textcolor{keywordtype}{void}\ *dono);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dono_8h_a1b688ca9a8662b3ae3da2e3dd902f7ca}{listar\_donos\_alfabetico}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ table);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dono_8h_aa25bf69d0153a5ca42e199a351191687}{listar\_donos\_numContribuinte}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ table);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00110\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dono_8h_a1928cae1ec76810cfcbb3d0012013453}{registar\_dono}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ table);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00118\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dono_8h_a0b5bc7ed67c5ff5233598bad9f045b67}{salvar\_donos}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00127\ \textcolor{keywordtype}{void}**\ \mbox{\hyperlink{dono_8h_a5101674c6dfb91e95fa289ff4ba4d5c4}{coletar\_donos}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}*\ table,\ \textcolor{keywordtype}{int}*\ total);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00135\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dono_8h_a254d848a964a7f2fe6d68d23c1cfef39}{exportDonoToCSV}}(\mbox{\hyperlink{struct_dono_hash_table}{DonoHashTable}}\ *table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,153 @@
+\doxysection{bdados.\+c File Reference}
+\hypertarget{bdados_8c}{}\label{bdados_8c}\index{bdados.c@{bdados.c}}
+
+
+Módulo de gestão de dados do sistema (donos, veículos, sensores, passagens e distâncias)  
+
+
+{\ttfamily \#include "{}bdados.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{bdados_8c_a34b5ce2b2e210481fec5743e2bdfca4a}{Inicializa\+Programa}} (const char \texorpdfstring{$\ast$}{*}nome)
+\begin{DoxyCompactList}\small\item\em Inicializa a estrutura principal do sistema. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bdados_8c_ad5e4bd047ec3e0c960f9c2d1cff86680}{Finalizar\+Programa}} (\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}bd)
+\begin{DoxyCompactList}\small\item\em Libera toda a memória alocada pelo sistema. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bdados_8c_ac649862c8207425e44c6816918b42da3}{Calcular\+Memoria}} (\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}bd)
+\begin{DoxyCompactList}\small\item\em Calcula e exibe estatísticas de uso de memória. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bdados_8c_ade7e1096587185d5d92eb2976c25537f}{Carregar\+Dados}} (\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}bd, const char \texorpdfstring{$\ast$}{*}dir\+\_\+dados)
+\begin{DoxyCompactList}\small\item\em Carrega dados de arquivos TXT para o sistema. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bdados_8c_a7c270efed17d77cfb341bd577dcfae2e}{Guardar\+Dados}} (\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}bd, const char \texorpdfstring{$\ast$}{*}dir\+\_\+dados)
+\begin{DoxyCompactList}\small\item\em Salva os dados do sistema em arquivos TXT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Módulo de gestão de dados do sistema (donos, veículos, sensores, passagens e distâncias) 
+
+
+
+\label{doc-func-members}
+\Hypertarget{bdados_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{bdados_8c_ac649862c8207425e44c6816918b42da3}\index{bdados.c@{bdados.c}!CalcularMemoria@{CalcularMemoria}}
+\index{CalcularMemoria@{CalcularMemoria}!bdados.c@{bdados.c}}
+\doxysubsubsection{\texorpdfstring{CalcularMemoria()}{CalcularMemoria()}}
+{\footnotesize\ttfamily \label{bdados_8c_ac649862c8207425e44c6816918b42da3} 
+void Calcular\+Memoria (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}}]{bd}{}\end{DoxyParamCaption})}
+
+
+
+Calcula e exibe estatísticas de uso de memória. 
+
+Calcula estatísticas de uso de memória.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bd} & Ponteiro para a estrutura \doxylink{struct_b_dados}{BDados}\\
+\hline
+\end{DoxyParams}
+Calcula\+:
+\begin{DoxyEnumerate}
+\item Memória usada por cada componente
+\item Memória total (em bytes e MB) 
+\end{DoxyEnumerate}\Hypertarget{bdados_8c_ade7e1096587185d5d92eb2976c25537f}\index{bdados.c@{bdados.c}!CarregarDados@{CarregarDados}}
+\index{CarregarDados@{CarregarDados}!bdados.c@{bdados.c}}
+\doxysubsubsection{\texorpdfstring{CarregarDados()}{CarregarDados()}}
+{\footnotesize\ttfamily \label{bdados_8c_ade7e1096587185d5d92eb2976c25537f} 
+void Carregar\+Dados (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}}]{bd}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{dir\+\_\+dados}{}\end{DoxyParamCaption})}
+
+
+
+Carrega dados de arquivos TXT para o sistema. 
+
+Carrega dados de arquivos para o sistema.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bd} & Ponteiro para a estrutura \doxylink{struct_b_dados}{BDados} \\
+\hline
+{\em dir\+\_\+dados} & Diretório contendo os arquivos\+:
+\begin{DoxyItemize}
+\item donos.\+txt
+\item carros.\+txt
+\item sensores.\+txt
+\item distancias.\+txt
+\item passagem.\+txt (com limite de 1 milhão de registros) 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Automaticamente chama \doxylink{bdados_8h_ac649862c8207425e44c6816918b42da3}{Calcular\+Memoria()} após carregar todos os dados 
+\end{DoxyNote}
+\Hypertarget{bdados_8c_ad5e4bd047ec3e0c960f9c2d1cff86680}\index{bdados.c@{bdados.c}!FinalizarPrograma@{FinalizarPrograma}}
+\index{FinalizarPrograma@{FinalizarPrograma}!bdados.c@{bdados.c}}
+\doxysubsubsection{\texorpdfstring{FinalizarPrograma()}{FinalizarPrograma()}}
+{\footnotesize\ttfamily \label{bdados_8c_ad5e4bd047ec3e0c960f9c2d1cff86680} 
+void Finalizar\+Programa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}}]{bd}{}\end{DoxyParamCaption})}
+
+
+
+Libera toda a memória alocada pelo sistema. 
+
+Libera todos os recursos do sistema.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bd} & Ponteiro para a estrutura \doxylink{struct_b_dados}{BDados} a ser liberada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Função segura (verifica NULL pointer) 
+\end{DoxyNote}
+\Hypertarget{bdados_8c_a7c270efed17d77cfb341bd577dcfae2e}\index{bdados.c@{bdados.c}!GuardarDados@{GuardarDados}}
+\index{GuardarDados@{GuardarDados}!bdados.c@{bdados.c}}
+\doxysubsubsection{\texorpdfstring{GuardarDados()}{GuardarDados()}}
+{\footnotesize\ttfamily \label{bdados_8c_a7c270efed17d77cfb341bd577dcfae2e} 
+void Guardar\+Dados (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*}}]{bd}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{dir\+\_\+dados}{}\end{DoxyParamCaption})}
+
+
+
+Salva os dados do sistema em arquivos TXT. 
+
+Persiste os dados do sistema em arquivos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bd} & Ponteiro para a estrutura \doxylink{struct_b_dados}{BDados} \\
+\hline
+{\em dir\+\_\+dados} & Diretório de destino para os arquivos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Mantém o mesmo formato de arquivos usado em \doxylink{bdados_8h_ade7e1096587185d5d92eb2976c25537f}{Carregar\+Dados()} 
+\end{DoxyNote}
+\Hypertarget{bdados_8c_a34b5ce2b2e210481fec5743e2bdfca4a}\index{bdados.c@{bdados.c}!InicializaPrograma@{InicializaPrograma}}
+\index{InicializaPrograma@{InicializaPrograma}!bdados.c@{bdados.c}}
+\doxysubsubsection{\texorpdfstring{InicializaPrograma()}{InicializaPrograma()}}
+{\footnotesize\ttfamily \label{bdados_8c_a34b5ce2b2e210481fec5743e2bdfca4a} 
+\mbox{\hyperlink{struct_b_dados}{BDados}} \texorpdfstring{$\ast$}{*} Inicializa\+Programa (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{nome}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa a estrutura principal do sistema. 
+
+Aloca memória para a estrutura \doxylink{struct_b_dados}{BDados} e inicializa todas as sub-\/estruturas\+:
+\begin{DoxyItemize}
+\item Tabelas hash para donos e veículos
+\item Listas ligadas para sensores, passagens e distâncias
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & Nome do sistema (para fins de log) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para a estrutura \doxylink{struct_b_dados}{BDados} inicializada 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Termina o programa com EXIT\+\_\+\+FAILURE se falhar na alocação de memória 
+\end{DoxyWarning}

@@ -1,0 +1,614 @@
+\doxysection{passagem.\+c File Reference}
+\hypertarget{passagem_8c}{}\label{passagem_8c}\index{passagem.c@{passagem.c}}
+
+
+Implementação das funções de manipulação de passagens de veículos.  
+
+
+{\ttfamily \#include "{}passagem.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_ranking_item}{Ranking\+Item}}
+\begin{DoxyCompactList}\small\item\em Estrutura auxiliar para ranking de veículos por quilometragem. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_ranking_marca_item}{Ranking\+Marca\+Item}}
+\begin{DoxyCompactList}\small\item\em Estrutura auxiliar para ranking de marcas por quilometragem. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_infracao_item}{Infracao\+Item}}
+\begin{DoxyCompactList}\small\item\em Estrutura para armazenar infrações de velocidade. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_ranking_infracao_item}{Ranking\+Infracao\+Item}}
+\begin{DoxyCompactList}\small\item\em Estrutura para ranking de veículos por número de infrações. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_velocidade_marca_item}{Velocidade\+Marca\+Item}}
+\begin{DoxyCompactList}\small\item\em Estrutura para cálculo da velocidade média por marca. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_velocidade_dono_item}{Velocidade\+Dono\+Item}}
+\begin{DoxyCompactList}\small\item\em Estrutura para cálculo da velocidade média por dono. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_velocidade_veiculo_item}{Velocidade\+Veiculo\+Item}}
+\begin{DoxyCompactList}\small\item\em Estrutura para cálculo da velocidade média por veículo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} \mbox{\hyperlink{passagem_8c_ac3ba783baba16bba010271aad9a9a6c1}{criar\+\_\+lista\+\_\+passagens}} (void)
+\begin{DoxyCompactList}\small\item\em Cria uma lista de passagens vazia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_a96c26bcf5189aacce9f801879f3070c7}{liberar\+\_\+lista\+\_\+passagens}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} list)
+\begin{DoxyCompactList}\small\item\em Libera toda a memória associada à lista de passagens. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_af6bb9d3547a5c0e694617c1ac01da3cd}{inserir\+\_\+passagem}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} \texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{struct_passagem}{Passagem}} p)
+\begin{DoxyCompactList}\small\item\em Insere uma passagem na lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_acd6f35008869423c7e21b49b5a99ecb2}{carregar\+\_\+passagens}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} \texorpdfstring{$\ast$}{*}list, const char \texorpdfstring{$\ast$}{*}ficheiro, int batch)
+\begin{DoxyCompactList}\small\item\em Carrega passagens de um ficheiro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{passagem_8c_a480535df9447f174d10d407211259348}{calcular\+\_\+memoria\+\_\+passagens}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} list)
+\begin{DoxyCompactList}\small\item\em Calcula a memória ocupada pela lista de passagens. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_ab20f128345de559059a8637691eb96a3}{listar\+\_\+passagens\+\_\+periodo}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} list, time\+\_\+t ini, time\+\_\+t fim)
+\begin{DoxyCompactList}\small\item\em Lista passagens num determinado período. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{passagem_8c_ad1e83591f42d21b61cb2aa59c4f6f6fc}{registar\+\_\+passagem}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} \texorpdfstring{$\ast$}{*}list, int id\+Sensor, int cod\+Veiculo, struct tm data\+\_\+tm, int milissegundos, int tipo\+Registo)
+\begin{DoxyCompactList}\small\item\em Regista uma nova passagem na lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_a2561b3b7d01a83307a9409dc58e4101b}{registar\+\_\+passagem\+\_\+interativo}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Regista uma passagem de forma interativa via terminal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_aaf2af17f078e9252f6ad245749f01ecc}{salvar\+\_\+passagens}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} list, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Salva as passagens num ficheiro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_ad299a0a76f021d42dc3e924d7d359569}{listar\+\_\+veiculos\+\_\+periodo}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} passagens, \mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}veiculos, time\+\_\+t inicio, time\+\_\+t fim)
+\begin{DoxyCompactList}\small\item\em Lista veículos que passaram num período. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_ac0c8401704eb7af634a774ddf28018ad}{mostrar\+Ranking\+Km\+PVeiculo}} (void \texorpdfstring{$\ast$}{*}dado)
+\begin{DoxyCompactList}\small\item\em Mostra um item do ranking de km por veículo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_a90bd7efd529317a6bddf4547a2bd4088}{mostrar\+Infracao}} (void \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Mostra uma infração de velocidade. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_aeaa6982d91592ce6b4ef8b7ed24ce991}{mostrar\+Ranking\+Infracao}} (void \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Mostra um item do ranking de infrações. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_a88bdd850e9868b1188842ada843524ee}{mostrar\+Ranking\+Marca}} (void \texorpdfstring{$\ast$}{*}dado)
+\begin{DoxyCompactList}\small\item\em Mostra um item do ranking de marcas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_aaa74204a248e698ce6473a8debfa8fe1}{mostrar\+Marca\+Maior\+Velocidade\+Media}} (\mbox{\hyperlink{struct_velocidade_marca_item}{Velocidade\+Marca\+Item}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Mostra a marca com maior velocidade média. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{passagem_8c_a1825c5b629366463db8983acaca2a316}{comparar\+\_\+passagem\+\_\+por\+\_\+data}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compara duas passagens por data. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{passagem_8c_aa7359c2df460531793172b3dbf381fec}{comparar\+\_\+ranking\+\_\+item\+\_\+por\+\_\+km}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compara dois itens de ranking de marca por km. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_a83bd35216d5588f8067db6c73e4355f6}{listar\+\_\+ranking\+\_\+circulacao}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} passagens, \mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}veiculos, \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} distancias, time\+\_\+t inicio, time\+\_\+t fim)
+\begin{DoxyCompactList}\small\item\em Lista ranking de circulação por veículo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_a319f7533d94eca37a76149e6eecaabe9}{listar\+\_\+ranking\+\_\+marca}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} passagens, \mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}veiculos, \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} distancias, time\+\_\+t inicio, time\+\_\+t fim)
+\begin{DoxyCompactList}\small\item\em Lista ranking de circulação por marca. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_ae9f709f39ce5215511144f47142999ee}{listar\+\_\+infracoes}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} passagens, \mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}veiculos, \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} distancias, time\+\_\+t inicio, time\+\_\+t fim)
+\begin{DoxyCompactList}\small\item\em Lista infrações de velocidade (\texorpdfstring{$>$}{>}120 km/h) no período. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{passagem_8c_aa32ee2a8a756ebcb8d4ccac47c23f0c6}{comparar\+\_\+ranking\+\_\+infracao}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compara dois itens de ranking de infrações. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_a96800922517debf8c7f9c174d7f7a7cf}{listar\+\_\+ranking\+\_\+infracoes}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} passagens, \mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}veiculos, \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} distancias, time\+\_\+t inicio, time\+\_\+t fim)
+\begin{DoxyCompactList}\small\item\em Lista ranking de infrações por veículo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_acc368bd44d090471a7de508a3c2a5d90}{listar\+\_\+marca\+\_\+maior\+\_\+velocidade\+\_\+media}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} passagens, \mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}veiculos, \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} distancias)
+\begin{DoxyCompactList}\small\item\em Lista a marca com maior velocidade média. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_a09ab00119fb2078fb54c7ec5d482d4e8}{listar\+\_\+dono\+\_\+maior\+\_\+velocidade\+\_\+media}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} passagens, \mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}veiculos, \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} distancias)
+\begin{DoxyCompactList}\small\item\em Lista o dono com maior velocidade média. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_aab0df5190d47f475b8ebca08b61b4e50}{mostrar\+\_\+veiculo\+\_\+mais\+\_\+rapido}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} passagens, \mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}veiculos, \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} distancias)
+\begin{DoxyCompactList}\small\item\em Mostra o veículo mais rápido. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{passagem_8c_a0ec5dc2f6f432be1a879187e8b45de1e}{export\+Passagem\+To\+CSV}} (\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} list, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Exporta as passagens para um ficheiro CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação das funções de manipulação de passagens de veículos. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{passagem_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{passagem_8c_a480535df9447f174d10d407211259348}\index{passagem.c@{passagem.c}!calcular\_memoria\_passagens@{calcular\_memoria\_passagens}}
+\index{calcular\_memoria\_passagens@{calcular\_memoria\_passagens}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{calcular\_memoria\_passagens()}{calcular\_memoria\_passagens()}}
+{\footnotesize\ttfamily \label{passagem_8c_a480535df9447f174d10d407211259348} 
+int calcular\+\_\+memoria\+\_\+passagens (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Calcula a memória ocupada pela lista de passagens. 
+
+Calcula a memória total ocupada pela lista de passagens.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de passagens. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Memória em bytes. 
+\end{DoxyReturn}
+\Hypertarget{passagem_8c_acd6f35008869423c7e21b49b5a99ecb2}\index{passagem.c@{passagem.c}!carregar\_passagens@{carregar\_passagens}}
+\index{carregar\_passagens@{carregar\_passagens}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{carregar\_passagens()}{carregar\_passagens()}}
+{\footnotesize\ttfamily \label{passagem_8c_acd6f35008869423c7e21b49b5a99ecb2} 
+void carregar\+\_\+passagens (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{ficheiro}{, }\item[{int}]{batch}{}\end{DoxyParamCaption})}
+
+
+
+Carrega passagens de um ficheiro. 
+
+Carrega passagens a partir de um ficheiro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para a lista de passagens. \\
+\hline
+{\em ficheiro} & Nome do ficheiro. \\
+\hline
+{\em batch} & Número de passagens para mostrar progresso. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_a1825c5b629366463db8983acaca2a316}\index{passagem.c@{passagem.c}!comparar\_passagem\_por\_data@{comparar\_passagem\_por\_data}}
+\index{comparar\_passagem\_por\_data@{comparar\_passagem\_por\_data}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{comparar\_passagem\_por\_data()}{comparar\_passagem\_por\_data()}}
+{\footnotesize\ttfamily \label{passagem_8c_a1825c5b629366463db8983acaca2a316} 
+int comparar\+\_\+passagem\+\_\+por\+\_\+data (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Compara duas passagens por data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Ponteiro para ponteiro de \doxylink{struct_passagem}{Passagem}. \\
+\hline
+{\em b} & Ponteiro para ponteiro de \doxylink{struct_passagem}{Passagem}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1, 0 ou 1 conforme a ordem. 
+\end{DoxyReturn}
+\Hypertarget{passagem_8c_aa32ee2a8a756ebcb8d4ccac47c23f0c6}\index{passagem.c@{passagem.c}!comparar\_ranking\_infracao@{comparar\_ranking\_infracao}}
+\index{comparar\_ranking\_infracao@{comparar\_ranking\_infracao}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{comparar\_ranking\_infracao()}{comparar\_ranking\_infracao()}}
+{\footnotesize\ttfamily \label{passagem_8c_aa32ee2a8a756ebcb8d4ccac47c23f0c6} 
+int comparar\+\_\+ranking\+\_\+infracao (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Compara dois itens de ranking de infrações. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Ponteiro para \doxylink{struct_ranking_infracao_item}{Ranking\+Infracao\+Item}. \\
+\hline
+{\em b} & Ponteiro para \doxylink{struct_ranking_infracao_item}{Ranking\+Infracao\+Item}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Diferença do número de infrações. 
+\end{DoxyReturn}
+\Hypertarget{passagem_8c_aa7359c2df460531793172b3dbf381fec}\index{passagem.c@{passagem.c}!comparar\_ranking\_item\_por\_km@{comparar\_ranking\_item\_por\_km}}
+\index{comparar\_ranking\_item\_por\_km@{comparar\_ranking\_item\_por\_km}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{comparar\_ranking\_item\_por\_km()}{comparar\_ranking\_item\_por\_km()}}
+{\footnotesize\ttfamily \label{passagem_8c_aa7359c2df460531793172b3dbf381fec} 
+int comparar\+\_\+ranking\+\_\+item\+\_\+por\+\_\+km (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Compara dois itens de ranking de marca por km. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Ponteiro para \doxylink{struct_ranking_marca_item}{Ranking\+Marca\+Item}. \\
+\hline
+{\em b} & Ponteiro para \doxylink{struct_ranking_marca_item}{Ranking\+Marca\+Item}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1, -\/1 ou 0. 
+\end{DoxyReturn}
+\Hypertarget{passagem_8c_ac3ba783baba16bba010271aad9a9a6c1}\index{passagem.c@{passagem.c}!criar\_lista\_passagens@{criar\_lista\_passagens}}
+\index{criar\_lista\_passagens@{criar\_lista\_passagens}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{criar\_lista\_passagens()}{criar\_lista\_passagens()}}
+{\footnotesize\ttfamily \label{passagem_8c_ac3ba783baba16bba010271aad9a9a6c1} 
+\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} criar\+\_\+lista\+\_\+passagens (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Cria uma lista de passagens vazia. 
+
+Cria uma lista vazia de passagens.
+
+\begin{DoxyReturn}{Returns}
+Lista vazia (NULL). 
+\end{DoxyReturn}
+\Hypertarget{passagem_8c_a0ec5dc2f6f432be1a879187e8b45de1e}\index{passagem.c@{passagem.c}!exportPassagemToCSV@{exportPassagemToCSV}}
+\index{exportPassagemToCSV@{exportPassagemToCSV}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{exportPassagemToCSV()}{exportPassagemToCSV()}}
+{\footnotesize\ttfamily \label{passagem_8c_a0ec5dc2f6f432be1a879187e8b45de1e} 
+void export\+Passagem\+To\+CSV (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{list}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Exporta as passagens para um ficheiro CSV. 
+
+Exporta passagens para formato CSV.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de passagens. \\
+\hline
+{\em filename} & Nome do ficheiro CSV. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_af6bb9d3547a5c0e694617c1ac01da3cd}\index{passagem.c@{passagem.c}!inserir\_passagem@{inserir\_passagem}}
+\index{inserir\_passagem@{inserir\_passagem}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{inserir\_passagem()}{inserir\_passagem()}}
+{\footnotesize\ttfamily \label{passagem_8c_af6bb9d3547a5c0e694617c1ac01da3cd} 
+void inserir\+\_\+passagem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{\mbox{\hyperlink{struct_passagem}{Passagem}}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Insere uma passagem na lista. 
+
+Insere uma nova passagem na lista.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para a lista de passagens. \\
+\hline
+{\em p} & \doxylink{struct_passagem}{Passagem} a ser inserida. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_a96c26bcf5189aacce9f801879f3070c7}\index{passagem.c@{passagem.c}!liberar\_lista\_passagens@{liberar\_lista\_passagens}}
+\index{liberar\_lista\_passagens@{liberar\_lista\_passagens}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{liberar\_lista\_passagens()}{liberar\_lista\_passagens()}}
+{\footnotesize\ttfamily \label{passagem_8c_a96c26bcf5189aacce9f801879f3070c7} 
+void liberar\+\_\+lista\+\_\+passagens (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Libera toda a memória associada à lista de passagens. 
+
+Liberta toda a memória ocupada pela lista de passagens.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de passagens a ser liberada. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_a09ab00119fb2078fb54c7ec5d482d4e8}\index{passagem.c@{passagem.c}!listar\_dono\_maior\_velocidade\_media@{listar\_dono\_maior\_velocidade\_media}}
+\index{listar\_dono\_maior\_velocidade\_media@{listar\_dono\_maior\_velocidade\_media}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{listar\_dono\_maior\_velocidade\_media()}{listar\_dono\_maior\_velocidade\_media()}}
+{\footnotesize\ttfamily \label{passagem_8c_a09ab00119fb2078fb54c7ec5d482d4e8} 
+void listar\+\_\+dono\+\_\+maior\+\_\+velocidade\+\_\+media (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{passagens}{, }\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{veiculos}{, }\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{distancias}{}\end{DoxyParamCaption})}
+
+
+
+Lista o dono com maior velocidade média. 
+
+Identifica o dono com maior velocidade média.
+
+
+\begin{DoxyParams}{Parameters}
+{\em passagens} & Lista de passagens. \\
+\hline
+{\em veiculos} & Tabela hash de veículos. \\
+\hline
+{\em distancias} & Lista de distâncias. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_ae9f709f39ce5215511144f47142999ee}\index{passagem.c@{passagem.c}!listar\_infracoes@{listar\_infracoes}}
+\index{listar\_infracoes@{listar\_infracoes}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{listar\_infracoes()}{listar\_infracoes()}}
+{\footnotesize\ttfamily \label{passagem_8c_ae9f709f39ce5215511144f47142999ee} 
+void listar\+\_\+infracoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{passagens}{, }\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{veiculos}{, }\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{distancias}{, }\item[{time\+\_\+t}]{inicio}{, }\item[{time\+\_\+t}]{fim}{}\end{DoxyParamCaption})}
+
+
+
+Lista infrações de velocidade (\texorpdfstring{$>$}{>}120 km/h) no período. 
+
+Lista infrações (velocidade \texorpdfstring{$>$}{>} 120 km/h)
+
+
+\begin{DoxyParams}{Parameters}
+{\em passagens} & Lista de passagens. \\
+\hline
+{\em veiculos} & Tabela hash de veículos. \\
+\hline
+{\em distancias} & Lista de distâncias. \\
+\hline
+{\em inicio} & Data/hora inicial. \\
+\hline
+{\em fim} & Data/hora final. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_acc368bd44d090471a7de508a3c2a5d90}\index{passagem.c@{passagem.c}!listar\_marca\_maior\_velocidade\_media@{listar\_marca\_maior\_velocidade\_media}}
+\index{listar\_marca\_maior\_velocidade\_media@{listar\_marca\_maior\_velocidade\_media}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{listar\_marca\_maior\_velocidade\_media()}{listar\_marca\_maior\_velocidade\_media()}}
+{\footnotesize\ttfamily \label{passagem_8c_acc368bd44d090471a7de508a3c2a5d90} 
+void listar\+\_\+marca\+\_\+maior\+\_\+velocidade\+\_\+media (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{passagens}{, }\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{veiculos}{, }\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{distancias}{}\end{DoxyParamCaption})}
+
+
+
+Lista a marca com maior velocidade média. 
+
+Identifica a marca com maior velocidade média.
+
+
+\begin{DoxyParams}{Parameters}
+{\em passagens} & Lista de passagens. \\
+\hline
+{\em veiculos} & Tabela hash de veículos. \\
+\hline
+{\em distancias} & Lista de distâncias. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_ab20f128345de559059a8637691eb96a3}\index{passagem.c@{passagem.c}!listar\_passagens\_periodo@{listar\_passagens\_periodo}}
+\index{listar\_passagens\_periodo@{listar\_passagens\_periodo}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{listar\_passagens\_periodo()}{listar\_passagens\_periodo()}}
+{\footnotesize\ttfamily \label{passagem_8c_ab20f128345de559059a8637691eb96a3} 
+void listar\+\_\+passagens\+\_\+periodo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{list}{, }\item[{time\+\_\+t}]{ini}{, }\item[{time\+\_\+t}]{fim}{}\end{DoxyParamCaption})}
+
+
+
+Lista passagens num determinado período. 
+
+Lista passagens ocorridas num determinado período.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de passagens. \\
+\hline
+{\em ini} & Data/hora inicial. \\
+\hline
+{\em fim} & Data/hora final. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_a83bd35216d5588f8067db6c73e4355f6}\index{passagem.c@{passagem.c}!listar\_ranking\_circulacao@{listar\_ranking\_circulacao}}
+\index{listar\_ranking\_circulacao@{listar\_ranking\_circulacao}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{listar\_ranking\_circulacao()}{listar\_ranking\_circulacao()}}
+{\footnotesize\ttfamily \label{passagem_8c_a83bd35216d5588f8067db6c73e4355f6} 
+void listar\+\_\+ranking\+\_\+circulacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{passagens}{, }\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{veiculos}{, }\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{distancias}{, }\item[{time\+\_\+t}]{inicio}{, }\item[{time\+\_\+t}]{fim}{}\end{DoxyParamCaption})}
+
+
+
+Lista ranking de circulação por veículo. 
+
+Lista ranking de veículos por quilómetros percorridos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em passagens} & Lista de passagens. \\
+\hline
+{\em veiculos} & Tabela hash de veículos. \\
+\hline
+{\em distancias} & Lista de distâncias. \\
+\hline
+{\em inicio} & Data/hora inicial. \\
+\hline
+{\em fim} & Data/hora final. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_a96800922517debf8c7f9c174d7f7a7cf}\index{passagem.c@{passagem.c}!listar\_ranking\_infracoes@{listar\_ranking\_infracoes}}
+\index{listar\_ranking\_infracoes@{listar\_ranking\_infracoes}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{listar\_ranking\_infracoes()}{listar\_ranking\_infracoes()}}
+{\footnotesize\ttfamily \label{passagem_8c_a96800922517debf8c7f9c174d7f7a7cf} 
+void listar\+\_\+ranking\+\_\+infracoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{passagens}{, }\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{veiculos}{, }\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{distancias}{, }\item[{time\+\_\+t}]{inicio}{, }\item[{time\+\_\+t}]{fim}{}\end{DoxyParamCaption})}
+
+
+
+Lista ranking de infrações por veículo. 
+
+Lista ranking de veículos por número de infrações.
+
+
+\begin{DoxyParams}{Parameters}
+{\em passagens} & Lista de passagens. \\
+\hline
+{\em veiculos} & Tabela hash de veículos. \\
+\hline
+{\em distancias} & Lista de distâncias. \\
+\hline
+{\em inicio} & Data/hora inicial. \\
+\hline
+{\em fim} & Data/hora final. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_a319f7533d94eca37a76149e6eecaabe9}\index{passagem.c@{passagem.c}!listar\_ranking\_marca@{listar\_ranking\_marca}}
+\index{listar\_ranking\_marca@{listar\_ranking\_marca}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{listar\_ranking\_marca()}{listar\_ranking\_marca()}}
+{\footnotesize\ttfamily \label{passagem_8c_a319f7533d94eca37a76149e6eecaabe9} 
+void listar\+\_\+ranking\+\_\+marca (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{passagens}{, }\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{veiculos}{, }\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{distancias}{, }\item[{time\+\_\+t}]{inicio}{, }\item[{time\+\_\+t}]{fim}{}\end{DoxyParamCaption})}
+
+
+
+Lista ranking de circulação por marca. 
+
+Lista ranking de marcas por quilómetros percorridos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em passagens} & Lista de passagens. \\
+\hline
+{\em veiculos} & Tabela hash de veículos. \\
+\hline
+{\em distancias} & Lista de distâncias. \\
+\hline
+{\em inicio} & Data/hora inicial. \\
+\hline
+{\em fim} & Data/hora final. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_ad299a0a76f021d42dc3e924d7d359569}\index{passagem.c@{passagem.c}!listar\_veiculos\_periodo@{listar\_veiculos\_periodo}}
+\index{listar\_veiculos\_periodo@{listar\_veiculos\_periodo}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{listar\_veiculos\_periodo()}{listar\_veiculos\_periodo()}}
+{\footnotesize\ttfamily \label{passagem_8c_ad299a0a76f021d42dc3e924d7d359569} 
+void listar\+\_\+veiculos\+\_\+periodo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{passagens}{, }\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{veiculos}{, }\item[{time\+\_\+t}]{inicio}{, }\item[{time\+\_\+t}]{fim}{}\end{DoxyParamCaption})}
+
+
+
+Lista veículos que passaram num período. 
+
+Lista veículos que circularam num período.
+
+
+\begin{DoxyParams}{Parameters}
+{\em passagens} & Lista de passagens. \\
+\hline
+{\em veiculos} & Tabela hash de veículos. \\
+\hline
+{\em inicio} & Data/hora inicial. \\
+\hline
+{\em fim} & Data/hora final. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_aab0df5190d47f475b8ebca08b61b4e50}\index{passagem.c@{passagem.c}!mostrar\_veiculo\_mais\_rapido@{mostrar\_veiculo\_mais\_rapido}}
+\index{mostrar\_veiculo\_mais\_rapido@{mostrar\_veiculo\_mais\_rapido}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{mostrar\_veiculo\_mais\_rapido()}{mostrar\_veiculo\_mais\_rapido()}}
+{\footnotesize\ttfamily \label{passagem_8c_aab0df5190d47f475b8ebca08b61b4e50} 
+void mostrar\+\_\+veiculo\+\_\+mais\+\_\+rapido (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{passagens}{, }\item[{\mbox{\hyperlink{struct_veiculo_hash_table}{Veiculo\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{veiculos}{, }\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{distancias}{}\end{DoxyParamCaption})}
+
+
+
+Mostra o veículo mais rápido. 
+
+Identifica o veículo mais rápido e seu condutor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em passagens} & Lista de passagens. \\
+\hline
+{\em veiculos} & Tabela hash de veículos. \\
+\hline
+{\em distancias} & Lista de distâncias. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_a90bd7efd529317a6bddf4547a2bd4088}\index{passagem.c@{passagem.c}!mostrarInfracao@{mostrarInfracao}}
+\index{mostrarInfracao@{mostrarInfracao}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{mostrarInfracao()}{mostrarInfracao()}}
+{\footnotesize\ttfamily \label{passagem_8c_a90bd7efd529317a6bddf4547a2bd4088} 
+void mostrar\+Infracao (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Mostra uma infração de velocidade. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & Ponteiro para \doxylink{struct_infracao_item}{Infracao\+Item}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_aaa74204a248e698ce6473a8debfa8fe1}\index{passagem.c@{passagem.c}!mostrarMarcaMaiorVelocidadeMedia@{mostrarMarcaMaiorVelocidadeMedia}}
+\index{mostrarMarcaMaiorVelocidadeMedia@{mostrarMarcaMaiorVelocidadeMedia}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{mostrarMarcaMaiorVelocidadeMedia()}{mostrarMarcaMaiorVelocidadeMedia()}}
+{\footnotesize\ttfamily \label{passagem_8c_aaa74204a248e698ce6473a8debfa8fe1} 
+void mostrar\+Marca\+Maior\+Velocidade\+Media (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_velocidade_marca_item}{Velocidade\+Marca\+Item}} \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Mostra a marca com maior velocidade média. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & Ponteiro para \doxylink{struct_velocidade_marca_item}{Velocidade\+Marca\+Item}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_aeaa6982d91592ce6b4ef8b7ed24ce991}\index{passagem.c@{passagem.c}!mostrarRankingInfracao@{mostrarRankingInfracao}}
+\index{mostrarRankingInfracao@{mostrarRankingInfracao}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{mostrarRankingInfracao()}{mostrarRankingInfracao()}}
+{\footnotesize\ttfamily \label{passagem_8c_aeaa6982d91592ce6b4ef8b7ed24ce991} 
+void mostrar\+Ranking\+Infracao (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Mostra um item do ranking de infrações. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & Ponteiro para \doxylink{struct_ranking_infracao_item}{Ranking\+Infracao\+Item}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_ac0c8401704eb7af634a774ddf28018ad}\index{passagem.c@{passagem.c}!mostrarRankingKmPVeiculo@{mostrarRankingKmPVeiculo}}
+\index{mostrarRankingKmPVeiculo@{mostrarRankingKmPVeiculo}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{mostrarRankingKmPVeiculo()}{mostrarRankingKmPVeiculo()}}
+{\footnotesize\ttfamily \label{passagem_8c_ac0c8401704eb7af634a774ddf28018ad} 
+void mostrar\+Ranking\+Km\+PVeiculo (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dado}{}\end{DoxyParamCaption})}
+
+
+
+Mostra um item do ranking de km por veículo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dado} & Ponteiro para \doxylink{struct_ranking_item}{Ranking\+Item}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_a88bdd850e9868b1188842ada843524ee}\index{passagem.c@{passagem.c}!mostrarRankingMarca@{mostrarRankingMarca}}
+\index{mostrarRankingMarca@{mostrarRankingMarca}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{mostrarRankingMarca()}{mostrarRankingMarca()}}
+{\footnotesize\ttfamily \label{passagem_8c_a88bdd850e9868b1188842ada843524ee} 
+void mostrar\+Ranking\+Marca (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dado}{}\end{DoxyParamCaption})}
+
+
+
+Mostra um item do ranking de marcas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dado} & Ponteiro para \doxylink{struct_ranking_marca_item}{Ranking\+Marca\+Item}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_ad1e83591f42d21b61cb2aa59c4f6f6fc}\index{passagem.c@{passagem.c}!registar\_passagem@{registar\_passagem}}
+\index{registar\_passagem@{registar\_passagem}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{registar\_passagem()}{registar\_passagem()}}
+{\footnotesize\ttfamily \label{passagem_8c_ad1e83591f42d21b61cb2aa59c4f6f6fc} 
+int registar\+\_\+passagem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{int}]{id\+Sensor}{, }\item[{int}]{cod\+Veiculo}{, }\item[{struct tm}]{data\+\_\+tm}{, }\item[{int}]{milissegundos}{, }\item[{int}]{tipo\+Registo}{}\end{DoxyParamCaption})}
+
+
+
+Regista uma nova passagem na lista. 
+
+Regista uma nova passagem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para a lista. \\
+\hline
+{\em id\+Sensor} & ID do sensor. \\
+\hline
+{\em cod\+Veiculo} & Código do veículo. \\
+\hline
+{\em data\+\_\+tm} & Estrutura tm com data/hora. \\
+\hline
+{\em milissegundos} & Milissegundos. \\
+\hline
+{\em tipo\+Registo} & Tipo de registo (0=entrada, 1=saída). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 se sucesso, valor negativo se erro. 
+\end{DoxyReturn}
+\Hypertarget{passagem_8c_a2561b3b7d01a83307a9409dc58e4101b}\index{passagem.c@{passagem.c}!registar\_passagem\_interativo@{registar\_passagem\_interativo}}
+\index{registar\_passagem\_interativo@{registar\_passagem\_interativo}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{registar\_passagem\_interativo()}{registar\_passagem\_interativo()}}
+{\footnotesize\ttfamily \label{passagem_8c_a2561b3b7d01a83307a9409dc58e4101b} 
+void registar\+\_\+passagem\+\_\+interativo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}} \texorpdfstring{$\ast$}{*}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Regista uma passagem de forma interativa via terminal. 
+
+Interface interativa para registar passagem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para a lista. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{passagem_8c_aaf2af17f078e9252f6ad245749f01ecc}\index{passagem.c@{passagem.c}!salvar\_passagens@{salvar\_passagens}}
+\index{salvar\_passagens@{salvar\_passagens}!passagem.c@{passagem.c}}
+\doxysubsubsection{\texorpdfstring{salvar\_passagens()}{salvar\_passagens()}}
+{\footnotesize\ttfamily \label{passagem_8c_aaf2af17f078e9252f6ad245749f01ecc} 
+void salvar\+\_\+passagens (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{Passagem\+List}}}]{list}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Salva as passagens num ficheiro. 
+
+Guarda a lista de passagens num ficheiro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de passagens. \\
+\hline
+{\em filename} & Nome do ficheiro. \\
+\hline
+\end{DoxyParams}

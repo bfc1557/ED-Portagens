@@ -1,0 +1,316 @@
+\doxysection{distancia.\+h File Reference}
+\hypertarget{distancia_8h}{}\label{distancia_8h}\index{distancia.h@{distancia.h}}
+
+
+Declarações de tipos e funções para manipulação de distâncias entre sensores.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_distancia}{Distancia}}
+\begin{DoxyCompactList}\small\item\em Representa a distância entre dois sensores. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_distancia_node}{Distancia\+Node}}
+\begin{DoxyCompactList}\small\item\em Nó da lista ligada de distâncias. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Distancia\+Node \mbox{\hyperlink{distancia_8h_afbb1fd09e77fc77d73b274883003656d}{Distancia\+Node}}
+\item 
+typedef \mbox{\hyperlink{struct_distancia_node}{Distancia\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}
+\begin{DoxyCompactList}\small\item\em Lista ligada de distâncias. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} \mbox{\hyperlink{distancia_8h_ade1d1d4ead2fb555e70c64bedd58b6b4}{criar\+\_\+lista\+\_\+distancias}} ()
+\begin{DoxyCompactList}\small\item\em Cria uma lista de distâncias vazia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{distancia_8h_a1a36d40e4ee03baf8f2b4825fe644845}{liberar\+\_\+lista\+\_\+distancias}} (\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} list)
+\begin{DoxyCompactList}\small\item\em Libera a memória de toda a lista de distâncias. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{distancia_8h_a8801cb2ac8581081750e0c9c45565214}{inserir\+\_\+distancia}} (\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} \texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{struct_distancia}{Distancia}} distancia)
+\begin{DoxyCompactList}\small\item\em Insere uma nova distância na lista. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{distancia_8h_aeddd8a4a6ed6bd6812812bd9baeac6e9}{buscar\+\_\+distancia}} (\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} list, int cod\+Sensor1, int cod\+Sensor2)
+\begin{DoxyCompactList}\small\item\em Busca a distância entre dois sensores na lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{distancia_8h_a94d7def0f0160bfcd77cc20954550f76}{carregar\+\_\+distancias}} (\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} \texorpdfstring{$\ast$}{*}list, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Carrega distâncias de um arquivo para a lista. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{distancia_8h_ad0a9eb7fafc25a32991d6a99cab06f22}{calcular\+\_\+memoria\+\_\+distancias}} (\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} list)
+\begin{DoxyCompactList}\small\item\em Calcula a quantidade de memória ocupada pela lista de distâncias. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{distancia_8h_a531aae57eef23a637f3b9a1a422c1a4e}{salvar\+\_\+distancias}} (\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} list, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Salva a lista de distâncias em um arquivo. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{distancia_8h_a7a3f5f5e13a3332df798665493955939}{obter\+\_\+distancia\+\_\+entre\+\_\+sensores}} (\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} distancias, int s1, int s2)
+\begin{DoxyCompactList}\small\item\em Obtém a distância entre dois sensores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{distancia_8h_a984ca9c9e930fe1b9fdff3d24c61b28c}{export\+Distancia\+To\+CSV}} (\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} list, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Exporta a lista de distâncias em formato CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declarações de tipos e funções para manipulação de distâncias entre sensores. 
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{distancia_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}\index{distancia.h@{distancia.h}!DistanciaList@{DistanciaList}}
+\index{DistanciaList@{DistanciaList}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{DistanciaList}{DistanciaList}}
+{\footnotesize\ttfamily \label{distancia_8h_ac0618efa274e86c96b8f8919985c53a9} 
+typedef \mbox{\hyperlink{struct_distancia_node}{Distancia\+Node}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}
+
+
+
+Lista ligada de distâncias. 
+
+Ponteiro para o primeiro nó da lista de distâncias. \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_c_1_2_users_2_duarte_2_desktop_2_trabalho_2_e_d-_portagens_2libs_2export_8c-example}{C\+:/\+Users/\+Duarte/\+Desktop/\+Trabalho/\+ED-\/\+Portagens/libs/export.\+c}}, and \mbox{\hyperlink{_c_1_2_users_2_duarte_2_desktop_2_trabalho_2_e_d-_portagens_2libs_2export_8h-example}{C\+:/\+Users/\+Duarte/\+Desktop/\+Trabalho/\+ED-\/\+Portagens/libs/export.\+h}}.\end{Desc}
+\Hypertarget{distancia_8h_afbb1fd09e77fc77d73b274883003656d}\index{distancia.h@{distancia.h}!DistanciaNode@{DistanciaNode}}
+\index{DistanciaNode@{DistanciaNode}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{DistanciaNode}{DistanciaNode}}
+{\footnotesize\ttfamily \label{distancia_8h_afbb1fd09e77fc77d73b274883003656d} 
+typedef struct Distancia\+Node Distancia\+Node}
+
+
+
+\label{doc-func-members}
+\Hypertarget{distancia_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{distancia_8h_aeddd8a4a6ed6bd6812812bd9baeac6e9}\index{distancia.h@{distancia.h}!buscar\_distancia@{buscar\_distancia}}
+\index{buscar\_distancia@{buscar\_distancia}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{buscar\_distancia()}{buscar\_distancia()}}
+{\footnotesize\ttfamily \label{distancia_8h_aeddd8a4a6ed6bd6812812bd9baeac6e9} 
+float buscar\+\_\+distancia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{list}{, }\item[{int}]{cod\+Sensor1}{, }\item[{int}]{cod\+Sensor2}{}\end{DoxyParamCaption})}
+
+
+
+Busca a distância entre dois sensores na lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de distâncias. \\
+\hline
+{\em cod\+Sensor1} & Código do primeiro sensor. \\
+\hline
+{\em cod\+Sensor2} & Código do segundo sensor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distância entre os sensores ou -\/1.\+0f se não encontrada.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de distâncias. \\
+\hline
+{\em cod\+Sensor1} & Código do primeiro sensor. \\
+\hline
+{\em cod\+Sensor2} & Código do segundo sensor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distância entre os sensores, ou -\/1.\+0f se não encontrada. 
+\end{DoxyReturn}
+\Hypertarget{distancia_8h_ad0a9eb7fafc25a32991d6a99cab06f22}\index{distancia.h@{distancia.h}!calcular\_memoria\_distancias@{calcular\_memoria\_distancias}}
+\index{calcular\_memoria\_distancias@{calcular\_memoria\_distancias}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{calcular\_memoria\_distancias()}{calcular\_memoria\_distancias()}}
+{\footnotesize\ttfamily \label{distancia_8h_ad0a9eb7fafc25a32991d6a99cab06f22} 
+int calcular\+\_\+memoria\+\_\+distancias (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Calcula a quantidade de memória ocupada pela lista de distâncias. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de distâncias. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total de memória (em bytes).
+\end{DoxyReturn}
+Calcula a quantidade de memória ocupada pela lista de distâncias.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de distâncias. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total de memória (em bytes) ocupada pela lista. 
+\end{DoxyReturn}
+\Hypertarget{distancia_8h_a94d7def0f0160bfcd77cc20954550f76}\index{distancia.h@{distancia.h}!carregar\_distancias@{carregar\_distancias}}
+\index{carregar\_distancias@{carregar\_distancias}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{carregar\_distancias()}{carregar\_distancias()}}
+{\footnotesize\ttfamily \label{distancia_8h_a94d7def0f0160bfcd77cc20954550f76} 
+void carregar\+\_\+distancias (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Carrega distâncias de um arquivo para a lista. 
+
+O arquivo deve conter linhas com\+: cod\+Sensor1, cod\+Sensor2 e distância, separados por tabulação ({\ttfamily \textbackslash{}t}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para o ponteiro da lista de distâncias. \\
+\hline
+{\em filename} & Nome do arquivo de entrada.\\
+\hline
+\end{DoxyParams}
+Cada linha do arquivo deve conter\+: cod\+Sensor1, cod\+Sensor2, distância separados por tabulação ({\ttfamily \textbackslash{}t}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para o ponteiro da lista de distâncias. \\
+\hline
+{\em filename} & Nome do arquivo a ser lido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{distancia_8h_ade1d1d4ead2fb555e70c64bedd58b6b4}\index{distancia.h@{distancia.h}!criar\_lista\_distancias@{criar\_lista\_distancias}}
+\index{criar\_lista\_distancias@{criar\_lista\_distancias}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{criar\_lista\_distancias()}{criar\_lista\_distancias()}}
+{\footnotesize\ttfamily \label{distancia_8h_ade1d1d4ead2fb555e70c64bedd58b6b4} 
+\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} criar\+\_\+lista\+\_\+distancias (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Cria uma lista de distâncias vazia. 
+
+\begin{DoxyReturn}{Returns}
+Lista vazia (NULL).
+
+Ponteiro para a lista de distâncias (NULL, lista vazia). 
+\end{DoxyReturn}
+\Hypertarget{distancia_8h_a984ca9c9e930fe1b9fdff3d24c61b28c}\index{distancia.h@{distancia.h}!exportDistanciaToCSV@{exportDistanciaToCSV}}
+\index{exportDistanciaToCSV@{exportDistanciaToCSV}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{exportDistanciaToCSV()}{exportDistanciaToCSV()}}
+{\footnotesize\ttfamily \label{distancia_8h_a984ca9c9e930fe1b9fdff3d24c61b28c} 
+void export\+Distancia\+To\+CSV (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{list}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Exporta a lista de distâncias em formato CSV. 
+
+O arquivo CSV gerado terá cabeçalho\+: cod\+Sensor1,cod\+Sensor2,distancia.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de distâncias. \\
+\hline
+{\em filename} & Nome do arquivo CSV de saída.\\
+\hline
+\end{DoxyParams}
+Gera um arquivo CSV com cabeçalho\+: {\ttfamily cod\+Sensor1,cod\+Sensor2,distancia} e cada linha com os valores separados por vírgula.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de distâncias. \\
+\hline
+{\em filename} & Nome do arquivo CSV de saída. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{distancia_8h_a8801cb2ac8581081750e0c9c45565214}\index{distancia.h@{distancia.h}!inserir\_distancia@{inserir\_distancia}}
+\index{inserir\_distancia@{inserir\_distancia}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{inserir\_distancia()}{inserir\_distancia()}}
+{\footnotesize\ttfamily \label{distancia_8h_a8801cb2ac8581081750e0c9c45565214} 
+void inserir\+\_\+distancia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{\mbox{\hyperlink{struct_distancia}{Distancia}}}]{distancia}{}\end{DoxyParamCaption})}
+
+
+
+Insere uma nova distância na lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para o ponteiro da lista de distâncias. \\
+\hline
+{\em distancia} & Estrutura de distância a ser inserida. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{distancia_8h_a1a36d40e4ee03baf8f2b4825fe644845}\index{distancia.h@{distancia.h}!liberar\_lista\_distancias@{liberar\_lista\_distancias}}
+\index{liberar\_lista\_distancias@{liberar\_lista\_distancias}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{liberar\_lista\_distancias()}{liberar\_lista\_distancias()}}
+{\footnotesize\ttfamily \label{distancia_8h_a1a36d40e4ee03baf8f2b4825fe644845} 
+void liberar\+\_\+lista\+\_\+distancias (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Libera a memória de toda a lista de distâncias. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de distâncias a ser liberada.\\
+\hline
+\end{DoxyParams}
+Libera a memória de toda a lista de distâncias.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Ponteiro para a lista de distâncias. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{distancia_8h_a7a3f5f5e13a3332df798665493955939}\index{distancia.h@{distancia.h}!obter\_distancia\_entre\_sensores@{obter\_distancia\_entre\_sensores}}
+\index{obter\_distancia\_entre\_sensores@{obter\_distancia\_entre\_sensores}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{obter\_distancia\_entre\_sensores()}{obter\_distancia\_entre\_sensores()}}
+{\footnotesize\ttfamily \label{distancia_8h_a7a3f5f5e13a3332df798665493955939} 
+float obter\+\_\+distancia\+\_\+entre\+\_\+sensores (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{distancias}{, }\item[{int}]{s1}{, }\item[{int}]{s2}{}\end{DoxyParamCaption})}
+
+
+
+Obtém a distância entre dois sensores. 
+
+Retorna a distância ou 0.\+0f se não encontrada.
+
+
+\begin{DoxyParams}{Parameters}
+{\em distancias} & Lista de distâncias. \\
+\hline
+{\em s1} & Código do primeiro sensor. \\
+\hline
+{\em s2} & Código do segundo sensor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distância entre os sensores.
+\end{DoxyReturn}
+Funciona como {\ttfamily \doxylink{distancia_8c_aeddd8a4a6ed6bd6812812bd9baeac6e9}{buscar\+\_\+distancia()}}, mas retorna 0.\+0f caso não encontre.
+
+
+\begin{DoxyParams}{Parameters}
+{\em distancias} & Lista de distâncias. \\
+\hline
+{\em s1} & Código do primeiro sensor. \\
+\hline
+{\em s2} & Código do segundo sensor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distância entre os sensores, ou 0.\+0f se não encontrada. 
+\end{DoxyReturn}
+\Hypertarget{distancia_8h_a531aae57eef23a637f3b9a1a422c1a4e}\index{distancia.h@{distancia.h}!salvar\_distancias@{salvar\_distancias}}
+\index{salvar\_distancias@{salvar\_distancias}!distancia.h@{distancia.h}}
+\doxysubsubsection{\texorpdfstring{salvar\_distancias()}{salvar\_distancias()}}
+{\footnotesize\ttfamily \label{distancia_8h_a531aae57eef23a637f3b9a1a422c1a4e} 
+void salvar\+\_\+distancias (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{Distancia\+List}}}]{list}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Salva a lista de distâncias em um arquivo. 
+
+O arquivo conterá linhas no formato\+: cod\+Sensor1, cod\+Sensor2, distância separados por tabulação ({\ttfamily \textbackslash{}t}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de distâncias. \\
+\hline
+{\em filename} & Nome do arquivo de saída.\\
+\hline
+\end{DoxyParams}
+Salva a lista de distâncias em um arquivo.
+
+Cada linha do arquivo gerado conterá\+: cod\+Sensor1, cod\+Sensor2, distância separados por tabulação ({\ttfamily \textbackslash{}t}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Lista de distâncias. \\
+\hline
+{\em filename} & Nome do arquivo de saída. \\
+\hline
+\end{DoxyParams}

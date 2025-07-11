@@ -1,0 +1,414 @@
+\doxysection{dono.\+h File Reference}
+\hypertarget{dono_8h}{}\label{dono_8h}\index{dono.h@{dono.h}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_dono}{Dono}}
+\begin{DoxyCompactList}\small\item\em Representa um dono. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_dono_node}{Dono\+Node}}
+\begin{DoxyCompactList}\small\item\em Nó da lista encadeada para tabela hash de donos. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}}
+\begin{DoxyCompactList}\small\item\em Estrutura de tabela hash para armazenar donos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Dono\+Node \mbox{\hyperlink{dono_8h_a551b7bba9c806e3edbb277d3d296137d}{Dono\+Node}}
+\begin{DoxyCompactList}\small\item\em Nó da lista encadeada para tabela hash de donos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{dono_8h_a43f8ab5bab30c5176bab730f4ce7849c}{mostrar\+\_\+subnome\+\_\+mais\+\_\+comum}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}donos)
+\begin{DoxyCompactList}\small\item\em Mostra o subnome mais comum entre os nomes dos donos. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{dono_8h_a4630747aad4026a2235f6ef4068ca382}{criar\+\_\+hash\+\_\+table\+\_\+donos}} (int size)
+\begin{DoxyCompactList}\small\item\em Cria uma nova tabela hash de donos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dono_8h_a21e36beece34a404ed01bef58b82c7a9}{liberar\+\_\+hash\+\_\+table\+\_\+donos}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Libera a memória da tabela hash de donos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dono_8h_a34f37e73fdda51056ad7962f3ac6fde0}{inserir\+\_\+dono}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, \mbox{\hyperlink{struct_dono}{Dono}} dono)
+\begin{DoxyCompactList}\small\item\em Insere um dono na tabela hash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_dono}{Dono}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{dono_8h_aa1993f141832f71c00d902291b98574e}{buscar\+\_\+dono}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, int num\+Contribuinte)
+\begin{DoxyCompactList}\small\item\em Busca um dono pelo número de contribuinte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dono_8h_a39dd6ed3ac7a0322d9b97278c60048c3}{carregar\+\_\+donos}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Carrega donos a partir de um arquivo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{dono_8h_a9bfa16bde70b4593250f10c340da1150}{calcular\+\_\+memoria\+\_\+donos}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Calcula a memória usada pela tabela hash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dono_8h_a86271581e923a8d715f4e84d16b2b931}{mostrar\+Dono}} (void \texorpdfstring{$\ast$}{*}dono)
+\begin{DoxyCompactList}\small\item\em Mostra as informações de um dono (usado na paginação). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dono_8h_a1b688ca9a8662b3ae3da2e3dd902f7ca}{listar\+\_\+donos\+\_\+alfabetico}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Lista todos os donos em ordem alfabética. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dono_8h_aa25bf69d0153a5ca42e199a351191687}{listar\+\_\+donos\+\_\+num\+Contribuinte}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Lista todos os donos por número de contribuinte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dono_8h_a1928cae1ec76810cfcbb3d0012013453}{registar\+\_\+dono}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Regista um novo dono via terminal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dono_8h_a0b5bc7ed67c5ff5233598bad9f045b67}{salvar\+\_\+donos}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Salva todos os donos num arquivo de texto. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{dono_8h_a5101674c6dfb91e95fa289ff4ba4d5c4}{coletar\+\_\+donos}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, int \texorpdfstring{$\ast$}{*}total)
+\begin{DoxyCompactList}\small\item\em Coleta todos os donos numa lista genérica. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dono_8h_a254d848a964a7f2fe6d68d23c1cfef39}{export\+Dono\+To\+CSV}} (\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Exporta todos os donos para um arquivo CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{dono_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{dono_8h_a551b7bba9c806e3edbb277d3d296137d}\index{dono.h@{dono.h}!DonoNode@{DonoNode}}
+\index{DonoNode@{DonoNode}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{DonoNode}{DonoNode}}
+{\footnotesize\ttfamily \label{dono_8h_a551b7bba9c806e3edbb277d3d296137d} 
+typedef struct Dono\+Node Dono\+Node}
+
+
+
+Nó da lista encadeada para tabela hash de donos. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{dono_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{dono_8h_aa1993f141832f71c00d902291b98574e}\index{dono.h@{dono.h}!buscar\_dono@{buscar\_dono}}
+\index{buscar\_dono@{buscar\_dono}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{buscar\_dono()}{buscar\_dono()}}
+{\footnotesize\ttfamily \label{dono_8h_aa1993f141832f71c00d902291b98574e} 
+\mbox{\hyperlink{struct_dono}{Dono}} \texorpdfstring{$\ast$}{*} buscar\+\_\+dono (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{int}]{num\+Contribuinte}{}\end{DoxyParamCaption})}
+
+
+
+Busca um dono pelo número de contribuinte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em num\+Contribuinte} & Número de contribuinte. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para o dono ou NULL se não existir.
+\end{DoxyReturn}
+Busca um dono pelo número de contribuinte.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em num\+Contribuinte} & Número de contribuinte. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para o dono ou NULL se não existir. 
+\end{DoxyReturn}
+\Hypertarget{dono_8h_a9bfa16bde70b4593250f10c340da1150}\index{dono.h@{dono.h}!calcular\_memoria\_donos@{calcular\_memoria\_donos}}
+\index{calcular\_memoria\_donos@{calcular\_memoria\_donos}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{calcular\_memoria\_donos()}{calcular\_memoria\_donos()}}
+{\footnotesize\ttfamily \label{dono_8h_a9bfa16bde70b4593250f10c340da1150} 
+int calcular\+\_\+memoria\+\_\+donos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Calcula a memória usada pela tabela hash. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Memória total em bytes.
+\end{DoxyReturn}
+Calcula a memória usada pela tabela hash.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tamanho total em bytes. 
+\end{DoxyReturn}
+\Hypertarget{dono_8h_a39dd6ed3ac7a0322d9b97278c60048c3}\index{dono.h@{dono.h}!carregar\_donos@{carregar\_donos}}
+\index{carregar\_donos@{carregar\_donos}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{carregar\_donos()}{carregar\_donos()}}
+{\footnotesize\ttfamily \label{dono_8h_a39dd6ed3ac7a0322d9b97278c60048c3} 
+void carregar\+\_\+donos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Carrega donos a partir de um arquivo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em filename} & Nome do arquivo.\\
+\hline
+\end{DoxyParams}
+Carrega donos a partir de um arquivo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em filename} & Nome do arquivo. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dono_8h_a5101674c6dfb91e95fa289ff4ba4d5c4}\index{dono.h@{dono.h}!coletar\_donos@{coletar\_donos}}
+\index{coletar\_donos@{coletar\_donos}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{coletar\_donos()}{coletar\_donos()}}
+{\footnotesize\ttfamily \label{dono_8h_a5101674c6dfb91e95fa289ff4ba4d5c4} 
+void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} coletar\+\_\+donos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{total}{}\end{DoxyParamCaption})}
+
+
+
+Coleta todos os donos numa lista genérica. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em total} & Ponteiro para armazenar o total. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista de ponteiros para donos.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em total} & Ponteiro para armazenar o total de donos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista de ponteiros para \doxylink{struct_dono}{Dono}. 
+\end{DoxyReturn}
+\Hypertarget{dono_8h_a4630747aad4026a2235f6ef4068ca382}\index{dono.h@{dono.h}!criar\_hash\_table\_donos@{criar\_hash\_table\_donos}}
+\index{criar\_hash\_table\_donos@{criar\_hash\_table\_donos}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{criar\_hash\_table\_donos()}{criar\_hash\_table\_donos()}}
+{\footnotesize\ttfamily \label{dono_8h_a4630747aad4026a2235f6ef4068ca382} 
+\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*} criar\+\_\+hash\+\_\+table\+\_\+donos (\begin{DoxyParamCaption}\item[{int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Cria uma nova tabela hash de donos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Tamanho da tabela hash. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para a tabela criada.
+\end{DoxyReturn}
+Cria uma nova tabela hash de donos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Tamanho (número de baldes). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para a tabela criada. 
+\end{DoxyReturn}
+\Hypertarget{dono_8h_a254d848a964a7f2fe6d68d23c1cfef39}\index{dono.h@{dono.h}!exportDonoToCSV@{exportDonoToCSV}}
+\index{exportDonoToCSV@{exportDonoToCSV}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{exportDonoToCSV()}{exportDonoToCSV()}}
+{\footnotesize\ttfamily \label{dono_8h_a254d848a964a7f2fe6d68d23c1cfef39} 
+void export\+Dono\+To\+CSV (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Exporta todos os donos para um arquivo CSV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em filename} & Nome do arquivo CSV.\\
+\hline
+\end{DoxyParams}
+Exporta todos os donos para um arquivo CSV.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em filename} & Nome do arquivo CSV. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dono_8h_a34f37e73fdda51056ad7962f3ac6fde0}\index{dono.h@{dono.h}!inserir\_dono@{inserir\_dono}}
+\index{inserir\_dono@{inserir\_dono}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{inserir\_dono()}{inserir\_dono()}}
+{\footnotesize\ttfamily \label{dono_8h_a34f37e73fdda51056ad7962f3ac6fde0} 
+void inserir\+\_\+dono (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{\mbox{\hyperlink{struct_dono}{Dono}}}]{dono}{}\end{DoxyParamCaption})}
+
+
+
+Insere um dono na tabela hash. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em dono} & \doxylink{struct_dono}{Dono} a inserir.\\
+\hline
+\end{DoxyParams}
+Insere um dono na tabela hash.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em dono} & \doxylink{struct_dono}{Dono} a inserir. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dono_8h_a21e36beece34a404ed01bef58b82c7a9}\index{dono.h@{dono.h}!liberar\_hash\_table\_donos@{liberar\_hash\_table\_donos}}
+\index{liberar\_hash\_table\_donos@{liberar\_hash\_table\_donos}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{liberar\_hash\_table\_donos()}{liberar\_hash\_table\_donos()}}
+{\footnotesize\ttfamily \label{dono_8h_a21e36beece34a404ed01bef58b82c7a9} 
+void liberar\+\_\+hash\+\_\+table\+\_\+donos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Libera a memória da tabela hash de donos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash.\\
+\hline
+\end{DoxyParams}
+Libera a memória da tabela hash de donos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash de donos. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dono_8h_a1b688ca9a8662b3ae3da2e3dd902f7ca}\index{dono.h@{dono.h}!listar\_donos\_alfabetico@{listar\_donos\_alfabetico}}
+\index{listar\_donos\_alfabetico@{listar\_donos\_alfabetico}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{listar\_donos\_alfabetico()}{listar\_donos\_alfabetico()}}
+{\footnotesize\ttfamily \label{dono_8h_a1b688ca9a8662b3ae3da2e3dd902f7ca} 
+void listar\+\_\+donos\+\_\+alfabetico (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Lista todos os donos em ordem alfabética. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash.\\
+\hline
+\end{DoxyParams}
+Lista todos os donos em ordem alfabética.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dono_8h_aa25bf69d0153a5ca42e199a351191687}\index{dono.h@{dono.h}!listar\_donos\_numContribuinte@{listar\_donos\_numContribuinte}}
+\index{listar\_donos\_numContribuinte@{listar\_donos\_numContribuinte}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{listar\_donos\_numContribuinte()}{listar\_donos\_numContribuinte()}}
+{\footnotesize\ttfamily \label{dono_8h_aa25bf69d0153a5ca42e199a351191687} 
+void listar\+\_\+donos\+\_\+num\+Contribuinte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Lista todos os donos por número de contribuinte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash.\\
+\hline
+\end{DoxyParams}
+Lista todos os donos por número de contribuinte.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dono_8h_a43f8ab5bab30c5176bab730f4ce7849c}\index{dono.h@{dono.h}!mostrar\_subnome\_mais\_comum@{mostrar\_subnome\_mais\_comum}}
+\index{mostrar\_subnome\_mais\_comum@{mostrar\_subnome\_mais\_comum}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{mostrar\_subnome\_mais\_comum()}{mostrar\_subnome\_mais\_comum()}}
+{\footnotesize\ttfamily \label{dono_8h_a43f8ab5bab30c5176bab730f4ce7849c} 
+void mostrar\+\_\+subnome\+\_\+mais\+\_\+comum (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{donos}{}\end{DoxyParamCaption})}
+
+
+
+Mostra o subnome mais comum entre os nomes dos donos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em donos} & Tabela hash de donos.\\
+\hline
+\end{DoxyParams}
+Ignora preposições como "{}de"{}, "{}da"{}, etc.
+
+
+\begin{DoxyParams}{Parameters}
+{\em donos} & Tabela hash de donos. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dono_8h_a86271581e923a8d715f4e84d16b2b931}\index{dono.h@{dono.h}!mostrarDono@{mostrarDono}}
+\index{mostrarDono@{mostrarDono}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{mostrarDono()}{mostrarDono()}}
+{\footnotesize\ttfamily \label{dono_8h_a86271581e923a8d715f4e84d16b2b931} 
+void mostrar\+Dono (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr\+Dono}{}\end{DoxyParamCaption})}
+
+
+
+Mostra as informações de um dono (usado na paginação). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dono} & Ponteiro genérico para \doxylink{struct_dono}{Dono}.\\
+\hline
+\end{DoxyParams}
+Mostra as informações de um dono (usado na paginação).
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr\+Dono} & Ponteiro genérico para \doxylink{struct_dono}{Dono}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dono_8h_a1928cae1ec76810cfcbb3d0012013453}\index{dono.h@{dono.h}!registar\_dono@{registar\_dono}}
+\index{registar\_dono@{registar\_dono}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{registar\_dono()}{registar\_dono()}}
+{\footnotesize\ttfamily \label{dono_8h_a1928cae1ec76810cfcbb3d0012013453} 
+void registar\+\_\+dono (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Regista um novo dono via terminal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dono_8h_a0b5bc7ed67c5ff5233598bad9f045b67}\index{dono.h@{dono.h}!salvar\_donos@{salvar\_donos}}
+\index{salvar\_donos@{salvar\_donos}!dono.h@{dono.h}}
+\doxysubsubsection{\texorpdfstring{salvar\_donos()}{salvar\_donos()}}
+{\footnotesize\ttfamily \label{dono_8h_a0b5bc7ed67c5ff5233598bad9f045b67} 
+void salvar\+\_\+donos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dono_hash_table}{Dono\+Hash\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Salva todos os donos num arquivo de texto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em filename} & Nome do arquivo.\\
+\hline
+\end{DoxyParams}
+Salva todos os donos num arquivo de texto.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Tabela hash. \\
+\hline
+{\em filename} & Nome do arquivo de saída. \\
+\hline
+\end{DoxyParams}

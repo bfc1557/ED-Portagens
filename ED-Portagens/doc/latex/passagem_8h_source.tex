@@ -1,0 +1,88 @@
+\doxysection{passagem.\+h}
+\hypertarget{passagem_8h_source}{}\label{passagem_8h_source}\index{passagem.h@{passagem.h}}
+\mbox{\hyperlink{passagem_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ PASSAGEM\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ PASSAGEM\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{veiculo_8h}{../veiculo/veiculo.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{distancia_8h}{../distancia/distancia.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8h}{../../libs/utils.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_passagem_a00fc734e8f816027cc9dc62b9ab40a3f}{idSensor}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_passagem_ab45c558b3b733a4d07a749acb44130f4}{codVeiculo}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ time\_t\ \mbox{\hyperlink{struct_passagem_a8a501d766a5e007da9915c341f86c7c2}{data}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_passagem_ac3ce96662d7477930c67a3e9bf25ff5d}{milissegundos}};\ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_passagem_ad42cbc16a835f56249b6d49b54fe3a32}{tipoRegisto}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \}\ \mbox{\hyperlink{struct_passagem}{Passagem}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_passagem_node}{PassagemNode}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{struct_passagem}{Passagem}}\ \mbox{\hyperlink{struct_passagem_node_ad207ed274eeeadd459d137eeefbe82bc}{passagem}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_passagem_node}{PassagemNode}}\ *\mbox{\hyperlink{struct_passagem_node_a9581d45897fe9c23823d904f46a42982}{next}};\ \ \ }
+\DoxyCodeLine{00032\ \}\ \mbox{\hyperlink{struct_passagem_node}{PassagemNode}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{struct_passagem_node}{PassagemNode}}*\ \mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00038\ \textcolor{comment}{/*\ OPERAÇÕES\ BÁSICAS\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00039\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ \mbox{\hyperlink{passagem_8h_ac3ba783baba16bba010271aad9a9a6c1}{criar\_lista\_passagens}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_a96c26bcf5189aacce9f801879f3070c7}{liberar\_lista\_passagens}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ list);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_a32dd6b36c50dd02a3892b41c7b9d9ae6}{inserir\_passagem}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ *list,\ \mbox{\hyperlink{struct_passagem}{Passagem}}\ \mbox{\hyperlink{struct_passagem_node_ad207ed274eeeadd459d137eeefbe82bc}{passagem}});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00061\ \textcolor{comment}{/*\ CARREGAMENTO\ E\ ESTATÍSTICAS\ */}}
+\DoxyCodeLine{00062\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_a0b40505e8134489f9cecf0c6b3b8d27d}{carregar\_passagens}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ *list,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename,\ \textcolor{keywordtype}{int}\ batch\_size);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{passagem_8h_a480535df9447f174d10d407211259348}{calcular\_memoria\_passagens}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ list);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00080\ \textcolor{comment}{/*\ LISTAGENS\ E\ CONSULTAS\ \ \ \ */}}
+\DoxyCodeLine{00081\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_a04558775d74688b973a89ca1882d6771}{listar\_passagens\_periodo}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ list,\ time\_t\ inicio,\ time\_t\ fim);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_ad299a0a76f021d42dc3e924d7d359569}{listar\_veiculos\_periodo}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ passagens,\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ veiculos,\ time\_t\ inicio,\ time\_t\ fim);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_a83bd35216d5588f8067db6c73e4355f6}{listar\_ranking\_circulacao}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ passagens,\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ veiculos,\ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ distancias,\ time\_t\ inicio,\ time\_t\ fim);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00118\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_a319f7533d94eca37a76149e6eecaabe9}{listar\_ranking\_marca}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ passagens,\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}*\ veiculos,\ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ distancias,\ time\_t\ inicio,\ time\_t\ fim);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00128\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_ae9f709f39ce5215511144f47142999ee}{listar\_infracoes}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ passagens,\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}\ *veiculos,\ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ distancias,\ time\_t\ inicio,\ time\_t\ fim);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00138\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_a96800922517debf8c7f9c174d7f7a7cf}{listar\_ranking\_infracoes}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ passagens,\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}\ *veiculos,\ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ distancias,\ time\_t\ inicio,\ time\_t\ fim);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00146\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_acc368bd44d090471a7de508a3c2a5d90}{listar\_marca\_maior\_velocidade\_media}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ passagens,\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}\ *veiculos,\ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ distancias);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00154\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_a09ab00119fb2078fb54c7ec5d482d4e8}{listar\_dono\_maior\_velocidade\_media}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ passagens,\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}\ *veiculos,\ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ distancias);}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00162\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_aab0df5190d47f475b8ebca08b61b4e50}{mostrar\_veiculo\_mais\_rapido}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ passagens,\ \mbox{\hyperlink{struct_veiculo_hash_table}{VeiculoHashTable}}\ *veiculos,\ \mbox{\hyperlink{distancia_8h_ac0618efa274e86c96b8f8919985c53a9}{DistanciaList}}\ distancias);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00165\ \textcolor{comment}{/*\ REGISTO\ DE\ PASSAGENS\ \ \ \ \ */}}
+\DoxyCodeLine{00166\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00178\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{passagem_8h_ad1e83591f42d21b61cb2aa59c4f6f6fc}{registar\_passagem}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ *list,\ \textcolor{keywordtype}{int}\ idSensor,\ \textcolor{keywordtype}{int}\ codVeiculo,\ \textcolor{keyword}{struct}\ tm\ data\_tm,\ \textcolor{keywordtype}{int}\ milissegundos,\ \textcolor{keywordtype}{int}\ tipoRegisto);}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00184\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_a2561b3b7d01a83307a9409dc58e4101b}{registar\_passagem\_interativo}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ *list);}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00187\ \textcolor{comment}{/*\ PERSISTÊNCIA\ DE\ DADOS\ \ \ \ */}}
+\DoxyCodeLine{00188\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00195\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_aaf2af17f078e9252f6ad245749f01ecc}{salvar\_passagens}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ list,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00202\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{passagem_8h_a0ec5dc2f6f432be1a879187e8b45de1e}{exportPassagemToCSV}}(\mbox{\hyperlink{passagem_8h_a41165842436c5feccf9c0ef368b8eff3}{PassagemList}}\ list,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ PASSAGEM\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
